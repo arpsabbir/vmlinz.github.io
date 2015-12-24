@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title><![CDATA[Logs from Zaicheng]]></title>
+  <subtitle><![CDATA[A developing mind]]></subtitle>
+  <link href="/atom.xml" rel="self"/>
+  <link href="http://yoursite.com/"/>
+  <updated>2015-12-24T15:59:38.000Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name><![CDATA[Zaicheng Qi]]></name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Rails active record associations]]></title>
+    <link href="http://yoursite.com/2015/12/24/Rails-active-record-associations/"/>
+    <id>http://yoursite.com/2015/12/24/Rails-active-record-associations/</id>
+    <published>2015-12-24T15:48:24.000Z</published>
+    <updated>2015-12-24T15:59:38.000Z</updated>
+    <content type="html"><![CDATA[<p>最近在学习”APIs on Rails”这本书，这是学习第八章”Placing Orders”的学习笔记。</p>
+<h2 id="u5185_u5BB9"><a href="#u5185_u5BB9" class="headerlink" title="内容"></a>内容</h2><ul>
+<li>理解Rails中的模型关联(Model Association)</li>
+<li>知道模型关联的基本知识和几种常见模式</li>
+<li>使用joint table来建立多对多的模型</li>
+</ul>
+<a id="more"></a>
+<h3 id="Rails_Model_Associations"><a href="#Rails_Model_Associations" class="headerlink" title="Rails Model Associations"></a>Rails Model Associations</h3><p>通过railscasts和rails guide学习模型关联</p>
+<h4 id="u4E3A_u4EC0_u4E48_u9700_u8981_u6A21_u578B_u5173_u8054"><a href="#u4E3A_u4EC0_u4E48_u9700_u8981_u6A21_u578B_u5173_u8054" class="headerlink" title="为什么需要模型关联"></a>为什么需要模型关联</h4><p>通过模型关联，rails可以在model层产生一些有用的函数，帮助开发者描述问题。</p>
+<h4 id="u5173_u8054_u7684_u7C7B_u578B"><a href="#u5173_u8054_u7684_u7C7B_u578B" class="headerlink" title="关联的类型"></a>关联的类型</h4><p>Rails里面关联是两个Model的连接。关联的实现是通过在相关Model里面调用一些宏函数，这些宏函数会自动实现相关的功能。</p>
+<p>NOTE: 在下面解释中，源是指调用关系函数的一方，目标是指作为关系函数参数的一方</p>
+<h5 id="belongs_to"><a href="#belongs_to" class="headerlink" title="belongs_to"></a>belongs_to</h5><p>这个关系是用来描述一对一的从属关系，在migration里面的体现是在源表里面增加外键来指向目标表</p>
+<p><img src="/images/belongs_to.png" alt="belongs_to"></p>
+<pre><code>migration:
+class CreateOrders &lt; ActiveRecord::Migration
+  def change
+    create_table :customers do |t|
+      t.string :name
+      t.timestamps null: false
+    end
+
+    create_table :orders do |t|
+      t.belongs_to :customer, index: true
+      t.datetime :order_date
+      t.timestamps null: false
+    end
+  end
+end
+</code></pre><h5 id="has_one"><a href="#has_one" class="headerlink" title="has_one"></a>has_one</h5><p>这个描述的也是一种一对一的关系，简单来说就是用不同的视角描述和<code>belongs_to</code>相同的关系，会在目标表里面增加一项外键引用到源表。</p>
+<p><img src="/images/has_one.png" alt="has_one"></p>
+<pre><code>migration:
+class CreateSuppliers &lt; ActiveRecord::Migration
+  def change
+    create_table :suppliers do |t|
+      t.string :name
+      t.timestamps null: false
+    end
+
+    create_table :accounts do |t|
+      t.belongs_to :supplier, index: true
+      t.string :account_number
+      t.timestamps null: false
+    end
+  end
+end
+</code></pre><h5 id="has_many"><a href="#has_many" class="headerlink" title="has_many"></a>has_many</h5><p>这种描述的是一对多的关系，有多个目标对象和源对象关联</p>
+<p><img src="/images/has_many.png" alt="has_many"></p>
+<pre><code>migration:
+class CreateCustomers &lt; ActiveRecord::Migration
+  def change
+    create_table :customers do |t|
+      t.string :name
+      t.timestamps null: false
+    end
+
+    create_table :orders do |t|
+      t.belongs_to :customer, index:true
+      t.datetime :order_date
+      t.timestamps null: false
+    end
+  end
+end
+</code></pre><h5 id="has_many__3Athrough"><a href="#has_many__3Athrough" class="headerlink" title="has_many :through"></a>has_many :through</h5><p>这种描述的是多对多的关系，有多个目标对象和多个源对象关联，但关系的建立是通过一个中间表来完成</p>
+<p><img src="/images/has_many_through.png" alt="has_many :through"></p>
+<pre><code>migration:
+class CreateAppointments &lt; ActiveRecord::Migration
+  def change
+    create_table :physicians do |t|
+      t.string :name
+      t.timestamps null: false
+    end
+
+    create_table :patients do |t|
+      t.string :name
+      t.timestamps null: false
+    end
+
+    create_table :appointments do |t|
+      t.belongs_to :physician, index: true
+      t.belongs_to :patient, index: true
+      t.datetime :appointment_date
+      t.timestamps null: false
+    end
+  end
+end
+</code></pre><h5 id="has_one__3Athrough"><a href="#has_one__3Athrough" class="headerlink" title="has_one :through"></a>has_one :through</h5><p>这个用来描述一对一的关系，通过中间表讲第一方和第三方关联起来</p>
+<p><img src="/images/has_one_through.png" alt="has_one :through"></p>
+<pre><code>migration:
+class CreateAccountHistories &lt; ActiveRecord::Migration
+  def change
+    create_table :suppliers do |t|
+      t.string :name
+      t.timestamps null: false
+    end
+
+    create_table :accounts do |t|
+      t.belongs_to :supplier, index: true
+      t.string :account_number
+      t.timestamps null: false
+    end
+
+    create_table :account_histories do |t|
+      t.belongs_to :account, index: true
+      t.integer :credit_rating
+      t.timestamps null: false
+    end
+  end
+end
+</code></pre><h5 id="has_and_belongs_to_many"><a href="#has_and_belongs_to_many" class="headerlink" title="has_and_belongs_to_many"></a>has_and_belongs_to_many</h5><p>这个和<code>has_many :through</code>描述的是一样的多对多关系，不过在代码中看不到中间表的存在</p>
+<p>NOTE: 可以从migration中看到，实际上有一个自动生成的中间表存在</p>
+<p><img src="/images/habtm.png" alt="has\_and\_belongs\_to\_many"></p>
+<pre><code>migration:
+class CreateAssembliesAndParts &lt; ActiveRecord::Migration
+  def change
+    create_table :assemblies do |t|
+      t.string :name
+      t.timestamps null: false
+    end
+
+    create_table :parts do |t|
+      t.string :part_number
+      t.timestamps null: false
+    end
+
+    create_table :assemblies_parts, id: false do |t|
+      t.belongs_to :assembly, index: true
+      t.belongs_to :part, index: true
+    end
+  end
+end
+</code></pre><h2 id="u53C2_u8003"><a href="#u53C2_u8003" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="http://railscasts.com/episodes/3-find-through-association" target="_blank" rel="external">http://railscasts.com/episodes/3-find-through-association</a></li>
+<li><a href="http://guides.rubyonrails.org/association_basics.html" target="_blank" rel="external">http://guides.rubyonrails.org/association_basics.html</a></li>
+<li><a href="http://railscasts.com/episodes/47-two-many-to-many" target="_blank" rel="external">http://railscasts.com/episodes/47-two-many-to-many</a></li>
+<li><a href="http://railscasts.com/episodes/154-polymorphic-association" target="_blank" rel="external">http://railscasts.com/episodes/154-polymorphic-association</a></li>
+<li><a href="https://viget.com/extend/exploring-the-inverse-of-option-on-rails-model-associations" target="_blank" rel="external">understand the inverse_of for active model</a></li>
+<li><a href="http://apionrails.icalialabs.com/" target="_blank" rel="external">APIs on Rails</a></li>
+</ul>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>最近在学习”APIs on Rails”这本书，这是学习第八章”Placing Orders”的学习笔记。</p>
+<h2 id="u5185_u5BB9"><a href="#u5185_u5BB9" class="headerlink" title="内容"></a>内容</h2><ul>
+<li>理解Rails中的模型关联(Model Association)</li>
+<li>知道模型关联的基本知识和几种常见模式</li>
+<li>使用joint table来建立多对多的模型</li>
+</ul>]]>
+    
+    </summary>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <link href="http://yoursite.com/2015/12/24/hello-world/"/>
+    <id>http://yoursite.com/2015/12/24/hello-world/</id>
+    <published>2015-12-24T15:39:12.000Z</published>
+    <updated>2015-12-24T15:39:12.000Z</updated>
+    <content type="html"><![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick_Start"><a href="#Quick_Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create_a_new_post"><a href="#Create_a_new_post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run_server"><a href="#Run_server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate_static_files"><a href="#Generate_static_files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy_to_remote_sites"><a href="#Deploy_to_remote_sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io]]>
+    </summary>
+    
+  </entry>
+  
+</feed>
