@@ -4,7 +4,7 @@
   <subtitle><![CDATA[A developing mind]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2015-12-31T15:49:22.954Z</updated>
+  <updated>2015-12-31T16:01:05.169Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,12 +15,18 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[setup-a-blog-with-hexojs-and-travis]]></title>
+    <title><![CDATA[Setup a blog with hexojs and travis]]></title>
     <link href="http://yoursite.com/2015/12/31/setup-a-blog-with-hexojs-and-travis/"/>
     <id>http://yoursite.com/2015/12/31/setup-a-blog-with-hexojs-and-travis/</id>
     <published>2015-12-31T23:46:12.000Z</published>
-    <updated>2015-12-31T15:49:22.954Z</updated>
-    <content type="html"><![CDATA[<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><h1 id="Contents"><a href="#Contents" class="headerlink" title="Contents"></a>Contents</h1><h2 id="Install_hexojs"><a href="#Install_hexojs" class="headerlink" title="Install hexojs"></a>Install hexojs</h2><h3 id="Requirements"><a href="#Requirements" class="headerlink" title="Requirements"></a>Requirements</h3><ul>
+    <updated>2015-12-31T16:01:05.169Z</updated>
+    <content type="html"><![CDATA[<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><ul>
+<li>Hexo is a fast and powerful site generator designed specifically for personal blogging. There is a lot of plugins to make it even powerful.</li>
+<li>With the power of travis, you can automate the site generating progress and separate the process of editing from publishing.</li>
+<li>You can deploy your generated site to github pages, a free and easy-to-use page hosting service.</li>
+</ul>
+<p>This article is going to instruct you to setup a blog with these handy tools.</p>
+<h1 id="Contents"><a href="#Contents" class="headerlink" title="Contents"></a>Contents</h1><h2 id="Install_hexojs"><a href="#Install_hexojs" class="headerlink" title="Install hexojs"></a>Install hexojs</h2><h3 id="Requirements"><a href="#Requirements" class="headerlink" title="Requirements"></a>Requirements</h3><ul>
 <li><a href="https://git-scm.com/downloads" target="_blank" rel="external">git</a></li>
 <li><a href="https://nodejs.org/en/download/package-manager" target="_blank" rel="external">nodejs</a></li>
 </ul>
@@ -59,7 +65,8 @@ npm install
 </ul>
 ]]></content>
     <summary type="html">
-    <![CDATA[<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><h1 id="Contents"><a href="#Conte]]>
+    <![CDATA[<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><ul>
+<li>Hexo is a fast and power]]>
     </summary>
     
   </entry>
@@ -69,7 +76,7 @@ npm install
     <link href="http://yoursite.com/2015/12/24/Rails-active-record-associations/"/>
     <id>http://yoursite.com/2015/12/24/Rails-active-record-associations/</id>
     <published>2015-12-24T23:48:24.000Z</published>
-    <updated>2015-12-31T15:49:22.954Z</updated>
+    <updated>2015-12-31T16:01:05.169Z</updated>
     <content type="html"><![CDATA[<p>最近在学习”APIs on Rails”这本书，这是学习第八章”Placing Orders”的学习笔记。</p>
 <h2 id="u5185_u5BB9"><a href="#u5185_u5BB9" class="headerlink" title="内容"></a>内容</h2><ul>
 <li>理解Rails中的模型关联(Model Association)</li>
