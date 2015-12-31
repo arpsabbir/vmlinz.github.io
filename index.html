@@ -202,8 +202,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/12/31/hello-world/" itemprop="url">
-                  Hello World
+                <a class="post-title-link" href="/2015/12/31/setup-a-blog-with-hexojs-and-travis/" itemprop="url">
+                  setup-a-blog-with-hexojs-and-travis
                 </a>
               
             
@@ -213,7 +213,7 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-12-31T15:35:13+00:00" content="2015-12-31">
+            <time itemprop="dateCreated" datetime="2015-12-31T23:46:12+00:00" content="2015-12-31">
               2015-12-31
             </time>
           </span>
@@ -240,15 +240,43 @@
         
           <span itemprop="articleBody">
             
-              <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start"><a href="#Quick_Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create_a_new_post"><a href="#Create_a_new_post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server"><a href="#Run_server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files"><a href="#Generate_static_files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites"><a href="#Deploy_to_remote_sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+              <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><h1 id="Contents"><a href="#Contents" class="headerlink" title="Contents"></a>Contents</h1><h2 id="Install_hexojs"><a href="#Install_hexojs" class="headerlink" title="Install hexojs"></a>Install hexojs</h2><h3 id="Requirements"><a href="#Requirements" class="headerlink" title="Requirements"></a>Requirements</h3><ul>
+<li><a href="https://git-scm.com/downloads" target="_blank" rel="external">git</a></li>
+<li><a href="https://nodejs.org/en/download/package-manager" target="_blank" rel="external">nodejs</a></li>
+</ul>
+<h3 id="Install_from_npm"><a href="#Install_from_npm" class="headerlink" title="Install from npm"></a>Install from npm</h3><pre><code>npm install -g hexo-cli
+</code></pre><h3 id="Basic_setup"><a href="#Basic_setup" class="headerlink" title="Basic setup"></a>Basic setup</h3><p>Once you have hexo installed, you can use following commands to initialize the target folder</p>
+<pre><code>hexo init BLOG_DIR
+cd BLOG_DIR
+npm install
+</code></pre><h3 id="Customization"><a href="#Customization" class="headerlink" title="Customization"></a>Customization</h3><ul>
+<li><a href="https://hexo.io/docs/configuration.html" target="_blank" rel="external">configuration</a></li>
+<li><a href="https://hexo.io/docs/writing.html#Scaffolds" target="_blank" rel="external">scaffolds</a></li>
+<li><a href="https://hexo.io/docs/themes.html" target="_blank" rel="external">themes</a><ul>
+<li><a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank" rel="external">appolo</a></li>
+<li><a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="external">next</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="Writing"><a href="#Writing" class="headerlink" title="Writing"></a>Writing</h3><p>new post<br>    hexo new [layout] TITLE</p>
+<p>publish a draft<br>    hexo publish [layout] TITLE</p>
+<h2 id="Deploy_hexojs_to_github_and_gitcafe"><a href="#Deploy_hexojs_to_github_and_gitcafe" class="headerlink" title="Deploy hexojs to github and gitcafe"></a>Deploy hexojs to github and gitcafe</h2><h3 id="Document"><a href="#Document" class="headerlink" title="Document"></a>Document</h3><p><a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">deployment</a></p>
+<p>with these commands, you can deploy the web site to the server configured.</p>
+<pre><code>hexo deploy
+</code></pre><h3 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h3><ul>
+<li><a href="https://github.com/hexojs/hexo-deployer-git" target="_blank" rel="external">hexo-deployer-git</a></li>
+<li><a href="https://github.com/hexojs/hexo-deployer-heroku" target="_blank" rel="external">hexo-deployer-heroku</a></li>
+<li><a href="https://github.com/hexojs/hexo-deployer-rsync" target="_blank" rel="external">hexo-deployer-rsync</a></li>
+<li>others</li>
+</ul>
+<h2 id="Deploy_hexojs_auto_builder_with_travis_ci"><a href="#Deploy_hexojs_auto_builder_with_travis_ci" class="headerlink" title="Deploy hexojs auto builder with travis ci"></a>Deploy hexojs auto builder with travis ci</h2><ul>
+<li><a href="https://github.com/hexojs/site" target="_blank" rel="external">https://github.com/hexojs/site</a></li>
+<li><a href="https://xuanwo.org/2015/02/07/Travis-CI-Hexo-Autodeploy/" target="_blank" rel="external">https://xuanwo.org/2015/02/07/Travis-CI-Hexo-Autodeploy/</a></li>
+</ul>
+<h2 id="Configure_github_pages_with_custom_domain_name"><a href="#Configure_github_pages_with_custom_domain_name" class="headerlink" title="Configure github pages with custom domain name"></a>Configure github pages with custom domain name</h2><p><a href="https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/" target="_blank" rel="external">https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/</a></p>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
+<li><a href="https://hexo.io/docs/" target="_blank" rel="external">official documentation</a></li>
+</ul>
 
             
           </span>
