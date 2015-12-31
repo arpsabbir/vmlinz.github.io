@@ -65,7 +65,7 @@ With the power of travis, you can automate the">
 <meta property="og:description" content="Introduction
 Hexo is a fast and powerful site generator designed specifically for personal blogging. There is a lot of plugins to make it even powerful.
 With the power of travis, you can automate the">
-<meta property="og:updated_time" content="2015-12-31T16:10:17.817Z">
+<meta property="og:updated_time" content="2015-12-31T16:24:48.771Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Setup a blog with hexojs and travis">
 <meta name="twitter:description" content="Introduction
@@ -220,6 +220,13 @@ With the power of travis, you can automate the">
 
           
             
+              <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/12/31/setup-a-blog-with-hexojs-and-travis/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/12/31/setup-a-blog-with-hexojs-and-travis/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+            
           
 
           
@@ -325,6 +332,10 @@ npm install
 
         
   <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
     
   </div>
 
@@ -476,6 +487,27 @@ npm install
     
     
 
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'logs-from-zaicheng';
+      var disqus_identifier = '2015/12/31/setup-a-blog-with-hexojs-and-travis/';
+      var disqus_title = 'Setup a blog with hexojs and travis';
+      var disqus_url = 'http://yoursite.com/2015/12/31/setup-a-blog-with-hexojs-and-travis/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
   
 
 
