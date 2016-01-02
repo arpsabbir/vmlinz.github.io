@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="blog,hexo,pages,travis," />
 
 
 
@@ -65,7 +65,7 @@ With the power of travis, you can automate the">
 <meta property="og:description" content="Introduction
 Hexo is a fast and powerful site generator designed specifically for personal blogging. There is a lot of plugins to make it even powerful.
 With the power of travis, you can automate the">
-<meta property="og:updated_time" content="2016-01-01T07:12:09.857Z">
+<meta property="og:updated_time" content="2016-01-02T09:40:24.742Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Setup a blog with hexojs and travis">
 <meta name="twitter:description" content="Introduction
@@ -248,16 +248,15 @@ With the power of travis, you can automate the">
 <li>You can deploy your generated site to github pages, a free and easy-to-use page hosting service.</li>
 </ul>
 <p>This article is going to instruct you to setup a blog with these handy tools.</p>
+<a id="more"></a>
 <h1 id="Contents"><a href="#Contents" class="headerlink" title="Contents"></a>Contents</h1><h2 id="Install_hexojs"><a href="#Install_hexojs" class="headerlink" title="Install hexojs"></a>Install hexojs</h2><h3 id="Requirements"><a href="#Requirements" class="headerlink" title="Requirements"></a>Requirements</h3><ul>
 <li><a href="https://git-scm.com/downloads" target="_blank" rel="external">git</a></li>
 <li><a href="https://nodejs.org/en/download/package-manager" target="_blank" rel="external">nodejs</a></li>
 </ul>
-<h3 id="Install_from_npm"><a href="#Install_from_npm" class="headerlink" title="Install from npm"></a>Install from npm</h3><pre><code>npm install -g hexo-cli
-</code></pre><h3 id="Basic_setup"><a href="#Basic_setup" class="headerlink" title="Basic setup"></a>Basic setup</h3><p>Once you have hexo installed, you can use following commands to initialize the target folder</p>
-<pre><code>hexo init BLOG_DIR
-cd BLOG_DIR
-npm install
-</code></pre><h3 id="Customization"><a href="#Customization" class="headerlink" title="Customization"></a>Customization</h3><ul>
+<h3 id="Install_from_npm"><a href="#Install_from_npm" class="headerlink" title="Install from npm"></a>Install from npm</h3><p>  npm install -g hexo-cli</p>
+<h3 id="Basic_setup"><a href="#Basic_setup" class="headerlink" title="Basic setup"></a>Basic setup</h3><p>Once you have hexo installed, you can use following commands to initialize the target folder</p>
+<p>  hexo init BLOG_DIR<br>  cd BLOG_DIR<br>  npm install</p>
+<h3 id="Customization"><a href="#Customization" class="headerlink" title="Customization"></a>Customization</h3><ul>
 <li><a href="https://hexo.io/docs/configuration.html" target="_blank" rel="external">configuration</a></li>
 <li><a href="https://hexo.io/docs/writing.html#Scaffolds" target="_blank" rel="external">scaffolds</a></li>
 <li><a href="https://hexo.io/docs/themes.html" target="_blank" rel="external">themes</a><ul>
@@ -267,19 +266,17 @@ npm install
 </li>
 </ul>
 <h3 id="Writing"><a href="#Writing" class="headerlink" title="Writing"></a>Writing</h3><ul>
-<li><p>new post, <code>hexo new \[layout\] TITLE</code></p>
-</li>
-<li><p>publish a draft, <code>hexo publish \[layout\] TITLE</code></p>
-</li>
+<li>new post, hexo new [layout] TITLE</li>
+<li>publish a draft, hexo publish [layout] TITLE</li>
 </ul>
 <h2 id="Deploy_hexojs_to_github_and_gitcafe"><a href="#Deploy_hexojs_to_github_and_gitcafe" class="headerlink" title="Deploy hexojs to github and gitcafe"></a>Deploy hexojs to github and gitcafe</h2><h3 id="Document"><a href="#Document" class="headerlink" title="Document"></a>Document</h3><p><a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">deployment</a></p>
 <p>with these commands, you can deploy the web site to the server configured.</p>
-<pre><code>hexo deploy
-</code></pre><h3 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h3><ul>
+<p>  hexo deploy</p>
+<h3 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h3><ul>
 <li><a href="https://github.com/hexojs/hexo-deployer-git" target="_blank" rel="external">hexo-deployer-git</a></li>
 <li><a href="https://github.com/hexojs/hexo-deployer-heroku" target="_blank" rel="external">hexo-deployer-heroku</a></li>
 <li><a href="https://github.com/hexojs/hexo-deployer-rsync" target="_blank" rel="external">hexo-deployer-rsync</a></li>
-<li>many others</li>
+<li>others</li>
 </ul>
 <h2 id="Deploy_hexojs_auto_builder_with_travis_ci"><a href="#Deploy_hexojs_auto_builder_with_travis_ci" class="headerlink" title="Deploy hexojs auto builder with travis ci"></a>Deploy hexojs auto builder with travis ci</h2><ul>
 <li><a href="https://github.com/hexojs/site" target="_blank" rel="external">https://github.com/hexojs/site</a></li>
@@ -294,6 +291,18 @@ npm install
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/blog/" rel="tag">#blog</a>
+          
+            <a href="/tags/hexo/" rel="tag">#hexo</a>
+          
+            <a href="/tags/pages/" rel="tag">#pages</a>
+          
+            <a href="/tags/travis/" rel="tag">#travis</a>
+          
+        </div>
       
 
       
@@ -392,7 +401,7 @@ npm install
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
