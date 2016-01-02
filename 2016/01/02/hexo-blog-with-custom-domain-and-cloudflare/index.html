@@ -55,25 +55,25 @@
 
 
 
-<meta name="description" content="IntroductionThe previous blog shows you how to setup a blog with hexo and github pages. Here we are going to move it further.
+<meta name="description" content="IntroductionThe previous blog shows you how to setup a blog with hexo and github pages. Here we are going to make it further.
 
 Setup custom domain name for your blog
-Setup cloud flare for content cach">
+Setup cloudflare for content cachi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo blog with custom domain and cloudflare">
 <meta property="og:url" content="http://yoursite.com/2016/01/02/hexo-blog-with-custom-domain-and-cloudflare/index.html">
 <meta property="og:site_name" content="Logs from Zaicheng">
-<meta property="og:description" content="IntroductionThe previous blog shows you how to setup a blog with hexo and github pages. Here we are going to move it further.
+<meta property="og:description" content="IntroductionThe previous blog shows you how to setup a blog with hexo and github pages. Here we are going to make it further.
 
 Setup custom domain name for your blog
-Setup cloud flare for content cach">
-<meta property="og:updated_time" content="2016-01-02T13:31:39.361Z">
+Setup cloudflare for content cachi">
+<meta property="og:updated_time" content="2016-01-02T13:45:12.758Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo blog with custom domain and cloudflare">
-<meta name="twitter:description" content="IntroductionThe previous blog shows you how to setup a blog with hexo and github pages. Here we are going to move it further.
+<meta name="twitter:description" content="IntroductionThe previous blog shows you how to setup a blog with hexo and github pages. Here we are going to make it further.
 
 Setup custom domain name for your blog
-Setup cloud flare for content cach">
+Setup cloudflare for content cachi">
 
 
 
@@ -245,12 +245,12 @@ Setup cloud flare for content cach">
       
 
       
-        <span itemprop="articleBody"><h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>The <a href="https://zaicheng.me/2015/12/31/setup-a-blog-with-hexojs-and-travis/" target="_blank" rel="external">previous blog</a> shows you how to setup a blog with hexo and github pages. Here we are going to move it further.</p>
+        <span itemprop="articleBody"><h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>The <a href="https://zaicheng.me/2015/12/31/setup-a-blog-with-hexojs-and-travis/" target="_blank" rel="external">previous blog</a> shows you how to setup a blog with hexo and github pages. Here we are going to make it further.</p>
 <ul>
 <li>Setup custom domain name for your blog</li>
-<li>Setup cloud flare for content caching and https support</li>
+<li>Setup cloudflare for content caching and https support</li>
 <li>Setup apex domain name and a <code>www</code> sub domain</li>
-<li>Setup cloud flare dns records with flattening CNAME record</li>
+<li>Setup cloudflare dns records with flattening CNAME record</li>
 <li>Configure cloudflare<ul>
 <li>ipv6</li>
 <li>hsts</li>
@@ -276,11 +276,11 @@ Setup cloud flare for content cach">
 <h3 id="Add_dns_records_to_the_name-com_dns_records"><a href="#Add_dns_records_to_the_name-com_dns_records" class="headerlink" title="Add dns records to the name.com dns records"></a>Add dns records to the name.com dns records</h3><ul>
 <li>add a CNAME record of <code>zaicheng.me, vmlinz.github.io</code>, NOTE: this is not an effective CNAME record by the dns spec, but cloudflare recognize it.</li>
 </ul>
-<h3 id="Set_up_cloudflare"><a href="#Set_up_cloudflare" class="headerlink" title="Set up cloudflare"></a>Set up cloudflare</h3><p>Let’s set up cloudflare to caching the content and turn on hsts for the site.</p>
+<h3 id="Set_up_cloudflare"><a href="#Set_up_cloudflare" class="headerlink" title="Set up cloudflare"></a>Set up cloudflare</h3><p>Let’s set up cloudflare to cache the content and turn on hsts for the site.</p>
 <ul>
 <li>Follow the guide to scan the original dns records.</li>
 <li>Migrate the dns servers from the domain name register panel to the cloudflare ones to get it work.</li>
-<li>Set up dns to add a record of flattening CNAME, which means to point <em>zaicheng.me</em> to <em>vmlinz.github.io</em>. NOTE: this is cloudflare specific dns function which is breaking the limits of dns spec.</li>
+<li>Set up dns to add a record of flattening CNAME, which means to point <em>zaicheng.me</em> to <em>vmlinz.github.io</em>. NOTE: this is a cloudflare specific dns function which breaks the limits of dns spec.</li>
 <li>Setup the crypto to turn on full ssl</li>
 <li>Turn on HSTS under crypto, turn on <code>include subdomains</code> and <code>No-sniff</code></li>
 <li>Turn on ipv6 compatibility</li>
@@ -288,7 +288,7 @@ Setup cloud flare for content cach">
 <h3 id="NOTE"><a href="#NOTE" class="headerlink" title="NOTE"></a>NOTE</h3><ul>
 <li>cloudflare will provision your ssl cert after about 24 hours</li>
 <li>flattening CNAME for apex domain is not supported by all the dns servers</li>
-<li>full ssl will only work when I use flattening CNAME, if I register a dns A record of <code>zaicheng.me</code> pointing to the github ips(192.30.252.153,192.30.252.154), then I cannot use full ssl.</li>
+<li>full ssl will only work when I use flattening CNAME, if I add a dns A record of <code>zaicheng.me</code> pointing to the github ips(192.30.252.153,192.30.252.154), then I cannot use full ssl.</li>
 </ul>
 <h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
 <li><a href="https://help.github.com/articles/tips-for-configuring-a-cname-record-with-your-dns-provider/" target="_blank" rel="external">configure a cname record with your dns provider</a></li>

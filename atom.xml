@@ -4,7 +4,7 @@
   <subtitle><![CDATA[A developing mind]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2016-01-02T13:31:39.361Z</updated>
+  <updated>2016-01-02T13:45:12.758Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -19,13 +19,13 @@
     <link href="http://yoursite.com/2016/01/02/hexo-blog-with-custom-domain-and-cloudflare/"/>
     <id>http://yoursite.com/2016/01/02/hexo-blog-with-custom-domain-and-cloudflare/</id>
     <published>2016-01-02T21:25:39.000Z</published>
-    <updated>2016-01-02T13:31:39.361Z</updated>
-    <content type="html"><![CDATA[<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>The <a href="https://zaicheng.me/2015/12/31/setup-a-blog-with-hexojs-and-travis/" target="_blank" rel="external">previous blog</a> shows you how to setup a blog with hexo and github pages. Here we are going to move it further.</p>
+    <updated>2016-01-02T13:45:12.758Z</updated>
+    <content type="html"><![CDATA[<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>The <a href="https://zaicheng.me/2015/12/31/setup-a-blog-with-hexojs-and-travis/" target="_blank" rel="external">previous blog</a> shows you how to setup a blog with hexo and github pages. Here we are going to make it further.</p>
 <ul>
 <li>Setup custom domain name for your blog</li>
-<li>Setup cloud flare for content caching and https support</li>
+<li>Setup cloudflare for content caching and https support</li>
 <li>Setup apex domain name and a <code>www</code> sub domain</li>
-<li>Setup cloud flare dns records with flattening CNAME record</li>
+<li>Setup cloudflare dns records with flattening CNAME record</li>
 <li>Configure cloudflare<ul>
 <li>ipv6</li>
 <li>hsts</li>
@@ -51,11 +51,11 @@
 <h3 id="Add_dns_records_to_the_name-com_dns_records"><a href="#Add_dns_records_to_the_name-com_dns_records" class="headerlink" title="Add dns records to the name.com dns records"></a>Add dns records to the name.com dns records</h3><ul>
 <li>add a CNAME record of <code>zaicheng.me, vmlinz.github.io</code>, NOTE: this is not an effective CNAME record by the dns spec, but cloudflare recognize it.</li>
 </ul>
-<h3 id="Set_up_cloudflare"><a href="#Set_up_cloudflare" class="headerlink" title="Set up cloudflare"></a>Set up cloudflare</h3><p>Let’s set up cloudflare to caching the content and turn on hsts for the site.</p>
+<h3 id="Set_up_cloudflare"><a href="#Set_up_cloudflare" class="headerlink" title="Set up cloudflare"></a>Set up cloudflare</h3><p>Let’s set up cloudflare to cache the content and turn on hsts for the site.</p>
 <ul>
 <li>Follow the guide to scan the original dns records.</li>
 <li>Migrate the dns servers from the domain name register panel to the cloudflare ones to get it work.</li>
-<li>Set up dns to add a record of flattening CNAME, which means to point <em>zaicheng.me</em> to <em>vmlinz.github.io</em>. NOTE: this is cloudflare specific dns function which is breaking the limits of dns spec.</li>
+<li>Set up dns to add a record of flattening CNAME, which means to point <em>zaicheng.me</em> to <em>vmlinz.github.io</em>. NOTE: this is a cloudflare specific dns function which breaks the limits of dns spec.</li>
 <li>Setup the crypto to turn on full ssl</li>
 <li>Turn on HSTS under crypto, turn on <code>include subdomains</code> and <code>No-sniff</code></li>
 <li>Turn on ipv6 compatibility</li>
@@ -63,7 +63,7 @@
 <h3 id="NOTE"><a href="#NOTE" class="headerlink" title="NOTE"></a>NOTE</h3><ul>
 <li>cloudflare will provision your ssl cert after about 24 hours</li>
 <li>flattening CNAME for apex domain is not supported by all the dns servers</li>
-<li>full ssl will only work when I use flattening CNAME, if I register a dns A record of <code>zaicheng.me</code> pointing to the github ips(192.30.252.153,192.30.252.154), then I cannot use full ssl.</li>
+<li>full ssl will only work when I use flattening CNAME, if I add a dns A record of <code>zaicheng.me</code> pointing to the github ips(192.30.252.153,192.30.252.154), then I cannot use full ssl.</li>
 </ul>
 <h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
 <li><a href="https://help.github.com/articles/tips-for-configuring-a-cname-record-with-your-dns-provider/" target="_blank" rel="external">configure a cname record with your dns provider</a></li>
@@ -91,7 +91,7 @@
     <link href="http://yoursite.com/2015/12/31/setup-a-blog-with-hexojs-and-travis/"/>
     <id>http://yoursite.com/2015/12/31/setup-a-blog-with-hexojs-and-travis/</id>
     <published>2015-12-31T23:46:12.000Z</published>
-    <updated>2016-01-02T13:31:39.361Z</updated>
+    <updated>2016-01-02T13:45:12.758Z</updated>
     <content type="html"><![CDATA[<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><ul>
 <li>Hexo is a fast and powerful site generator designed specifically for personal blogging. There is a lot of plugins to make it even powerful.</li>
 <li>With the power of travis, you can automate the site generating progress and separate the process of editing from publishing.</li>
@@ -160,7 +160,7 @@
     <link href="http://yoursite.com/2015/12/24/Rails-active-record-associations/"/>
     <id>http://yoursite.com/2015/12/24/Rails-active-record-associations/</id>
     <published>2015-12-24T23:48:24.000Z</published>
-    <updated>2016-01-02T13:31:39.361Z</updated>
+    <updated>2016-01-02T13:45:12.758Z</updated>
     <content type="html"><![CDATA[<p>最近在学习”APIs on Rails”这本书，这是学习第八章”Placing Orders”的学习笔记。</p>
 <h2 id="u5185_u5BB9"><a href="#u5185_u5BB9" class="headerlink" title="内容"></a>内容</h2><ul>
 <li>理解Rails中的模型关联(Model Association)</li>
