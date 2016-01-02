@@ -179,15 +179,146 @@
 
     
     
+
+    
       
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/01/02/hexo-blog-with-custom-domain-and-cloudflare/" itemprop="url">
+                  Hexo blog with custom domain and cloudflare
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-01-02T21:25:39+00:00" content="2016-01-02">
+              2016-01-02
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/01/02/hexo-blog-with-custom-domain-and-cloudflare/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/01/02/hexo-blog-with-custom-domain-and-cloudflare/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
       
-        
-        
-        
       
 
       
-    
+        
+          <span itemprop="articleBody">
+            
+              <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>The <a href="https://zaicheng.me/2015/12/31/setup-a-blog-with-hexojs-and-travis/" target="_blank" rel="external">previous blog</a> shows you how to setup a blog with hexo and github pages. Here we are going to move it further.</p>
+<ul>
+<li>Setup custom domain name for your blog</li>
+<li>Setup cloud flare for content caching and https support</li>
+<li>Setup apex domain name and a <code>www</code> sub domain</li>
+<li>Setup cloud flare dns records with flattening CNAME record</li>
+<li>Configure cloudflare<ul>
+<li>ipv6</li>
+<li>hsts</li>
+<li>flexible/full ssl</li>
+</ul>
+</li>
+</ul>
+<h1 id="Contents"><a href="#Contents" class="headerlink" title="Contents"></a>Contents</h1><h2 id="Requirements"><a href="#Requirements" class="headerlink" title="Requirements"></a>Requirements</h2><ul>
+<li>Your deployed github pages. I setup my page at <em>vmlinz.github.io</em> with instructions from my previous blog post.</li>
+<li>Your custom domain name from a domain name vendor. I bought a domain name from name.com: <em>zaicheng.me</em>.</li>
+<li>A cloudflare account, free or paid. I created an account for cloudflare.</li>
+</ul>
+<h2 id="Target"><a href="#Target" class="headerlink" title="Target"></a>Target</h2><ul>
+<li>Use my custom apex domain name <em>zaicheng.me</em> to point to my github blog.</li>
+<li>Redirect <em>www.zaicheng.me</em> to <em>zaicheng.me</em></li>
+<li>Redirect <em>vmlinz.github.io</em> to <em>zaicheng.me</em></li>
+<li>Use cloudflare to cache contents from <em>zaicheng.me</em> using the tricks of cloudflare</li>
+<li>Turn on hsts to make sure any insecure link will be redirected to the ssl secured one</li>
+</ul>
+<h2 id="Instructions"><a href="#Instructions" class="headerlink" title="Instructions"></a>Instructions</h2><h3 id="Setup_github_pages_CNAME_record"><a href="#Setup_github_pages_CNAME_record" class="headerlink" title="Setup github pages CNAME record"></a>Setup github pages CNAME record</h3><ul>
+<li>new a file named CNAME under hexo source dir, and put <em>zaicheng.me</em> into it. Then if you have both dns record of <em>zaicheng.me</em> and <em>www.zaicheng.me</em>, github will redirect <em>www.zaicheng.me</em> to <em>zaicheng.me</em></li>
+</ul>
+<h3 id="Add_dns_records_to_the_name-com_dns_records"><a href="#Add_dns_records_to_the_name-com_dns_records" class="headerlink" title="Add dns records to the name.com dns records"></a>Add dns records to the name.com dns records</h3><ul>
+<li>add a CNAME record of <code>zaicheng.me, vmlinz.github.io</code>, NOTE: this is not an effective CNAME record by the dns spec, but cloudflare recognize it.</li>
+</ul>
+<h3 id="Set_up_cloudflare"><a href="#Set_up_cloudflare" class="headerlink" title="Set up cloudflare"></a>Set up cloudflare</h3><p>Let’s set up cloudflare to caching the content and turn on hsts for the site.</p>
+<ul>
+<li>Follow the guide to scan the original dns records.</li>
+<li>Migrate the dns servers from the domain name register panel to the cloudflare ones to get it work.</li>
+<li>Set up dns to add a record of flattening CNAME, which means to point <em>zaicheng.me</em> to <em>vmlinz.github.io</em>. NOTE: this is cloudflare specific dns function which is breaking the limits of dns spec.</li>
+<li>Setup the crypto to turn on full ssl</li>
+<li>Turn on HSTS under crypto, turn on <code>include subdomains</code> and <code>No-sniff</code></li>
+<li>Turn on ipv6 compatibility</li>
+</ul>
+<h3 id="NOTE"><a href="#NOTE" class="headerlink" title="NOTE"></a>NOTE</h3><ul>
+<li>cloudflare will provision your ssl cert after about 24 hours</li>
+<li>flattening CNAME for apex domain is not supported by all the dns servers</li>
+<li>full ssl will only work when I use flattening CNAME, if I register a dns A record of <code>zaicheng.me</code> pointing to the github ips(192.30.252.153,192.30.252.154), then I cannot use full ssl.</li>
+</ul>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
+<li><a href="https://help.github.com/articles/tips-for-configuring-a-cname-record-with-your-dns-provider/" target="_blank" rel="external">configure a cname record with your dns provider</a></li>
+<li><a href="https://www.benburwell.com/posts/configuring-cloudflare-universal-ssl/" target="_blank" rel="external">configuring cloudflare universal ssl</a></li>
+<li><a href="https://help.github.com/articles/about-custom-domains-for-github-pages-sites/" target="_blank" rel="external">custom domains for github pages</a></li>
+<li><a href="https://stirling.co/blog/github-pages-jekyll-cloudflare/" target="_blank" rel="external">github pages jekyll cloudflare</a></li>
+<li><a href="http://blog.differential.com/free-ssl-hosting" target="_blank" rel="external">free ssl hosting</a></li>
+<li><a href="https://devcenter.heroku.com/articles/apex-domains" target="_blank" rel="external">apex domains</a></li>
+</ul>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
 
     
       
@@ -283,6 +414,99 @@
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/12/24/Rails-active-record-associations/" itemprop="url">
+                  Rails active record associations
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-12-24T23:48:24+00:00" content="2015-12-24">
+              2015-12-24
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/12/24/Rails-active-record-associations/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/12/24/Rails-active-record-associations/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>最近在学习”APIs on Rails”这本书，这是学习第八章”Placing Orders”的学习笔记。</p>
+<h2 id="u5185_u5BB9"><a href="#u5185_u5BB9" class="headerlink" title="内容"></a>内容</h2><ul>
+<li>理解Rails中的模型关联(Model Association)</li>
+<li>知道模型关联的基本知识和几种常见模式</li>
+<li>使用joint table来建立多对多的模型</li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/12/24/Rails-active-record-associations/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
 
   </section>
 
@@ -325,7 +549,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">3</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -339,7 +563,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

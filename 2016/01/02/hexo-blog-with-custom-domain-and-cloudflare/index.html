@@ -35,10 +35,12 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="active model,rails,ruby," />
+  <meta name="keywords" content="cloudflare,hexo,ssl," />
 
 
 
+
+  
 
 
   <link rel="alternate" href="/atom.xml" title="Logs from Zaicheng" type="application/atom+xml" />
@@ -53,34 +55,25 @@
 
 
 
-<meta name="description" content="最近在学习”APIs on Rails”这本书，这是学习第八章”Placing Orders”的学习笔记。
-内容
-理解Rails中的模型关联(Model Association)
-知道模型关联的基本知识和几种常见模式
-使用joint table来建立多对多的模型">
+<meta name="description" content="IntroductionThe previous blog shows you how to setup a blog with hexo and github pages. Here we are going to move it further.
+
+Setup custom domain name for your blog
+Setup cloud flare for content cach">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Rails active record associations">
-<meta property="og:url" content="http://yoursite.com/2015/12/24/Rails-active-record-associations/index.html">
+<meta property="og:title" content="Hexo blog with custom domain and cloudflare">
+<meta property="og:url" content="http://yoursite.com/2016/01/02/hexo-blog-with-custom-domain-and-cloudflare/index.html">
 <meta property="og:site_name" content="Logs from Zaicheng">
-<meta property="og:description" content="最近在学习”APIs on Rails”这本书，这是学习第八章”Placing Orders”的学习笔记。
-内容
-理解Rails中的模型关联(Model Association)
-知道模型关联的基本知识和几种常见模式
-使用joint table来建立多对多的模型">
-<meta property="og:image" content="http://yoursite.com/images/belongs_to.png">
-<meta property="og:image" content="http://yoursite.com/images/has_one.png">
-<meta property="og:image" content="http://yoursite.com/images/has_many.png">
-<meta property="og:image" content="http://yoursite.com/images/has_many_through.png">
-<meta property="og:image" content="http://yoursite.com/images/has_one_through.png">
-<meta property="og:image" content="http://yoursite.com/images/habtm.png">
+<meta property="og:description" content="IntroductionThe previous blog shows you how to setup a blog with hexo and github pages. Here we are going to move it further.
+
+Setup custom domain name for your blog
+Setup cloud flare for content cach">
 <meta property="og:updated_time" content="2016-01-02T13:31:39.361Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Rails active record associations">
-<meta name="twitter:description" content="最近在学习”APIs on Rails”这本书，这是学习第八章”Placing Orders”的学习笔记。
-内容
-理解Rails中的模型关联(Model Association)
-知道模型关联的基本知识和几种常见模式
-使用joint table来建立多对多的模型">
+<meta name="twitter:title" content="Hexo blog with custom domain and cloudflare">
+<meta name="twitter:description" content="IntroductionThe previous blog shows you how to setup a blog with hexo and github pages. Here we are going to move it further.
+
+Setup custom domain name for your blog
+Setup cloud flare for content cach">
 
 
 
@@ -92,7 +85,7 @@
   };
 </script>
 
-  <title> Rails active record associations | Logs from Zaicheng </title>
+  <title> Hexo blog with custom domain and cloudflare | Logs from Zaicheng </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -212,7 +205,7 @@
             
             
               
-                Rails active record associations
+                Hexo blog with custom domain and cloudflare
               
             
           </h1>
@@ -221,8 +214,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-12-24T23:48:24+00:00" content="2015-12-24">
-              2015-12-24
+            <time itemprop="dateCreated" datetime="2016-01-02T21:25:39+00:00" content="2016-01-02">
+              2016-01-02
             </time>
           </span>
 
@@ -232,8 +225,8 @@
             
               <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/12/24/Rails-active-record-associations/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/12/24/Rails-active-record-associations/" itemprop="commentsCount"></span>
+              <a href="/2016/01/02/hexo-blog-with-custom-domain-and-cloudflare/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/01/02/hexo-blog-with-custom-domain-and-cloudflare/" itemprop="commentsCount"></span>
               </a>
             </span>
             
@@ -252,143 +245,58 @@
       
 
       
-        <span itemprop="articleBody"><p>最近在学习”APIs on Rails”这本书，这是学习第八章”Placing Orders”的学习笔记。</p>
-<h2 id="u5185_u5BB9"><a href="#u5185_u5BB9" class="headerlink" title="内容"></a>内容</h2><ul>
-<li>理解Rails中的模型关联(Model Association)</li>
-<li>知道模型关联的基本知识和几种常见模式</li>
-<li>使用joint table来建立多对多的模型</li>
+        <span itemprop="articleBody"><h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>The <a href="https://zaicheng.me/2015/12/31/setup-a-blog-with-hexojs-and-travis/" target="_blank" rel="external">previous blog</a> shows you how to setup a blog with hexo and github pages. Here we are going to move it further.</p>
+<ul>
+<li>Setup custom domain name for your blog</li>
+<li>Setup cloud flare for content caching and https support</li>
+<li>Setup apex domain name and a <code>www</code> sub domain</li>
+<li>Setup cloud flare dns records with flattening CNAME record</li>
+<li>Configure cloudflare<ul>
+<li>ipv6</li>
+<li>hsts</li>
+<li>flexible/full ssl</li>
 </ul>
-<a id="more"></a>
-<h3 id="Rails_Model_Associations"><a href="#Rails_Model_Associations" class="headerlink" title="Rails Model Associations"></a>Rails Model Associations</h3><p>通过railscasts和rails guide学习模型关联</p>
-<h4 id="u4E3A_u4EC0_u4E48_u9700_u8981_u6A21_u578B_u5173_u8054"><a href="#u4E3A_u4EC0_u4E48_u9700_u8981_u6A21_u578B_u5173_u8054" class="headerlink" title="为什么需要模型关联"></a>为什么需要模型关联</h4><p>通过模型关联，rails可以在model层产生一些有用的函数，帮助开发者描述问题。</p>
-<h4 id="u5173_u8054_u7684_u7C7B_u578B"><a href="#u5173_u8054_u7684_u7C7B_u578B" class="headerlink" title="关联的类型"></a>关联的类型</h4><p>Rails里面关联是两个Model的连接。关联的实现是通过在相关Model里面调用一些宏函数，这些宏函数会自动实现相关的功能。</p>
-<p>NOTE: 在下面解释中，源是指调用关系函数的一方，目标是指作为关系函数参数的一方</p>
-<h5 id="belongs_to"><a href="#belongs_to" class="headerlink" title="belongs_to"></a>belongs_to</h5><p>这个关系是用来描述一对一的从属关系，在migration里面的体现是在源表里面增加外键来指向目标表</p>
-<p><img src="/images/belongs_to.png" alt="belongs_to"></p>
-<pre><code>migration:
-class CreateOrders &lt; ActiveRecord::Migration
-  def change
-    create_table :customers do |t|
-      t.string :name
-      t.timestamps null: false
-    end
-
-    create_table :orders do |t|
-      t.belongs_to :customer, index: true
-      t.datetime :order_date
-      t.timestamps null: false
-    end
-  end
-end
-</code></pre><h5 id="has_one"><a href="#has_one" class="headerlink" title="has_one"></a>has_one</h5><p>这个描述的也是一种一对一的关系，简单来说就是用不同的视角描述和<code>belongs_to</code>相同的关系，会在目标表里面增加一项外键引用到源表。</p>
-<p><img src="/images/has_one.png" alt="has_one"></p>
-<pre><code>migration:
-class CreateSuppliers &lt; ActiveRecord::Migration
-  def change
-    create_table :suppliers do |t|
-      t.string :name
-      t.timestamps null: false
-    end
-
-    create_table :accounts do |t|
-      t.belongs_to :supplier, index: true
-      t.string :account_number
-      t.timestamps null: false
-    end
-  end
-end
-</code></pre><h5 id="has_many"><a href="#has_many" class="headerlink" title="has_many"></a>has_many</h5><p>这种描述的是一对多的关系，有多个目标对象和源对象关联</p>
-<p><img src="/images/has_many.png" alt="has_many"></p>
-<pre><code>migration:
-class CreateCustomers &lt; ActiveRecord::Migration
-  def change
-    create_table :customers do |t|
-      t.string :name
-      t.timestamps null: false
-    end
-
-    create_table :orders do |t|
-      t.belongs_to :customer, index:true
-      t.datetime :order_date
-      t.timestamps null: false
-    end
-  end
-end
-</code></pre><h5 id="has_many__3Athrough"><a href="#has_many__3Athrough" class="headerlink" title="has_many :through"></a>has_many :through</h5><p>这种描述的是多对多的关系，有多个目标对象和多个源对象关联，但关系的建立是通过一个中间表来完成</p>
-<p><img src="/images/has_many_through.png" alt="has_many :through"></p>
-<pre><code>migration:
-class CreateAppointments &lt; ActiveRecord::Migration
-  def change
-    create_table :physicians do |t|
-      t.string :name
-      t.timestamps null: false
-    end
-
-    create_table :patients do |t|
-      t.string :name
-      t.timestamps null: false
-    end
-
-    create_table :appointments do |t|
-      t.belongs_to :physician, index: true
-      t.belongs_to :patient, index: true
-      t.datetime :appointment_date
-      t.timestamps null: false
-    end
-  end
-end
-</code></pre><h5 id="has_one__3Athrough"><a href="#has_one__3Athrough" class="headerlink" title="has_one :through"></a>has_one :through</h5><p>这个用来描述一对一的关系，通过中间表讲第一方和第三方关联起来</p>
-<p><img src="/images/has_one_through.png" alt="has_one :through"></p>
-<pre><code>migration:
-class CreateAccountHistories &lt; ActiveRecord::Migration
-  def change
-    create_table :suppliers do |t|
-      t.string :name
-      t.timestamps null: false
-    end
-
-    create_table :accounts do |t|
-      t.belongs_to :supplier, index: true
-      t.string :account_number
-      t.timestamps null: false
-    end
-
-    create_table :account_histories do |t|
-      t.belongs_to :account, index: true
-      t.integer :credit_rating
-      t.timestamps null: false
-    end
-  end
-end
-</code></pre><h5 id="has_and_belongs_to_many"><a href="#has_and_belongs_to_many" class="headerlink" title="has_and_belongs_to_many"></a>has_and_belongs_to_many</h5><p>这个和<code>has_many :through</code>描述的是一样的多对多关系，不过在代码中看不到中间表的存在</p>
-<p>NOTE: 可以从migration中看到，实际上有一个自动生成的中间表存在</p>
-<p><img src="/images/habtm.png" alt="has\_and\_belongs\_to\_many"></p>
-<pre><code>migration:
-class CreateAssembliesAndParts &lt; ActiveRecord::Migration
-  def change
-    create_table :assemblies do |t|
-      t.string :name
-      t.timestamps null: false
-    end
-
-    create_table :parts do |t|
-      t.string :part_number
-      t.timestamps null: false
-    end
-
-    create_table :assemblies_parts, id: false do |t|
-      t.belongs_to :assembly, index: true
-      t.belongs_to :part, index: true
-    end
-  end
-end
-</code></pre><h2 id="u53C2_u8003"><a href="#u53C2_u8003" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="http://railscasts.com/episodes/3-find-through-association" target="_blank" rel="external">http://railscasts.com/episodes/3-find-through-association</a></li>
-<li><a href="http://guides.rubyonrails.org/association_basics.html" target="_blank" rel="external">http://guides.rubyonrails.org/association_basics.html</a></li>
-<li><a href="http://railscasts.com/episodes/47-two-many-to-many" target="_blank" rel="external">http://railscasts.com/episodes/47-two-many-to-many</a></li>
-<li><a href="http://railscasts.com/episodes/154-polymorphic-association" target="_blank" rel="external">http://railscasts.com/episodes/154-polymorphic-association</a></li>
-<li><a href="https://viget.com/extend/exploring-the-inverse-of-option-on-rails-model-associations" target="_blank" rel="external">understand the inverse_of for active model</a></li>
-<li><a href="http://apionrails.icalialabs.com/" target="_blank" rel="external">APIs on Rails</a></li>
+</li>
+</ul>
+<h1 id="Contents"><a href="#Contents" class="headerlink" title="Contents"></a>Contents</h1><h2 id="Requirements"><a href="#Requirements" class="headerlink" title="Requirements"></a>Requirements</h2><ul>
+<li>Your deployed github pages. I setup my page at <em>vmlinz.github.io</em> with instructions from my previous blog post.</li>
+<li>Your custom domain name from a domain name vendor. I bought a domain name from name.com: <em>zaicheng.me</em>.</li>
+<li>A cloudflare account, free or paid. I created an account for cloudflare.</li>
+</ul>
+<h2 id="Target"><a href="#Target" class="headerlink" title="Target"></a>Target</h2><ul>
+<li>Use my custom apex domain name <em>zaicheng.me</em> to point to my github blog.</li>
+<li>Redirect <em>www.zaicheng.me</em> to <em>zaicheng.me</em></li>
+<li>Redirect <em>vmlinz.github.io</em> to <em>zaicheng.me</em></li>
+<li>Use cloudflare to cache contents from <em>zaicheng.me</em> using the tricks of cloudflare</li>
+<li>Turn on hsts to make sure any insecure link will be redirected to the ssl secured one</li>
+</ul>
+<h2 id="Instructions"><a href="#Instructions" class="headerlink" title="Instructions"></a>Instructions</h2><h3 id="Setup_github_pages_CNAME_record"><a href="#Setup_github_pages_CNAME_record" class="headerlink" title="Setup github pages CNAME record"></a>Setup github pages CNAME record</h3><ul>
+<li>new a file named CNAME under hexo source dir, and put <em>zaicheng.me</em> into it. Then if you have both dns record of <em>zaicheng.me</em> and <em>www.zaicheng.me</em>, github will redirect <em>www.zaicheng.me</em> to <em>zaicheng.me</em></li>
+</ul>
+<h3 id="Add_dns_records_to_the_name-com_dns_records"><a href="#Add_dns_records_to_the_name-com_dns_records" class="headerlink" title="Add dns records to the name.com dns records"></a>Add dns records to the name.com dns records</h3><ul>
+<li>add a CNAME record of <code>zaicheng.me, vmlinz.github.io</code>, NOTE: this is not an effective CNAME record by the dns spec, but cloudflare recognize it.</li>
+</ul>
+<h3 id="Set_up_cloudflare"><a href="#Set_up_cloudflare" class="headerlink" title="Set up cloudflare"></a>Set up cloudflare</h3><p>Let’s set up cloudflare to caching the content and turn on hsts for the site.</p>
+<ul>
+<li>Follow the guide to scan the original dns records.</li>
+<li>Migrate the dns servers from the domain name register panel to the cloudflare ones to get it work.</li>
+<li>Set up dns to add a record of flattening CNAME, which means to point <em>zaicheng.me</em> to <em>vmlinz.github.io</em>. NOTE: this is cloudflare specific dns function which is breaking the limits of dns spec.</li>
+<li>Setup the crypto to turn on full ssl</li>
+<li>Turn on HSTS under crypto, turn on <code>include subdomains</code> and <code>No-sniff</code></li>
+<li>Turn on ipv6 compatibility</li>
+</ul>
+<h3 id="NOTE"><a href="#NOTE" class="headerlink" title="NOTE"></a>NOTE</h3><ul>
+<li>cloudflare will provision your ssl cert after about 24 hours</li>
+<li>flattening CNAME for apex domain is not supported by all the dns servers</li>
+<li>full ssl will only work when I use flattening CNAME, if I register a dns A record of <code>zaicheng.me</code> pointing to the github ips(192.30.252.153,192.30.252.154), then I cannot use full ssl.</li>
+</ul>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
+<li><a href="https://help.github.com/articles/tips-for-configuring-a-cname-record-with-your-dns-provider/" target="_blank" rel="external">configure a cname record with your dns provider</a></li>
+<li><a href="https://www.benburwell.com/posts/configuring-cloudflare-universal-ssl/" target="_blank" rel="external">configuring cloudflare universal ssl</a></li>
+<li><a href="https://help.github.com/articles/about-custom-domains-for-github-pages-sites/" target="_blank" rel="external">custom domains for github pages</a></li>
+<li><a href="https://stirling.co/blog/github-pages-jekyll-cloudflare/" target="_blank" rel="external">github pages jekyll cloudflare</a></li>
+<li><a href="http://blog.differential.com/free-ssl-hosting" target="_blank" rel="external">free ssl hosting</a></li>
+<li><a href="https://devcenter.heroku.com/articles/apex-domains" target="_blank" rel="external">apex domains</a></li>
 </ul>
 </span>
       
@@ -398,11 +306,11 @@ end
       
         <div class="post-tags">
           
-            <a href="/tags/active-model/" rel="tag">#active model</a>
+            <a href="/tags/cloudflare/" rel="tag">#cloudflare</a>
           
-            <a href="/tags/rails/" rel="tag">#rails</a>
+            <a href="/tags/hexo/" rel="tag">#hexo</a>
           
-            <a href="/tags/ruby/" rel="tag">#ruby</a>
+            <a href="/tags/ssl/" rel="tag">#ssl</a>
           
         </div>
       
@@ -411,13 +319,13 @@ end
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2015/12/31/setup-a-blog-with-hexojs-and-travis/" rel="next" title="Setup a blog with hexojs and travis">
+                <i class="fa fa-chevron-left"></i> Setup a blog with hexojs and travis
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/12/31/setup-a-blog-with-hexojs-and-travis/" rel="prev" title="Setup a blog with hexojs and travis">
-                Setup a blog with hexojs and travis <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -568,7 +476,7 @@ end
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#u5185_u5BB9"><span class="nav-number">1.</span> <span class="nav-text">内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Rails_Model_Associations"><span class="nav-number">1.1.</span> <span class="nav-text">Rails Model Associations</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#u4E3A_u4EC0_u4E48_u9700_u8981_u6A21_u578B_u5173_u8054"><span class="nav-number">1.1.1.</span> <span class="nav-text">为什么需要模型关联</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u5173_u8054_u7684_u7C7B_u578B"><span class="nav-number">1.1.2.</span> <span class="nav-text">关联的类型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#belongs_to"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">belongs_to</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#has_one"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">has_one</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#has_many"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">has_many</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#has_many__3Athrough"><span class="nav-number">1.1.2.4.</span> <span class="nav-text">has_many :through</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#has_one__3Athrough"><span class="nav-number">1.1.2.5.</span> <span class="nav-text">has_one :through</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#has_and_belongs_to_many"><span class="nav-number">1.1.2.6.</span> <span class="nav-text">has_and_belongs_to_many</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u53C2_u8003"><span class="nav-number">2.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Contents"><span class="nav-number">2.</span> <span class="nav-text">Contents</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Requirements"><span class="nav-number">2.1.</span> <span class="nav-text">Requirements</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Target"><span class="nav-number">2.2.</span> <span class="nav-text">Target</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Instructions"><span class="nav-number">2.3.</span> <span class="nav-text">Instructions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Setup_github_pages_CNAME_record"><span class="nav-number">2.3.1.</span> <span class="nav-text">Setup github pages CNAME record</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Add_dns_records_to_the_name-com_dns_records"><span class="nav-number">2.3.2.</span> <span class="nav-text">Add dns records to the name.com dns records</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Set_up_cloudflare"><span class="nav-number">2.3.3.</span> <span class="nav-text">Set up cloudflare</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NOTE"><span class="nav-number">2.3.4.</span> <span class="nav-text">NOTE</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">3.</span> <span class="nav-text">References</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -628,9 +536,9 @@ end
 
     <script type="text/javascript">
       var disqus_shortname = 'logs-from-zaicheng';
-      var disqus_identifier = '2015/12/24/Rails-active-record-associations/';
-      var disqus_title = 'Rails active record associations';
-      var disqus_url = 'http://yoursite.com/2015/12/24/Rails-active-record-associations/';
+      var disqus_identifier = '2016/01/02/hexo-blog-with-custom-domain-and-cloudflare/';
+      var disqus_title = 'Hexo blog with custom domain and cloudflare';
+      var disqus_url = 'http://yoursite.com/2016/01/02/hexo-blog-with-custom-domain-and-cloudflare/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
