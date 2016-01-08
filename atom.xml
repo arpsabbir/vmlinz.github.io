@@ -4,7 +4,7 @@
   <subtitle><![CDATA[A developing mind]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2016-01-08T16:10:17.507Z</updated>
+  <updated>2016-01-08T16:17:34.925Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://yoursite.com/2016/01/04/rails-4-routes-essentials/"/>
     <id>http://yoursite.com/2016/01/04/rails-4-routes-essentials/</id>
     <published>2016-01-04T20:01:59.000Z</published>
-    <updated>2016-01-08T16:10:17.507Z</updated>
+    <updated>2016-01-08T16:17:34.925Z</updated>
     <content type="html"><![CDATA[<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>The purposes of rails router are:</p>
 <ul>
 <li>recognize the URLs</li>
@@ -96,9 +96,7 @@
 </tr>
 </tbody>
 </table>
-<ul>
-<li>NOTE: there is a singular resource: <code>resources :user</code> and in this case you refer to only one resource and don’t need to identify different resources of it.</li>
-</ul>
+<p><em>NOTE</em>: There is a singular resource: <code>resources :user</code> and in this case you refer to only one resource and don’t need to identify different resources of it.</p>
 <h3 id="path_and_URL_helpers"><a href="#path_and_URL_helpers" class="headerlink" title="path and URL helpers"></a>path and URL helpers</h3><p>The resourceful routes also expose a number of helpers to the controllers, in case of <code>resources :users</code>:</p>
 <ul>
 <li><code>users_path</code> returns <code>/users</code></li>
@@ -115,13 +113,11 @@
 <p>Then you can declare route as:</p>
 <figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">namespace <span class="symbol">:admin</span> <span class="keyword">do</span></span><br><span class="line">	resources <span class="symbol">:articles</span>, <span class="symbol">:comments</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 <p>And all the urls of the controllers will be prefixed with <code>/admin</code></p>
-<h4 id="scope"><a href="#scope" class="headerlink" title="scope"></a>scope</h4><p>You can use scope when you want to route <code>/admin/articles</code> to ArticlesController instead of Admin::ArticlesController.</p>
+<h4 id="scope"><a href="#scope" class="headerlink" title="scope"></a>scope</h4><p>You can use scope when you want to route <code>/admin/articles</code> to ArticlesController instead of <code>Admin::ArticlesController</code>.</p>
 <figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scope <span class="string">'/admin'</span> <span class="keyword">do</span></span><br><span class="line">  resources <span class="symbol">:articles</span>, <span class="symbol">:comments</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 <p>or</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">resources :</span>articles, <span class="string">path:</span> <span class="string">'/admin/articles'</span></span><br></pre></td></tr></table></figure>
-<h3 id="nested_routes"><a href="#nested_routes" class="headerlink" title="nested routes"></a>nested routes</h3><p>Nested routes allow you to represent resources that are logically children of other resources.</p>
-<h3 id="adding_more_restful_actions"><a href="#adding_more_restful_actions" class="headerlink" title="adding more restful actions"></a>adding more restful actions</h3><h2 id="Non-resourceful_routing"><a href="#Non-resourceful_routing" class="headerlink" title="Non-resourceful routing"></a>Non-resourceful routing</h2><p>In case of URLs which are not fit into resourceful abstraction, rails supports routing for arbitrary URLs.</p>
-<p>for models:</p>
+<h3 id="nested_routes"><a href="#nested_routes" class="headerlink" title="nested routes"></a>nested routes</h3><p>Nested routes allow you to represent resources that are logically children of other resources, for models:</p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Magazine</span> <span class="inheritance">&lt; <span class="parent">ActiveRecord::Base</span></span></span></span><br><span class="line">  has_many <span class="symbol">:ads</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Ad</span> <span class="inheritance">&lt; <span class="parent">ActiveRecord::Base</span></span></span></span><br><span class="line">  belongs_to <span class="symbol">:magazine</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 <p>you can declare the routes:</p>
 <figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">resources <span class="symbol">:magazines</span> <span class="keyword">do</span></span><br><span class="line">  resources <span class="symbol">:ads</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
@@ -160,7 +156,7 @@
     <link href="http://yoursite.com/2016/01/02/hexo-blog-with-custom-domain-and-cloudflare/"/>
     <id>http://yoursite.com/2016/01/02/hexo-blog-with-custom-domain-and-cloudflare/</id>
     <published>2016-01-02T21:25:39.000Z</published>
-    <updated>2016-01-08T16:10:17.507Z</updated>
+    <updated>2016-01-08T16:17:34.925Z</updated>
     <content type="html"><![CDATA[<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>The <a href="https://zaicheng.me/2015/12/31/setup-a-blog-with-hexojs-and-travis/" target="_blank" rel="external">previous blog</a> shows you how to setup a blog with hexo and github pages. Here we are going to make it further.</p>
 <ul>
 <li>Setup custom domain name for your blog</li>
@@ -246,7 +242,7 @@
     <link href="http://yoursite.com/2015/12/31/setup-a-blog-with-hexojs-and-travis/"/>
     <id>http://yoursite.com/2015/12/31/setup-a-blog-with-hexojs-and-travis/</id>
     <published>2015-12-31T23:46:12.000Z</published>
-    <updated>2016-01-08T16:10:17.507Z</updated>
+    <updated>2016-01-08T16:17:34.925Z</updated>
     <content type="html"><![CDATA[<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><ul>
 <li>Hexo is a fast and powerful site generator designed specifically for personal blogging. There is a lot of plugins to make it even powerful.</li>
 <li>With the power of travis, you can automate the site generating progress and separate the process of editing from publishing.</li>
@@ -315,7 +311,7 @@
     <link href="http://yoursite.com/2015/12/24/Rails-active-record-associations/"/>
     <id>http://yoursite.com/2015/12/24/Rails-active-record-associations/</id>
     <published>2015-12-24T23:48:24.000Z</published>
-    <updated>2016-01-08T16:10:17.507Z</updated>
+    <updated>2016-01-08T16:17:34.925Z</updated>
     <content type="html"><![CDATA[<p>最近在学习”APIs on Rails”这本书，这是学习第八章”Placing Orders”的学习笔记。</p>
 <h2 id="u5185_u5BB9"><a href="#u5185_u5BB9" class="headerlink" title="内容"></a>内容</h2><ul>
 <li>理解Rails中的模型关联(Model Association)</li>
