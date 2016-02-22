@@ -1,147 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title><![CDATA[Logs from Zaicheng]]></title>
-  <subtitle><![CDATA[A developing mind]]></subtitle>
+  <title>Logs from Zaicheng</title>
+  <subtitle>A developing mind</subtitle>
   <link href="/atom.xml" rel="self"/>
+  
   <link href="http://yoursite.com/"/>
-  <updated>2016-01-08T16:17:34.925Z</updated>
+  <updated>2016-02-22T19:47:24.430Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
-    <name><![CDATA[Zaicheng Qi]]></name>
+    <name>Zaicheng Qi</name>
     
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[Rails 4 routes essentials, part I]]></title>
+    <title>Rails 4 routes essentials, part I</title>
     <link href="http://yoursite.com/2016/01/04/rails-4-routes-essentials/"/>
     <id>http://yoursite.com/2016/01/04/rails-4-routes-essentials/</id>
     <published>2016-01-04T20:01:59.000Z</published>
-    <updated>2016-01-08T16:17:34.925Z</updated>
-    <content type="html"><![CDATA[<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>The purposes of rails router are:</p>
-<ul>
-<li>recognize the URLs</li>
-<li>dispatch URLs to the controller actions</li>
-<li>generate helper functions to avoid hard coding URLs in the view</li>
-<li>helpers to generate restful routes</li>
-<li>many other useful functions to help you dealing with routing</li>
-</ul>
-<p>In this article, I’m going to take you a tour around the first part of the rails 4 router.</p>
-<h1 id="Content"><a href="#Content" class="headerlink" title="Content"></a>Content</h1><h2 id="rake_command_to_check_routes"><a href="#rake_command_to_check_routes" class="headerlink" title="rake command to check routes"></a>rake command to check routes</h2><p><code>rake routes</code> will show you the list of your routes.</p>
-<h2 id="URL_and_controller_action_mapping"><a href="#URL_and_controller_action_mapping" class="headerlink" title="URL and controller action mapping"></a>URL and controller action mapping</h2><p>when you received request for URL:<br>    GET /patients/17</p>
-<p>it will ask the router to match it to a controller action. If the matching route is:<br>    get ‘/patients/:id’, to: ‘patients#show’</p>
-<p>then the request is dispatched to the patients controller’s <code>show</code> action with { id: ‘17’} in <code>params</code></p>
-<h2 id="Resourceful_28restful_29_routing"><a href="#Resourceful_28restful_29_routing" class="headerlink" title="Resourceful(restful) routing"></a>Resourceful(restful) routing</h2><p>Resource routing is a shortcut to declare all the common routes for a given resourceful controller, including <code>index</code>, <code>show</code>, <code>new</code>, <code>edit</code>, <code>create</code>, <code>update</code> and <code>destroy</code> actions.</p>
-<h3 id="CRUD_and_restful"><a href="#CRUD_and_restful" class="headerlink" title="CRUD and restful"></a>CRUD and restful</h3><p>A single entry in the routes.rb, such as: <code>resources :users</code></p>
-<p>creates seven different routes in your application, all mapping to the Photos controller:</p>
-<table>
-<thead>
-<tr>
-<th>Prefix</th>
-<th>Verb</th>
-<th>URI Pattern</th>
-<th>Controller#Action</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>users</td>
-<td>GET</td>
-<td>/users(.:format)</td>
-<td>users#index</td>
-</tr>
-<tr>
-<td></td>
-<td>POST</td>
-<td>/users(.:format)</td>
-<td>users#create</td>
-</tr>
-<tr>
-<td>new_user</td>
-<td>GET</td>
-<td>/users/new(.:format)</td>
-<td>users#new</td>
-</tr>
-<tr>
-<td>edit_user</td>
-<td>GET</td>
-<td>/users/:id/edit(.:format)</td>
-<td>users#edit</td>
-</tr>
-<tr>
-<td>user</td>
-<td>GET</td>
-<td>/users/:id(.:format)</td>
-<td>users#show</td>
-</tr>
-<tr>
-<td></td>
-<td>PATCH</td>
-<td>/users/:id(.:format)</td>
-<td>users#update</td>
-</tr>
-<tr>
-<td></td>
-<td>PUT</td>
-<td>/users/:id(.:format)</td>
-<td>users#update</td>
-</tr>
-<tr>
-<td></td>
-<td>DELETE</td>
-<td>/users/:id(.:format)</td>
-<td>users#destroy</td>
-</tr>
-</tbody>
-</table>
-<p><em>NOTE</em>: There is a singular resource: <code>resources :user</code> and in this case you refer to only one resource and don’t need to identify different resources of it.</p>
-<h3 id="path_and_URL_helpers"><a href="#path_and_URL_helpers" class="headerlink" title="path and URL helpers"></a>path and URL helpers</h3><p>The resourceful routes also expose a number of helpers to the controllers, in case of <code>resources :users</code>:</p>
-<ul>
-<li><code>users_path</code> returns <code>/users</code></li>
-<li><code>new_user_path</code> returns <code>/users/new</code></li>
-<li><code>edit_user_path(:id)</code> returns <code>/users/:id/edit</code></li>
-<li><code>user_path(:id)</code> returns <code>/users/:id</code></li>
-</ul>
-<p>There are helpers with postfix <code>_url</code> will return the same path prefixed with current host, port and path.</p>
-<h3 id="namespace_and_scope"><a href="#namespace_and_scope" class="headerlink" title="namespace and scope"></a>namespace and scope</h3><h4 id="namespace"><a href="#namespace" class="headerlink" title="namespace"></a>namespace</h4><p>You can use namespace in resources to group a set of controllers under a namespace. Such as:</p>
-<ul>
-<li>Group controllers under an <code>Admin::</code> namespace</li>
-<li>Place controllers under <code>app/controllers/admin</code></li>
-</ul>
-<p>Then you can declare route as:</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">namespace <span class="symbol">:admin</span> <span class="keyword">do</span></span><br><span class="line">	resources <span class="symbol">:articles</span>, <span class="symbol">:comments</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<p>And all the urls of the controllers will be prefixed with <code>/admin</code></p>
-<h4 id="scope"><a href="#scope" class="headerlink" title="scope"></a>scope</h4><p>You can use scope when you want to route <code>/admin/articles</code> to ArticlesController instead of <code>Admin::ArticlesController</code>.</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scope <span class="string">'/admin'</span> <span class="keyword">do</span></span><br><span class="line">  resources <span class="symbol">:articles</span>, <span class="symbol">:comments</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<p>or</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">resources :</span>articles, <span class="string">path:</span> <span class="string">'/admin/articles'</span></span><br></pre></td></tr></table></figure>
-<h3 id="nested_routes"><a href="#nested_routes" class="headerlink" title="nested routes"></a>nested routes</h3><p>Nested routes allow you to represent resources that are logically children of other resources, for models:</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Magazine</span> <span class="inheritance">&lt; <span class="parent">ActiveRecord::Base</span></span></span></span><br><span class="line">  has_many <span class="symbol">:ads</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Ad</span> <span class="inheritance">&lt; <span class="parent">ActiveRecord::Base</span></span></span></span><br><span class="line">  belongs_to <span class="symbol">:magazine</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<p>you can declare the routes:</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">resources <span class="symbol">:magazines</span> <span class="keyword">do</span></span><br><span class="line">  resources <span class="symbol">:ads</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<p><em>NOTE</em>: Resources should never be nested more than 1 level deep.</p>
-<h4 id="Shallow_nesting"><a href="#Shallow_nesting" class="headerlink" title="Shallow nesting"></a>Shallow nesting</h4><p>Shallow nesting will help you to generate collection actions scoped under the parent, but leave the member actions as they were. You can avoid deep nesting using this technique.</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">resources <span class="symbol">:articles</span> <span class="keyword">do</span></span><br><span class="line">  resources <span class="symbol">:comments</span>, <span class="symbol">only:</span> [<span class="symbol">:index</span>, <span class="symbol">:new</span>, <span class="symbol">:create</span>]</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">resources <span class="symbol">:comments</span>, <span class="symbol">only:</span> [<span class="symbol">:show</span>, <span class="symbol">:edit</span>, <span class="symbol">:update</span>, <span class="symbol">:destroy</span>]</span><br></pre></td></tr></table></figure>
-<p>and shorthand for the above:</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">resources <span class="symbol">:articles</span> <span class="keyword">do</span></span><br><span class="line">  resources <span class="symbol">:comments</span>, <span class="symbol">shallow:</span> <span class="keyword">true</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><ul>
-<li>Rails router can help you connect URLs to controller actions</li>
-<li>Resource routing can help you describe restful controllers</li>
-<li>Rails router will generate helper functions to help you deal with urls and paths.</li>
-</ul>
-<h1 id="Referrences"><a href="#Referrences" class="headerlink" title="Referrences"></a>Referrences</h1><ul>
-<li><a href="http://guides.rubyonrails.org/routing.html" target="_blank" rel="external">rails routes</a></li>
-<li><a href="https://en.wikibooks.org/wiki/Ruby_on_Rails/Routing" target="_blank" rel="external">rails routes wiki books</a></li>
-<li><a href="http://railscasts.com/episodes/231-routing-walkthrough" target="_blank" rel="external">rails routes walk through</a></li>
-<li><a href="http://www.theodinproject.com/ruby-on-rails/routing" target="_blank" rel="external">rails routing</a></li>
-<li><a href="http://ricostacruz.com/cheatsheets/rails-routes.html" target="_blank" rel="external">rails routes cheat sheet</a></li>
-</ul>
-]]></content>
+    <updated>2016-02-22T19:47:24.430Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;Introduction&quot;&gt;&lt;a href=&quot;#Introduction&quot; class=&quot;headerlink&quot; title=&quot;Introduction&quot;&gt;&lt;/a&gt;Introduction&lt;/h1&gt;&lt;p&gt;The purposes of rails router are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;recognize the URLs&lt;/li&gt;
+&lt;li&gt;dispatch URLs to the controller actions&lt;/li&gt;
+&lt;li&gt;generate helper functions to avoid hard coding URLs in the view&lt;/li&gt;
+&lt;li&gt;helpers to generate restful routes&lt;/li&gt;
+&lt;li&gt;many other useful functions to help you dealing with routing&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In this article, I’m going to take you a tour around the first part of the rails 4 router.&lt;/p&gt;
+&lt;h1 id=&quot;Content&quot;&gt;&lt;a href=&quot;#Content&quot; class=&quot;headerlink&quot; title=&quot;Content&quot;&gt;&lt;/a&gt;Content&lt;/h1&gt;&lt;h2 id=&quot;rake-command-to-check-routes&quot;&gt;&lt;a href=&quot;#rake-command-to-check-routes&quot; class=&quot;headerlink&quot; title=&quot;rake command to check routes&quot;&gt;&lt;/a&gt;rake command to check routes&lt;/h2&gt;&lt;p&gt;&lt;code&gt;rake routes&lt;/code&gt; will show you the list of your routes.&lt;/p&gt;
+&lt;h2 id=&quot;URL-and-controller-action-mapping&quot;&gt;&lt;a href=&quot;#URL-and-controller-action-mapping&quot; class=&quot;headerlink&quot; title=&quot;URL and controller action mapping&quot;&gt;&lt;/a&gt;URL and controller action mapping&lt;/h2&gt;&lt;p&gt;when you received request for URL:&lt;br&gt;    GET /patients/17&lt;/p&gt;
+&lt;p&gt;it will ask the router to match it to a controller action. If the matching route is:&lt;br&gt;    get ‘/patients/:id’, to: ‘patients#show’&lt;/p&gt;
+&lt;p&gt;then the request is dispatched to the patients controller’s &lt;code&gt;show&lt;/code&gt; action with { id: ‘17’} in &lt;code&gt;params&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Resourceful-restful-routing&quot;&gt;&lt;a href=&quot;#Resourceful-restful-routing&quot; class=&quot;headerlink&quot; title=&quot;Resourceful(restful) routing&quot;&gt;&lt;/a&gt;Resourceful(restful) routing&lt;/h2&gt;&lt;p&gt;Resource routing is a shortcut to declare all the common routes for a given resourceful controller, including &lt;code&gt;index&lt;/code&gt;, &lt;code&gt;show&lt;/code&gt;, &lt;code&gt;new&lt;/code&gt;, &lt;code&gt;edit&lt;/code&gt;, &lt;code&gt;create&lt;/code&gt;, &lt;code&gt;update&lt;/code&gt; and &lt;code&gt;destroy&lt;/code&gt; actions.&lt;/p&gt;
+&lt;h3 id=&quot;CRUD-and-restful&quot;&gt;&lt;a href=&quot;#CRUD-and-restful&quot; class=&quot;headerlink&quot; title=&quot;CRUD and restful&quot;&gt;&lt;/a&gt;CRUD and restful&lt;/h3&gt;&lt;p&gt;A single entry in the routes.rb, such as: &lt;code&gt;resources :users&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;creates seven different routes in your application, all mapping to the Photos controller:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Prefix&lt;/th&gt;
+&lt;th&gt;Verb&lt;/th&gt;
+&lt;th&gt;URI Pattern&lt;/th&gt;
+&lt;th&gt;Controller#Action&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;users&lt;/td&gt;
+&lt;td&gt;GET&lt;/td&gt;
+&lt;td&gt;/users(.:format)&lt;/td&gt;
+&lt;td&gt;users#index&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;POST&lt;/td&gt;
+&lt;td&gt;/users(.:format)&lt;/td&gt;
+&lt;td&gt;users#create&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;new_user&lt;/td&gt;
+&lt;td&gt;GET&lt;/td&gt;
+&lt;td&gt;/users/new(.:format)&lt;/td&gt;
+&lt;td&gt;users#new&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;edit_user&lt;/td&gt;
+&lt;td&gt;GET&lt;/td&gt;
+&lt;td&gt;/users/:id/edit(.:format)&lt;/td&gt;
+&lt;td&gt;users#edit&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;user&lt;/td&gt;
+&lt;td&gt;GET&lt;/td&gt;
+&lt;td&gt;/users/:id(.:format)&lt;/td&gt;
+&lt;td&gt;users#show&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;PATCH&lt;/td&gt;
+&lt;td&gt;/users/:id(.:format)&lt;/td&gt;
+&lt;td&gt;users#update&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;PUT&lt;/td&gt;
+&lt;td&gt;/users/:id(.:format)&lt;/td&gt;
+&lt;td&gt;users#update&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;DELETE&lt;/td&gt;
+&lt;td&gt;/users/:id(.:format)&lt;/td&gt;
+&lt;td&gt;users#destroy&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;em&gt;NOTE&lt;/em&gt;: There is a singular resource: &lt;code&gt;resources :user&lt;/code&gt; and in this case you refer to only one resource and don’t need to identify different resources of it.&lt;/p&gt;
+&lt;h3 id=&quot;path-and-URL-helpers&quot;&gt;&lt;a href=&quot;#path-and-URL-helpers&quot; class=&quot;headerlink&quot; title=&quot;path and URL helpers&quot;&gt;&lt;/a&gt;path and URL helpers&lt;/h3&gt;&lt;p&gt;The resourceful routes also expose a number of helpers to the controllers, in case of &lt;code&gt;resources :users&lt;/code&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;users_path&lt;/code&gt; returns &lt;code&gt;/users&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;new_user_path&lt;/code&gt; returns &lt;code&gt;/users/new&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;edit_user_path(:id)&lt;/code&gt; returns &lt;code&gt;/users/:id/edit&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;user_path(:id)&lt;/code&gt; returns &lt;code&gt;/users/:id&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There are helpers with postfix &lt;code&gt;_url&lt;/code&gt; will return the same path prefixed with current host, port and path.&lt;/p&gt;
+&lt;h3 id=&quot;namespace-and-scope&quot;&gt;&lt;a href=&quot;#namespace-and-scope&quot; class=&quot;headerlink&quot; title=&quot;namespace and scope&quot;&gt;&lt;/a&gt;namespace and scope&lt;/h3&gt;&lt;h4 id=&quot;namespace&quot;&gt;&lt;a href=&quot;#namespace&quot; class=&quot;headerlink&quot; title=&quot;namespace&quot;&gt;&lt;/a&gt;namespace&lt;/h4&gt;&lt;p&gt;You can use namespace in resources to group a set of controllers under a namespace. Such as:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Group controllers under an &lt;code&gt;Admin::&lt;/code&gt; namespace&lt;/li&gt;
+&lt;li&gt;Place controllers under &lt;code&gt;app/controllers/admin&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Then you can declare route as:&lt;/p&gt;
+&lt;figure class=&quot;highlight elixir&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;namespace &lt;span class=&quot;symbol&quot;&gt;:admin&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;do&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	resources &lt;span class=&quot;symbol&quot;&gt;:articles&lt;/span&gt;, &lt;span class=&quot;symbol&quot;&gt;:comments&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;end&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;And all the urls of the controllers will be prefixed with &lt;code&gt;/admin&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&quot;scope&quot;&gt;&lt;a href=&quot;#scope&quot; class=&quot;headerlink&quot; title=&quot;scope&quot;&gt;&lt;/a&gt;scope&lt;/h4&gt;&lt;p&gt;You can use scope when you want to route &lt;code&gt;/admin/articles&lt;/code&gt; to ArticlesController instead of &lt;code&gt;Admin::ArticlesController&lt;/code&gt;.&lt;/p&gt;
+&lt;figure class=&quot;highlight elixir&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;scope &lt;span class=&quot;string&quot;&gt;&#39;/admin&#39;&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;do&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  resources &lt;span class=&quot;symbol&quot;&gt;:articles&lt;/span&gt;, &lt;span class=&quot;symbol&quot;&gt;:comments&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;end&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;or&lt;/p&gt;
+&lt;figure class=&quot;highlight groovy&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;resources :&lt;/span&gt;articles, &lt;span class=&quot;string&quot;&gt;path:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;/admin/articles&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;nested-routes&quot;&gt;&lt;a href=&quot;#nested-routes&quot; class=&quot;headerlink&quot; title=&quot;nested routes&quot;&gt;&lt;/a&gt;nested routes&lt;/h3&gt;&lt;p&gt;Nested routes allow you to represent resources that are logically children of other resources, for models:&lt;/p&gt;
+&lt;figure class=&quot;highlight ruby&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Magazine&lt;/span&gt; &lt;span class=&quot;inheritance&quot;&gt;&amp;lt; &lt;span class=&quot;parent&quot;&gt;ActiveRecord::Base&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  has_many &lt;span class=&quot;symbol&quot;&gt;:ads&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;end&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Ad&lt;/span&gt; &lt;span class=&quot;inheritance&quot;&gt;&amp;lt; &lt;span class=&quot;parent&quot;&gt;ActiveRecord::Base&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  belongs_to &lt;span class=&quot;symbol&quot;&gt;:magazine&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;end&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;you can declare the routes:&lt;/p&gt;
+&lt;figure class=&quot;highlight elixir&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;resources &lt;span class=&quot;symbol&quot;&gt;:magazines&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;do&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  resources &lt;span class=&quot;symbol&quot;&gt;:ads&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;end&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;em&gt;NOTE&lt;/em&gt;: Resources should never be nested more than 1 level deep.&lt;/p&gt;
+&lt;h4 id=&quot;Shallow-nesting&quot;&gt;&lt;a href=&quot;#Shallow-nesting&quot; class=&quot;headerlink&quot; title=&quot;Shallow nesting&quot;&gt;&lt;/a&gt;Shallow nesting&lt;/h4&gt;&lt;p&gt;Shallow nesting will help you to generate collection actions scoped under the parent, but leave the member actions as they were. You can avoid deep nesting using this technique.&lt;/p&gt;
+&lt;figure class=&quot;highlight elixir&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;resources &lt;span class=&quot;symbol&quot;&gt;:articles&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;do&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  resources &lt;span class=&quot;symbol&quot;&gt;:comments&lt;/span&gt;, &lt;span class=&quot;symbol&quot;&gt;only:&lt;/span&gt; [&lt;span class=&quot;symbol&quot;&gt;:index&lt;/span&gt;, &lt;span class=&quot;symbol&quot;&gt;:new&lt;/span&gt;, &lt;span class=&quot;symbol&quot;&gt;:create&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;end&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;resources &lt;span class=&quot;symbol&quot;&gt;:comments&lt;/span&gt;, &lt;span class=&quot;symbol&quot;&gt;only:&lt;/span&gt; [&lt;span class=&quot;symbol&quot;&gt;:show&lt;/span&gt;, &lt;span class=&quot;symbol&quot;&gt;:edit&lt;/span&gt;, &lt;span class=&quot;symbol&quot;&gt;:update&lt;/span&gt;, &lt;span class=&quot;symbol&quot;&gt;:destroy&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;and shorthand for the above:&lt;/p&gt;
+&lt;figure class=&quot;highlight elixir&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;resources &lt;span class=&quot;symbol&quot;&gt;:articles&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;do&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  resources &lt;span class=&quot;symbol&quot;&gt;:comments&lt;/span&gt;, &lt;span class=&quot;symbol&quot;&gt;shallow:&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;end&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h1 id=&quot;Conclusion&quot;&gt;&lt;a href=&quot;#Conclusion&quot; class=&quot;headerlink&quot; title=&quot;Conclusion&quot;&gt;&lt;/a&gt;Conclusion&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;Rails router can help you connect URLs to controller actions&lt;/li&gt;
+&lt;li&gt;Resource routing can help you describe restful controllers&lt;/li&gt;
+&lt;li&gt;Rails router will generate helper functions to help you deal with urls and paths.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;Referrences&quot;&gt;&lt;a href=&quot;#Referrences&quot; class=&quot;headerlink&quot; title=&quot;Referrences&quot;&gt;&lt;/a&gt;Referrences&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://guides.rubyonrails.org/routing.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;rails routes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://en.wikibooks.org/wiki/Ruby_on_Rails/Routing&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;rails routes wiki books&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://railscasts.com/episodes/231-routing-walkthrough&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;rails routes walk through&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.theodinproject.com/ruby-on-rails/routing&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;rails routing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://ricostacruz.com/cheatsheets/rails-routes.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;rails routes cheat sheet&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
     <summary type="html">
-    <![CDATA[<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>The purposes of rails router a]]>
+    
+      &lt;h1 id=&quot;Introduction&quot;&gt;&lt;a href=&quot;#Introduction&quot; class=&quot;headerlink&quot; title=&quot;Introduction&quot;&gt;&lt;/a&gt;Introduction&lt;/h1&gt;&lt;p&gt;The purposes of rails router a
+    
     </summary>
+    
     
       <category term="rails" scheme="http://yoursite.com/tags/rails/"/>
     
@@ -152,82 +158,86 @@
   </entry>
   
   <entry>
-    <title><![CDATA[Hexo blog with custom domain and cloudflare]]></title>
+    <title>Hexo blog with custom domain and cloudflare</title>
     <link href="http://yoursite.com/2016/01/02/hexo-blog-with-custom-domain-and-cloudflare/"/>
     <id>http://yoursite.com/2016/01/02/hexo-blog-with-custom-domain-and-cloudflare/</id>
     <published>2016-01-02T21:25:39.000Z</published>
-    <updated>2016-01-08T16:17:34.925Z</updated>
-    <content type="html"><![CDATA[<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>The <a href="https://zaicheng.me/2015/12/31/setup-a-blog-with-hexojs-and-travis/" target="_blank" rel="external">previous blog</a> shows you how to setup a blog with hexo and github pages. Here we are going to make it further.</p>
-<ul>
-<li>Setup custom domain name for your blog</li>
-<li>Setup cloudflare for content caching and https support</li>
-<li>Setup apex domain name and a <code>www</code> sub domain</li>
-<li>Setup cloudflare dns records with flattening CNAME record</li>
-<li>Configure cloudflare<ul>
-<li>ipv6</li>
-<li>hsts</li>
-<li>flexible/full ssl</li>
-</ul>
-</li>
-</ul>
-<a id="more"></a>
-<h1 id="Contents"><a href="#Contents" class="headerlink" title="Contents"></a>Contents</h1><h2 id="Requirements"><a href="#Requirements" class="headerlink" title="Requirements"></a>Requirements</h2><ul>
-<li>Your deployed github pages. I setup my page at <em>vmlinz.github.io</em> with instructions from my previous blog post.</li>
-<li>Your custom domain name from a domain name vendor. I bought a domain name from name.com: <em>zaicheng.me</em>.</li>
-<li>A cloudflare account, free or paid. I created an account for cloudflare.</li>
-</ul>
-<h2 id="Target"><a href="#Target" class="headerlink" title="Target"></a>Target</h2><ul>
-<li>Use my custom apex domain name <em>zaicheng.me</em> to point to my github blog.</li>
-<li>Redirect <em>www.zaicheng.me</em> to <em>zaicheng.me</em></li>
-<li>Redirect <em>vmlinz.github.io</em> to <em>zaicheng.me</em></li>
-<li>Use cloudflare to cache contents from <em>zaicheng.me</em> using the tricks of cloudflare</li>
-<li>Turn on hsts to make sure any insecure link will be redirected to the ssl secured one</li>
-</ul>
-<h2 id="Instructions"><a href="#Instructions" class="headerlink" title="Instructions"></a>Instructions</h2><h3 id="Setup_github_pages_CNAME_record"><a href="#Setup_github_pages_CNAME_record" class="headerlink" title="Setup github pages CNAME record"></a>Setup github pages CNAME record</h3><ul>
-<li>new a file named CNAME under hexo source dir, and put <em>zaicheng.me</em> into it. Then if you have both dns record of <em>zaicheng.me</em> and <em>www.zaicheng.me</em>, github will redirect <em>www.zaicheng.me</em> to <em>zaicheng.me</em></li>
-</ul>
-<h3 id="Add_dns_records_to_the_name-com_dns_records"><a href="#Add_dns_records_to_the_name-com_dns_records" class="headerlink" title="Add dns records to the name.com dns records"></a>Add dns records to the name.com dns records</h3><ul>
-<li>add a CNAME record of <code>zaicheng.me, vmlinz.github.io</code>, NOTE: this is not an effective CNAME record by the dns spec, but cloudflare recognize it.</li>
-</ul>
-<h3 id="Set_up_cloudflare"><a href="#Set_up_cloudflare" class="headerlink" title="Set up cloudflare"></a>Set up cloudflare</h3><p>Let’s set up cloudflare to cache the content and turn on hsts for the site.</p>
-<ul>
-<li>Follow the guide to scan the original dns records.</li>
-<li>Migrate the dns servers from the domain name register panel to the cloudflare ones to get it work.</li>
-<li>Set up dns to add a record of flattening CNAME, which means to point <em>zaicheng.me</em> to <em>vmlinz.github.io</em>. NOTE: this is a cloudflare specific dns function which breaks the limits of dns spec.</li>
-<li>Setup the crypto to turn on full ssl</li>
-<li>Turn on HSTS under crypto, turn on <code>include subdomains</code> and <code>No-sniff</code></li>
-<li>Turn on ipv6 compatibility</li>
-</ul>
-<h3 id="NOTE"><a href="#NOTE" class="headerlink" title="NOTE"></a>NOTE</h3><ul>
-<li>cloudflare will provision your ssl cert after about 24 hours</li>
-<li>flattening CNAME for apex domain is not supported by all the dns servers</li>
-<li>full ssl will only work when I use flattening CNAME, if I add a dns A record of <code>zaicheng.me</code> pointing to the github ips(192.30.252.153,192.30.252.154), then I cannot use full ssl.</li>
-</ul>
-<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
-<li><a href="https://help.github.com/articles/tips-for-configuring-a-cname-record-with-your-dns-provider/" target="_blank" rel="external">configure a cname record with your dns provider</a></li>
-<li><a href="https://www.benburwell.com/posts/configuring-cloudflare-universal-ssl/" target="_blank" rel="external">configuring cloudflare universal ssl</a></li>
-<li><a href="https://help.github.com/articles/about-custom-domains-for-github-pages-sites/" target="_blank" rel="external">custom domains for github pages</a></li>
-<li><a href="https://stirling.co/blog/github-pages-jekyll-cloudflare/" target="_blank" rel="external">github pages jekyll cloudflare</a></li>
-<li><a href="http://blog.differential.com/free-ssl-hosting" target="_blank" rel="external">free ssl hosting</a></li>
-<li><a href="https://devcenter.heroku.com/articles/apex-domains" target="_blank" rel="external">apex domains</a></li>
-</ul>
-]]></content>
+    <updated>2016-02-22T19:47:24.430Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;Introduction&quot;&gt;&lt;a href=&quot;#Introduction&quot; class=&quot;headerlink&quot; title=&quot;Introduction&quot;&gt;&lt;/a&gt;Introduction&lt;/h1&gt;&lt;p&gt;The &lt;a href=&quot;https://zaicheng.me/2015/12/31/setup-a-blog-with-hexojs-and-travis/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;previous blog&lt;/a&gt; shows you how to setup a blog with hexo and github pages. Here we are going to make it further.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Setup custom domain name for your blog&lt;/li&gt;
+&lt;li&gt;Setup cloudflare for content caching and https support&lt;/li&gt;
+&lt;li&gt;Setup apex domain name and a &lt;code&gt;www&lt;/code&gt; sub domain&lt;/li&gt;
+&lt;li&gt;Setup cloudflare dns records with flattening CNAME record&lt;/li&gt;
+&lt;li&gt;Configure cloudflare&lt;ul&gt;
+&lt;li&gt;ipv6&lt;/li&gt;
+&lt;li&gt;hsts&lt;/li&gt;
+&lt;li&gt;flexible/full ssl&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h1 id=&quot;Contents&quot;&gt;&lt;a href=&quot;#Contents&quot; class=&quot;headerlink&quot; title=&quot;Contents&quot;&gt;&lt;/a&gt;Contents&lt;/h1&gt;&lt;h2 id=&quot;Requirements&quot;&gt;&lt;a href=&quot;#Requirements&quot; class=&quot;headerlink&quot; title=&quot;Requirements&quot;&gt;&lt;/a&gt;Requirements&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Your deployed github pages. I setup my page at &lt;em&gt;vmlinz.github.io&lt;/em&gt; with instructions from my previous blog post.&lt;/li&gt;
+&lt;li&gt;Your custom domain name from a domain name vendor. I bought a domain name from name.com: &lt;em&gt;zaicheng.me&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;A cloudflare account, free or paid. I created an account for cloudflare.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;Target&quot;&gt;&lt;a href=&quot;#Target&quot; class=&quot;headerlink&quot; title=&quot;Target&quot;&gt;&lt;/a&gt;Target&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Use my custom apex domain name &lt;em&gt;zaicheng.me&lt;/em&gt; to point to my github blog.&lt;/li&gt;
+&lt;li&gt;Redirect &lt;em&gt;www.zaicheng.me&lt;/em&gt; to &lt;em&gt;zaicheng.me&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Redirect &lt;em&gt;vmlinz.github.io&lt;/em&gt; to &lt;em&gt;zaicheng.me&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Use cloudflare to cache contents from &lt;em&gt;zaicheng.me&lt;/em&gt; using the tricks of cloudflare&lt;/li&gt;
+&lt;li&gt;Turn on hsts to make sure any insecure link will be redirected to the ssl secured one&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;Instructions&quot;&gt;&lt;a href=&quot;#Instructions&quot; class=&quot;headerlink&quot; title=&quot;Instructions&quot;&gt;&lt;/a&gt;Instructions&lt;/h2&gt;&lt;h3 id=&quot;Setup-github-pages-CNAME-record&quot;&gt;&lt;a href=&quot;#Setup-github-pages-CNAME-record&quot; class=&quot;headerlink&quot; title=&quot;Setup github pages CNAME record&quot;&gt;&lt;/a&gt;Setup github pages CNAME record&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;new a file named CNAME under hexo source dir, and put &lt;em&gt;zaicheng.me&lt;/em&gt; into it. Then if you have both dns record of &lt;em&gt;zaicheng.me&lt;/em&gt; and &lt;em&gt;www.zaicheng.me&lt;/em&gt;, github will redirect &lt;em&gt;www.zaicheng.me&lt;/em&gt; to &lt;em&gt;zaicheng.me&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;Add-dns-records-to-the-name-com-dns-records&quot;&gt;&lt;a href=&quot;#Add-dns-records-to-the-name-com-dns-records&quot; class=&quot;headerlink&quot; title=&quot;Add dns records to the name.com dns records&quot;&gt;&lt;/a&gt;Add dns records to the name.com dns records&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;add a CNAME record of &lt;code&gt;zaicheng.me, vmlinz.github.io&lt;/code&gt;, NOTE: this is not an effective CNAME record by the dns spec, but cloudflare recognize it.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;Set-up-cloudflare&quot;&gt;&lt;a href=&quot;#Set-up-cloudflare&quot; class=&quot;headerlink&quot; title=&quot;Set up cloudflare&quot;&gt;&lt;/a&gt;Set up cloudflare&lt;/h3&gt;&lt;p&gt;Let’s set up cloudflare to cache the content and turn on hsts for the site.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Follow the guide to scan the original dns records.&lt;/li&gt;
+&lt;li&gt;Migrate the dns servers from the domain name register panel to the cloudflare ones to get it work.&lt;/li&gt;
+&lt;li&gt;Set up dns to add a record of flattening CNAME, which means to point &lt;em&gt;zaicheng.me&lt;/em&gt; to &lt;em&gt;vmlinz.github.io&lt;/em&gt;. NOTE: this is a cloudflare specific dns function which breaks the limits of dns spec.&lt;/li&gt;
+&lt;li&gt;Setup the crypto to turn on full ssl&lt;/li&gt;
+&lt;li&gt;Turn on HSTS under crypto, turn on &lt;code&gt;include subdomains&lt;/code&gt; and &lt;code&gt;No-sniff&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Turn on ipv6 compatibility&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;NOTE&quot;&gt;&lt;a href=&quot;#NOTE&quot; class=&quot;headerlink&quot; title=&quot;NOTE&quot;&gt;&lt;/a&gt;NOTE&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;cloudflare will provision your ssl cert after about 24 hours&lt;/li&gt;
+&lt;li&gt;flattening CNAME for apex domain is not supported by all the dns servers&lt;/li&gt;
+&lt;li&gt;full ssl will only work when I use flattening CNAME, if I add a dns A record of &lt;code&gt;zaicheng.me&lt;/code&gt; pointing to the github ips(192.30.252.153,192.30.252.154), then I cannot use full ssl.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;References&quot;&gt;&lt;a href=&quot;#References&quot; class=&quot;headerlink&quot; title=&quot;References&quot;&gt;&lt;/a&gt;References&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://help.github.com/articles/tips-for-configuring-a-cname-record-with-your-dns-provider/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;configure a cname record with your dns provider&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.benburwell.com/posts/configuring-cloudflare-universal-ssl/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;configuring cloudflare universal ssl&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://help.github.com/articles/about-custom-domains-for-github-pages-sites/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;custom domains for github pages&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://stirling.co/blog/github-pages-jekyll-cloudflare/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github pages jekyll cloudflare&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.differential.com/free-ssl-hosting&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;free ssl hosting&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://devcenter.heroku.com/articles/apex-domains&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;apex domains&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
     <summary type="html">
-    <![CDATA[<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>The <a href="https://zaicheng.me/2015/12/31/setup-a-blog-with-hexojs-and-travis/">previous blog</a> shows you how to setup a blog with hexo and github pages. Here we are going to make it further.</p>
-<ul>
-<li>Setup custom domain name for your blog</li>
-<li>Setup cloudflare for content caching and https support</li>
-<li>Setup apex domain name and a <code>www</code> sub domain</li>
-<li>Setup cloudflare dns records with flattening CNAME record</li>
-<li>Configure cloudflare<ul>
-<li>ipv6</li>
-<li>hsts</li>
-<li>flexible/full ssl</li>
-</ul>
-</li>
-</ul>]]>
+    
+      &lt;h1 id=&quot;Introduction&quot;&gt;&lt;a href=&quot;#Introduction&quot; class=&quot;headerlink&quot; title=&quot;Introduction&quot;&gt;&lt;/a&gt;Introduction&lt;/h1&gt;&lt;p&gt;The &lt;a href=&quot;https://zaicheng.me/2015/12/31/setup-a-blog-with-hexojs-and-travis/&quot;&gt;previous blog&lt;/a&gt; shows you how to setup a blog with hexo and github pages. Here we are going to make it further.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Setup custom domain name for your blog&lt;/li&gt;
+&lt;li&gt;Setup cloudflare for content caching and https support&lt;/li&gt;
+&lt;li&gt;Setup apex domain name and a &lt;code&gt;www&lt;/code&gt; sub domain&lt;/li&gt;
+&lt;li&gt;Setup cloudflare dns records with flattening CNAME record&lt;/li&gt;
+&lt;li&gt;Configure cloudflare&lt;ul&gt;
+&lt;li&gt;ipv6&lt;/li&gt;
+&lt;li&gt;hsts&lt;/li&gt;
+&lt;li&gt;flexible/full ssl&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
+    
     
       <category term="cloudflare" scheme="http://yoursite.com/tags/cloudflare/"/>
     
@@ -238,65 +248,69 @@
   </entry>
   
   <entry>
-    <title><![CDATA[Setup a blog with hexojs and travis]]></title>
+    <title>Setup a blog with hexojs and travis</title>
     <link href="http://yoursite.com/2015/12/31/setup-a-blog-with-hexojs-and-travis/"/>
     <id>http://yoursite.com/2015/12/31/setup-a-blog-with-hexojs-and-travis/</id>
     <published>2015-12-31T23:46:12.000Z</published>
-    <updated>2016-01-08T16:17:34.925Z</updated>
-    <content type="html"><![CDATA[<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><ul>
-<li>Hexo is a fast and powerful site generator designed specifically for personal blogging. There is a lot of plugins to make it even powerful.</li>
-<li>With the power of travis, you can automate the site generating progress and separate the process of editing from publishing.</li>
-<li>You can deploy your generated site to github pages, a free and easy-to-use page hosting service.</li>
-</ul>
-<p>This article is going to instruct you to setup a blog with these handy tools.</p>
-<a id="more"></a>
-<h1 id="Contents"><a href="#Contents" class="headerlink" title="Contents"></a>Contents</h1><h2 id="Install_hexojs"><a href="#Install_hexojs" class="headerlink" title="Install hexojs"></a>Install hexojs</h2><h3 id="Requirements"><a href="#Requirements" class="headerlink" title="Requirements"></a>Requirements</h3><ul>
-<li><a href="https://git-scm.com/downloads" target="_blank" rel="external">git</a></li>
-<li><a href="https://nodejs.org/en/download/package-manager" target="_blank" rel="external">nodejs</a></li>
-</ul>
-<h3 id="Install_from_npm"><a href="#Install_from_npm" class="headerlink" title="Install from npm"></a>Install from npm</h3><p>  npm install -g hexo-cli</p>
-<h3 id="Basic_setup"><a href="#Basic_setup" class="headerlink" title="Basic setup"></a>Basic setup</h3><p>Once you have hexo installed, you can use following commands to initialize the target folder</p>
-<p>  hexo init BLOG_DIR<br>  cd BLOG_DIR<br>  npm install</p>
-<h3 id="Customization"><a href="#Customization" class="headerlink" title="Customization"></a>Customization</h3><ul>
-<li><a href="https://hexo.io/docs/configuration.html" target="_blank" rel="external">configuration</a></li>
-<li><a href="https://hexo.io/docs/writing.html#Scaffolds" target="_blank" rel="external">scaffolds</a></li>
-<li><a href="https://hexo.io/docs/themes.html" target="_blank" rel="external">themes</a><ul>
-<li><a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank" rel="external">appolo</a></li>
-<li><a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="external">next</a></li>
-</ul>
-</li>
-</ul>
-<h3 id="Writing"><a href="#Writing" class="headerlink" title="Writing"></a>Writing</h3><ul>
-<li>new post, hexo new [layout] TITLE</li>
-<li>publish a draft, hexo publish [layout] TITLE</li>
-</ul>
-<h2 id="Deploy_hexojs_to_github_and_gitcafe"><a href="#Deploy_hexojs_to_github_and_gitcafe" class="headerlink" title="Deploy hexojs to github and gitcafe"></a>Deploy hexojs to github and gitcafe</h2><h3 id="Document"><a href="#Document" class="headerlink" title="Document"></a>Document</h3><p><a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">deployment</a></p>
-<p>with these commands, you can deploy the web site to the server configured.</p>
-<p>  hexo deploy</p>
-<h3 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h3><ul>
-<li><a href="https://github.com/hexojs/hexo-deployer-git" target="_blank" rel="external">hexo-deployer-git</a></li>
-<li><a href="https://github.com/hexojs/hexo-deployer-heroku" target="_blank" rel="external">hexo-deployer-heroku</a></li>
-<li><a href="https://github.com/hexojs/hexo-deployer-rsync" target="_blank" rel="external">hexo-deployer-rsync</a></li>
-<li>others</li>
-</ul>
-<h2 id="Deploy_hexojs_auto_builder_with_travis_ci"><a href="#Deploy_hexojs_auto_builder_with_travis_ci" class="headerlink" title="Deploy hexojs auto builder with travis ci"></a>Deploy hexojs auto builder with travis ci</h2><ul>
-<li><a href="https://github.com/hexojs/site" target="_blank" rel="external">https://github.com/hexojs/site</a></li>
-<li><a href="https://xuanwo.org/2015/02/07/Travis-CI-Hexo-Autodeploy/" target="_blank" rel="external">https://xuanwo.org/2015/02/07/Travis-CI-Hexo-Autodeploy/</a></li>
-</ul>
-<h2 id="Configure_github_pages_with_custom_domain_name"><a href="#Configure_github_pages_with_custom_domain_name" class="headerlink" title="Configure github pages with custom domain name"></a>Configure github pages with custom domain name</h2><p><a href="https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/" target="_blank" rel="external">https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/</a></p>
-<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
-<li><a href="https://hexo.io/docs/" target="_blank" rel="external">official documentation</a></li>
-</ul>
-]]></content>
+    <updated>2016-02-22T19:47:24.430Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;Introduction&quot;&gt;&lt;a href=&quot;#Introduction&quot; class=&quot;headerlink&quot; title=&quot;Introduction&quot;&gt;&lt;/a&gt;Introduction&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;Hexo is a fast and powerful site generator designed specifically for personal blogging. There is a lot of plugins to make it even powerful.&lt;/li&gt;
+&lt;li&gt;With the power of travis, you can automate the site generating progress and separate the process of editing from publishing.&lt;/li&gt;
+&lt;li&gt;You can deploy your generated site to github pages, a free and easy-to-use page hosting service.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This article is going to instruct you to setup a blog with these handy tools.&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h1 id=&quot;Contents&quot;&gt;&lt;a href=&quot;#Contents&quot; class=&quot;headerlink&quot; title=&quot;Contents&quot;&gt;&lt;/a&gt;Contents&lt;/h1&gt;&lt;h2 id=&quot;Install-hexojs&quot;&gt;&lt;a href=&quot;#Install-hexojs&quot; class=&quot;headerlink&quot; title=&quot;Install hexojs&quot;&gt;&lt;/a&gt;Install hexojs&lt;/h2&gt;&lt;h3 id=&quot;Requirements&quot;&gt;&lt;a href=&quot;#Requirements&quot; class=&quot;headerlink&quot; title=&quot;Requirements&quot;&gt;&lt;/a&gt;Requirements&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://git-scm.com/downloads&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;git&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://nodejs.org/en/download/package-manager&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;nodejs&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;Install-from-npm&quot;&gt;&lt;a href=&quot;#Install-from-npm&quot; class=&quot;headerlink&quot; title=&quot;Install from npm&quot;&gt;&lt;/a&gt;Install from npm&lt;/h3&gt;&lt;p&gt;  npm install -g hexo-cli&lt;/p&gt;
+&lt;h3 id=&quot;Basic-setup&quot;&gt;&lt;a href=&quot;#Basic-setup&quot; class=&quot;headerlink&quot; title=&quot;Basic setup&quot;&gt;&lt;/a&gt;Basic setup&lt;/h3&gt;&lt;p&gt;Once you have hexo installed, you can use following commands to initialize the target folder&lt;/p&gt;
+&lt;p&gt;  hexo init BLOG_DIR&lt;br&gt;  cd BLOG_DIR&lt;br&gt;  npm install&lt;/p&gt;
+&lt;h3 id=&quot;Customization&quot;&gt;&lt;a href=&quot;#Customization&quot; class=&quot;headerlink&quot; title=&quot;Customization&quot;&gt;&lt;/a&gt;Customization&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://hexo.io/docs/configuration.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;configuration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://hexo.io/docs/writing.html#Scaffolds&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;scaffolds&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://hexo.io/docs/themes.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;themes&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/pinggod/hexo-theme-apollo&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;appolo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/iissnan/hexo-theme-next&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;next&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;Writing&quot;&gt;&lt;a href=&quot;#Writing&quot; class=&quot;headerlink&quot; title=&quot;Writing&quot;&gt;&lt;/a&gt;Writing&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;new post, hexo new [layout] TITLE&lt;/li&gt;
+&lt;li&gt;publish a draft, hexo publish [layout] TITLE&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;Deploy-hexojs-to-github-and-gitcafe&quot;&gt;&lt;a href=&quot;#Deploy-hexojs-to-github-and-gitcafe&quot; class=&quot;headerlink&quot; title=&quot;Deploy hexojs to github and gitcafe&quot;&gt;&lt;/a&gt;Deploy hexojs to github and gitcafe&lt;/h2&gt;&lt;h3 id=&quot;Document&quot;&gt;&lt;a href=&quot;#Document&quot; class=&quot;headerlink&quot; title=&quot;Document&quot;&gt;&lt;/a&gt;Document&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://hexo.io/docs/deployment.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;deployment&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;with these commands, you can deploy the web site to the server configured.&lt;/p&gt;
+&lt;p&gt;  hexo deploy&lt;/p&gt;
+&lt;h3 id=&quot;Methods&quot;&gt;&lt;a href=&quot;#Methods&quot; class=&quot;headerlink&quot; title=&quot;Methods&quot;&gt;&lt;/a&gt;Methods&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/hexojs/hexo-deployer-git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;hexo-deployer-git&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/hexojs/hexo-deployer-heroku&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;hexo-deployer-heroku&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/hexojs/hexo-deployer-rsync&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;hexo-deployer-rsync&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;others&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;Deploy-hexojs-auto-builder-with-travis-ci&quot;&gt;&lt;a href=&quot;#Deploy-hexojs-auto-builder-with-travis-ci&quot; class=&quot;headerlink&quot; title=&quot;Deploy hexojs auto builder with travis ci&quot;&gt;&lt;/a&gt;Deploy hexojs auto builder with travis ci&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/hexojs/site&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/hexojs/site&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://xuanwo.org/2015/02/07/Travis-CI-Hexo-Autodeploy/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://xuanwo.org/2015/02/07/Travis-CI-Hexo-Autodeploy/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;Configure-github-pages-with-custom-domain-name&quot;&gt;&lt;a href=&quot;#Configure-github-pages-with-custom-domain-name&quot; class=&quot;headerlink&quot; title=&quot;Configure github pages with custom domain name&quot;&gt;&lt;/a&gt;Configure github pages with custom domain name&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;References&quot;&gt;&lt;a href=&quot;#References&quot; class=&quot;headerlink&quot; title=&quot;References&quot;&gt;&lt;/a&gt;References&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;official documentation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
     <summary type="html">
-    <![CDATA[<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><ul>
-<li>Hexo is a fast and powerful site generator designed specifically for personal blogging. There is a lot of plugins to make it even powerful.</li>
-<li>With the power of travis, you can automate the site generating progress and separate the process of editing from publishing.</li>
-<li>You can deploy your generated site to github pages, a free and easy-to-use page hosting service.</li>
-</ul>
-<p>This article is going to instruct you to setup a blog with these handy tools.</p>]]>
+    
+      &lt;h1 id=&quot;Introduction&quot;&gt;&lt;a href=&quot;#Introduction&quot; class=&quot;headerlink&quot; title=&quot;Introduction&quot;&gt;&lt;/a&gt;Introduction&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;Hexo is a fast and powerful site generator designed specifically for personal blogging. There is a lot of plugins to make it even powerful.&lt;/li&gt;
+&lt;li&gt;With the power of travis, you can automate the site generating progress and separate the process of editing from publishing.&lt;/li&gt;
+&lt;li&gt;You can deploy your generated site to github pages, a free and easy-to-use page hosting service.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This article is going to instruct you to setup a blog with these handy tools.&lt;/p&gt;
     
     </summary>
+    
     
       <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
     
@@ -307,26 +321,27 @@
   </entry>
   
   <entry>
-    <title><![CDATA[Rails active record associations]]></title>
+    <title>Rails active record associations</title>
     <link href="http://yoursite.com/2015/12/24/Rails-active-record-associations/"/>
     <id>http://yoursite.com/2015/12/24/Rails-active-record-associations/</id>
     <published>2015-12-24T23:48:24.000Z</published>
-    <updated>2016-01-08T16:17:34.925Z</updated>
-    <content type="html"><![CDATA[<p>最近在学习”APIs on Rails”这本书，这是学习第八章”Placing Orders”的学习笔记。</p>
-<h2 id="u5185_u5BB9"><a href="#u5185_u5BB9" class="headerlink" title="内容"></a>内容</h2><ul>
-<li>理解Rails中的模型关联(Model Association)</li>
-<li>知道模型关联的基本知识和几种常见模式</li>
-<li>使用joint table来建立多对多的模型</li>
-</ul>
-<a id="more"></a>
-<h3 id="Rails_Model_Associations"><a href="#Rails_Model_Associations" class="headerlink" title="Rails Model Associations"></a>Rails Model Associations</h3><p>通过railscasts和rails guide学习模型关联</p>
-<h4 id="u4E3A_u4EC0_u4E48_u9700_u8981_u6A21_u578B_u5173_u8054"><a href="#u4E3A_u4EC0_u4E48_u9700_u8981_u6A21_u578B_u5173_u8054" class="headerlink" title="为什么需要模型关联"></a>为什么需要模型关联</h4><p>通过模型关联，rails可以在model层产生一些有用的函数，帮助开发者描述问题。</p>
-<h4 id="u5173_u8054_u7684_u7C7B_u578B"><a href="#u5173_u8054_u7684_u7C7B_u578B" class="headerlink" title="关联的类型"></a>关联的类型</h4><p>Rails里面关联是两个Model的连接。关联的实现是通过在相关Model里面调用一些宏函数，这些宏函数会自动实现相关的功能。</p>
-<p>NOTE: 在下面解释中，源是指调用关系函数的一方，目标是指作为关系函数参数的一方</p>
-<h5 id="belongs_to"><a href="#belongs_to" class="headerlink" title="belongs_to"></a>belongs_to</h5><p>这个关系是用来描述一对一的从属关系，在migration里面的体现是在源表里面增加外键来指向目标表</p>
-<p><img src="/images/belongs_to.png" alt="belongs_to"></p>
-<pre><code>migration:
-class CreateOrders &lt; ActiveRecord::Migration
+    <updated>2016-02-22T19:47:24.430Z</updated>
+    
+    <content type="html">&lt;p&gt;最近在学习”APIs on Rails”这本书，这是学习第八章”Placing Orders”的学习笔记。&lt;/p&gt;
+&lt;h2 id=&quot;内容&quot;&gt;&lt;a href=&quot;#内容&quot; class=&quot;headerlink&quot; title=&quot;内容&quot;&gt;&lt;/a&gt;内容&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;理解Rails中的模型关联(Model Association)&lt;/li&gt;
+&lt;li&gt;知道模型关联的基本知识和几种常见模式&lt;/li&gt;
+&lt;li&gt;使用joint table来建立多对多的模型&lt;/li&gt;
+&lt;/ul&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h3 id=&quot;Rails-Model-Associations&quot;&gt;&lt;a href=&quot;#Rails-Model-Associations&quot; class=&quot;headerlink&quot; title=&quot;Rails Model Associations&quot;&gt;&lt;/a&gt;Rails Model Associations&lt;/h3&gt;&lt;p&gt;通过railscasts和rails guide学习模型关联&lt;/p&gt;
+&lt;h4 id=&quot;为什么需要模型关联&quot;&gt;&lt;a href=&quot;#为什么需要模型关联&quot; class=&quot;headerlink&quot; title=&quot;为什么需要模型关联&quot;&gt;&lt;/a&gt;为什么需要模型关联&lt;/h4&gt;&lt;p&gt;通过模型关联，rails可以在model层产生一些有用的函数，帮助开发者描述问题。&lt;/p&gt;
+&lt;h4 id=&quot;关联的类型&quot;&gt;&lt;a href=&quot;#关联的类型&quot; class=&quot;headerlink&quot; title=&quot;关联的类型&quot;&gt;&lt;/a&gt;关联的类型&lt;/h4&gt;&lt;p&gt;Rails里面关联是两个Model的连接。关联的实现是通过在相关Model里面调用一些宏函数，这些宏函数会自动实现相关的功能。&lt;/p&gt;
+&lt;p&gt;NOTE: 在下面解释中，源是指调用关系函数的一方，目标是指作为关系函数参数的一方&lt;/p&gt;
+&lt;h5 id=&quot;belongs-to&quot;&gt;&lt;a href=&quot;#belongs-to&quot; class=&quot;headerlink&quot; title=&quot;belongs_to&quot;&gt;&lt;/a&gt;belongs_to&lt;/h5&gt;&lt;p&gt;这个关系是用来描述一对一的从属关系，在migration里面的体现是在源表里面增加外键来指向目标表&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/belongs_to.png&quot; alt=&quot;belongs_to&quot;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;migration:
+class CreateOrders &amp;lt; ActiveRecord::Migration
   def change
     create_table :customers do |t|
       t.string :name
@@ -340,10 +355,10 @@ class CreateOrders &lt; ActiveRecord::Migration
     end
   end
 end
-</code></pre><h5 id="has_one"><a href="#has_one" class="headerlink" title="has_one"></a>has_one</h5><p>这个描述的也是一种一对一的关系，简单来说就是用不同的视角描述和<code>belongs_to</code>相同的关系，会在目标表里面增加一项外键引用到源表。</p>
-<p><img src="/images/has_one.png" alt="has_one"></p>
-<pre><code>migration:
-class CreateSuppliers &lt; ActiveRecord::Migration
+&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&quot;has-one&quot;&gt;&lt;a href=&quot;#has-one&quot; class=&quot;headerlink&quot; title=&quot;has_one&quot;&gt;&lt;/a&gt;has_one&lt;/h5&gt;&lt;p&gt;这个描述的也是一种一对一的关系，简单来说就是用不同的视角描述和&lt;code&gt;belongs_to&lt;/code&gt;相同的关系，会在目标表里面增加一项外键引用到源表。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/has_one.png&quot; alt=&quot;has_one&quot;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;migration:
+class CreateSuppliers &amp;lt; ActiveRecord::Migration
   def change
     create_table :suppliers do |t|
       t.string :name
@@ -357,10 +372,10 @@ class CreateSuppliers &lt; ActiveRecord::Migration
     end
   end
 end
-</code></pre><h5 id="has_many"><a href="#has_many" class="headerlink" title="has_many"></a>has_many</h5><p>这种描述的是一对多的关系，有多个目标对象和源对象关联</p>
-<p><img src="/images/has_many.png" alt="has_many"></p>
-<pre><code>migration:
-class CreateCustomers &lt; ActiveRecord::Migration
+&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&quot;has-many&quot;&gt;&lt;a href=&quot;#has-many&quot; class=&quot;headerlink&quot; title=&quot;has_many&quot;&gt;&lt;/a&gt;has_many&lt;/h5&gt;&lt;p&gt;这种描述的是一对多的关系，有多个目标对象和源对象关联&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/has_many.png&quot; alt=&quot;has_many&quot;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;migration:
+class CreateCustomers &amp;lt; ActiveRecord::Migration
   def change
     create_table :customers do |t|
       t.string :name
@@ -374,10 +389,10 @@ class CreateCustomers &lt; ActiveRecord::Migration
     end
   end
 end
-</code></pre><h5 id="has_many__3Athrough"><a href="#has_many__3Athrough" class="headerlink" title="has_many :through"></a>has_many :through</h5><p>这种描述的是多对多的关系，有多个目标对象和多个源对象关联，但关系的建立是通过一个中间表来完成</p>
-<p><img src="/images/has_many_through.png" alt="has_many :through"></p>
-<pre><code>migration:
-class CreateAppointments &lt; ActiveRecord::Migration
+&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&quot;has-many-through&quot;&gt;&lt;a href=&quot;#has-many-through&quot; class=&quot;headerlink&quot; title=&quot;has_many :through&quot;&gt;&lt;/a&gt;has_many :through&lt;/h5&gt;&lt;p&gt;这种描述的是多对多的关系，有多个目标对象和多个源对象关联，但关系的建立是通过一个中间表来完成&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/has_many_through.png&quot; alt=&quot;has_many :through&quot;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;migration:
+class CreateAppointments &amp;lt; ActiveRecord::Migration
   def change
     create_table :physicians do |t|
       t.string :name
@@ -397,10 +412,10 @@ class CreateAppointments &lt; ActiveRecord::Migration
     end
   end
 end
-</code></pre><h5 id="has_one__3Athrough"><a href="#has_one__3Athrough" class="headerlink" title="has_one :through"></a>has_one :through</h5><p>这个用来描述一对一的关系，通过中间表讲第一方和第三方关联起来</p>
-<p><img src="/images/has_one_through.png" alt="has_one :through"></p>
-<pre><code>migration:
-class CreateAccountHistories &lt; ActiveRecord::Migration
+&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&quot;has-one-through&quot;&gt;&lt;a href=&quot;#has-one-through&quot; class=&quot;headerlink&quot; title=&quot;has_one :through&quot;&gt;&lt;/a&gt;has_one :through&lt;/h5&gt;&lt;p&gt;这个用来描述一对一的关系，通过中间表讲第一方和第三方关联起来&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/has_one_through.png&quot; alt=&quot;has_one :through&quot;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;migration:
+class CreateAccountHistories &amp;lt; ActiveRecord::Migration
   def change
     create_table :suppliers do |t|
       t.string :name
@@ -420,11 +435,11 @@ class CreateAccountHistories &lt; ActiveRecord::Migration
     end
   end
 end
-</code></pre><h5 id="has_and_belongs_to_many"><a href="#has_and_belongs_to_many" class="headerlink" title="has_and_belongs_to_many"></a>has_and_belongs_to_many</h5><p>这个和<code>has_many :through</code>描述的是一样的多对多关系，不过在代码中看不到中间表的存在</p>
-<p>NOTE: 可以从migration中看到，实际上有一个自动生成的中间表存在</p>
-<p><img src="/images/habtm.png" alt="has\_and\_belongs\_to\_many"></p>
-<pre><code>migration:
-class CreateAssembliesAndParts &lt; ActiveRecord::Migration
+&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&quot;has-and-belongs-to-many&quot;&gt;&lt;a href=&quot;#has-and-belongs-to-many&quot; class=&quot;headerlink&quot; title=&quot;has_and_belongs_to_many&quot;&gt;&lt;/a&gt;has_and_belongs_to_many&lt;/h5&gt;&lt;p&gt;这个和&lt;code&gt;has_many :through&lt;/code&gt;描述的是一样的多对多关系，不过在代码中看不到中间表的存在&lt;/p&gt;
+&lt;p&gt;NOTE: 可以从migration中看到，实际上有一个自动生成的中间表存在&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/habtm.png&quot; alt=&quot;has\_and\_belongs\_to\_many&quot;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;migration:
+class CreateAssembliesAndParts &amp;lt; ActiveRecord::Migration
   def change
     create_table :assemblies do |t|
       t.string :name
@@ -442,24 +457,27 @@ class CreateAssembliesAndParts &lt; ActiveRecord::Migration
     end
   end
 end
-</code></pre><h2 id="u53C2_u8003"><a href="#u53C2_u8003" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="http://railscasts.com/episodes/3-find-through-association" target="_blank" rel="external">http://railscasts.com/episodes/3-find-through-association</a></li>
-<li><a href="http://guides.rubyonrails.org/association_basics.html" target="_blank" rel="external">http://guides.rubyonrails.org/association_basics.html</a></li>
-<li><a href="http://railscasts.com/episodes/47-two-many-to-many" target="_blank" rel="external">http://railscasts.com/episodes/47-two-many-to-many</a></li>
-<li><a href="http://railscasts.com/episodes/154-polymorphic-association" target="_blank" rel="external">http://railscasts.com/episodes/154-polymorphic-association</a></li>
-<li><a href="https://viget.com/extend/exploring-the-inverse-of-option-on-rails-model-associations" target="_blank" rel="external">understand the inverse_of for active model</a></li>
-<li><a href="http://apionrails.icalialabs.com/" target="_blank" rel="external">APIs on Rails</a></li>
-</ul>
-]]></content>
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;参考&quot;&gt;&lt;a href=&quot;#参考&quot; class=&quot;headerlink&quot; title=&quot;参考&quot;&gt;&lt;/a&gt;参考&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://railscasts.com/episodes/3-find-through-association&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://railscasts.com/episodes/3-find-through-association&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://guides.rubyonrails.org/association_basics.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://guides.rubyonrails.org/association_basics.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://railscasts.com/episodes/47-two-many-to-many&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://railscasts.com/episodes/47-two-many-to-many&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://railscasts.com/episodes/154-polymorphic-association&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://railscasts.com/episodes/154-polymorphic-association&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://viget.com/extend/exploring-the-inverse-of-option-on-rails-model-associations&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;understand the inverse_of for active model&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://apionrails.icalialabs.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;APIs on Rails&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
     <summary type="html">
-    <![CDATA[<p>最近在学习”APIs on Rails”这本书，这是学习第八章”Placing Orders”的学习笔记。</p>
-<h2 id="u5185_u5BB9"><a href="#u5185_u5BB9" class="headerlink" title="内容"></a>内容</h2><ul>
-<li>理解Rails中的模型关联(Model Association)</li>
-<li>知道模型关联的基本知识和几种常见模式</li>
-<li>使用joint table来建立多对多的模型</li>
-</ul>]]>
+    
+      &lt;p&gt;最近在学习”APIs on Rails”这本书，这是学习第八章”Placing Orders”的学习笔记。&lt;/p&gt;
+&lt;h2 id=&quot;内容&quot;&gt;&lt;a href=&quot;#内容&quot; class=&quot;headerlink&quot; title=&quot;内容&quot;&gt;&lt;/a&gt;内容&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;理解Rails中的模型关联(Model Association)&lt;/li&gt;
+&lt;li&gt;知道模型关联的基本知识和几种常见模式&lt;/li&gt;
+&lt;li&gt;使用joint table来建立多对多的模型&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
+    
     
       <category term="active model" scheme="http://yoursite.com/tags/active-model/"/>
     
