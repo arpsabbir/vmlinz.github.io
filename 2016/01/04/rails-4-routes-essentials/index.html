@@ -35,12 +35,10 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="rails,routes,ruby," />
+  <meta name="keywords" content="rails,ruby,routes," />
 
 
 
-
-  
 
 
   <link rel="alternate" href="/atom.xml" title="Logs from Zaicheng" type="application/atom+xml" />
@@ -71,7 +69,7 @@ recognize the URLs
 dispatch URLs to the controller actions
 generate helper functions to avoid hard coding URLs in the view
 helpers to generate restful ro">
-<meta property="og:updated_time" content="2016-02-23T10:33:54.914Z">
+<meta property="og:updated_time" content="2016-05-11T16:19:54.966Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Rails 4 routes essentials, part I">
 <meta name="twitter:description" content="IntroductionThe purposes of rails router are:
@@ -349,7 +347,7 @@ helpers to generate restful ro">
 <p>or</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">resources :</span>articles, <span class="string">path:</span> <span class="string">'/admin/articles'</span></span><br></pre></td></tr></table></figure>
 <h3 id="nested-routes"><a href="#nested-routes" class="headerlink" title="nested routes"></a>nested routes</h3><p>Nested routes allow you to represent resources that are logically children of other resources, for models:</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Magazine</span> <span class="inheritance">&lt; <span class="parent">ActiveRecord::Base</span></span></span></span><br><span class="line">  has_many <span class="symbol">:ads</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Ad</span> <span class="inheritance">&lt; <span class="parent">ActiveRecord::Base</span></span></span></span><br><span class="line">  belongs_to <span class="symbol">:magazine</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Magazine</span> &lt; ActiveRecord::Base</span></span><br><span class="line">  has_many <span class="symbol">:ads</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Ad</span> &lt; ActiveRecord::Base</span></span><br><span class="line">  belongs_to <span class="symbol">:magazine</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 <p>you can declare the routes:</p>
 <figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">resources <span class="symbol">:magazines</span> <span class="keyword">do</span></span><br><span class="line">  resources <span class="symbol">:ads</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 <p><em>NOTE</em>: Resources should never be nested more than 1 level deep.</p>
@@ -379,9 +377,9 @@ helpers to generate restful ro">
           
             <a href="/tags/rails/" rel="tag">#rails</a>
           
-            <a href="/tags/routes/" rel="tag">#routes</a>
-          
             <a href="/tags/ruby/" rel="tag">#ruby</a>
+          
+            <a href="/tags/routes/" rel="tag">#routes</a>
           
         </div>
       
@@ -397,6 +395,10 @@ helpers to generate restful ro">
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/05/12/Android-Audit-Rules-Android应用质量审计规则/" rel="prev" title="Android Audit Rules - Android应用质量审计规则">
+                Android Audit Rules - Android应用质量审计规则 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -468,7 +470,7 @@ helpers to generate restful ro">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
