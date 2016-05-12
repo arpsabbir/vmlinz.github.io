@@ -179,15 +179,133 @@
 
     
     
+
+    
       
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/12/learn-kotlin-with-keddit-part-0/" itemprop="url">
+                  learn-kotlin-with-keddit-part-0
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-05-12T22:09:03+00:00" content="2016-05-12">
+              2016-05-12
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/05/12/learn-kotlin-with-keddit-part-0/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/05/12/learn-kotlin-with-keddit-part-0/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
       
-        
-        
-        
       
 
       
-    
+        
+          <span itemprop="articleBody">
+            
+              <blockquote>
+<p>原文链接：<br><a href="https://medium.com/@juanchosaravia/learn-kotlin-while-developing-an-android-app-introduction-567e21ff9664#.m0rvylv5z" target="_blank" rel="external">https://medium.com/@juanchosaravia/learn-kotlin-while-developing-an-android-app-introduction-567e21ff9664#.m0rvylv5z</a><br>原文作者：<a href="https://twitter.com/juanchosaravia" target="_blank" rel="external">Juancho Saravia</a><br>授权译者：<a href="https://zaicheng.me" target="_blank" rel="external">Nick Qi</a></p>
+</blockquote>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*J80hdZ1WrspqQmsogfQFrw.png" alt="learn-kotlin-with-keddit"></p>
+<h1 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h1><ul>
+<li><a href="https://medium.com/@juanchosaravia/learn-kotlin-while-developing-an-android-app-introduction-567e21ff9664" target="_blank" rel="external">导言：关于这个系列文章的一点点</a></li>
+<li><a href="https://medium.com/@juanchosaravia/learn-kotlin-while-developing-an-android-app-part-1-e0f51fc1a8b3" target="_blank" rel="external">1：给Android Studio配置Kotlin</a></li>
+<li><a href="https://medium.com/@juanchosaravia/learn-kotlin-while-developing-an-android-app-part-2-e53317ffcbe9" target="_blank" rel="external">2：MainActivity.kt：语法，Null安全及其他</a></li>
+<li><a href="https://medium.com/@juanchosaravia/keddit-part-3-extension-functions-android-extensions-and-more-faa7d232f232" target="_blank" rel="external">3：NewsFragment.kt：扩展方法，Android扩展等等</a></li>
+<li><a href="https://medium.com/@juanchosaravia/keddit-part-4-recyclerview-delegate-adapters-data-classes-with-kotlin-9248f44327f7" target="_blank" rel="external">4：RecyclerView–委托适配器和数据类配合Kotlin</a></li>
+<li><a href="https://medium.com/@juanchosaravia/keddit-part-5-kotlin-rxjava-rxandroid-105f95bfcd22" target="_blank" rel="external">5：Kotlin, RxJava &amp; RxAndroid</a></li>
+<li><a href="https://medium.com/@juanchosaravia/keddit-part-6-api-retrofit-kotlin-d309074af0" target="_blank" rel="external">6：API — Retrofit &amp; Kotlin</a></li>
+<li><a href="https://medium.com/@juanchosaravia/keddit-part-7-infinite-scroll-higher-order-functions-lambdas-3a11fbd5090e" target="_blank" rel="external">7：无限滚动：高阶函数以及Lambdas</a></li>
+<li><a href="https://medium.com/@juanchosaravia/keddit-part-8-orientation-change-with-kotlin-parcelable-data-classes-f28136e8a6a8" target="_blank" rel="external">8：方向改变（Parcelable和数据类）</a></li>
+<li>9：单元测试和集成测试</li>
+</ul>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>很高兴你能看到这一系列文章，我们将在开发Android应用的同时学习一个JVM上的新语言，Kotlin。希望这些文章能帮助你在Android环境下学习这个非常棒的语言。这些文章分成多个部分。在内容这一节里面有这些不同的文章以及相应的主题，每篇都会包含不同的Kotlin特性。</p>
+<p>我的目地不是创建最好的应用（哥做不到，哈哈），但我会在开发这个应用的同时讲解Kotlin。</p>
+<blockquote>
+<p>我们将要学习Kotlin，涉及到的内容主要包括<strong>字段和属性，数据类，Null安全，扩展方法，Lambda表达式，委托，高阶函数</strong>等优良特性。我们也会接触到Android开发者经常需要处理的一些情景：方向改变（Parcelables），从服务器请求数据显示到UI，绑定和操作视图等等。同时我将假设你了解Java而且有一些Android开发经验。</p>
+</blockquote>
+<hr>
+<h2 id="我们将要开发的应用：Keddit"><a href="#我们将要开发的应用：Keddit" class="headerlink" title="我们将要开发的应用：Keddit"></a>我们将要开发的应用：Keddit</h2><p>我们将要开发的应用是一个简单的Reddit客户端。它会展示来自Reddit的最近新闻，支持通过下拉无限滚动显示更多新闻，支持显示标题、图片、评论数量、发布事件以及新闻的作者。</p>
+<p><img src="https://cdn-images-1.medium.com/max/800/1*LjA2bmJis-81xzwmcbcrZg.gif" alt="app-keddit"></p>
+<h3 id="我们将会使用的第三方库"><a href="#我们将会使用的第三方库" class="headerlink" title="我们将会使用的第三方库:"></a>我们将会使用的第三方库:</h3><ul>
+<li><strong>Retrofit 2.0</strong>: 处理RedditAPI。</li>
+<li><strong>RxJava</strong>: 我们将使用Observables来解耦UI线程和后台线程。我们调用API然后返回数据给UI。</li>
+<li><strong>Picasso</strong>: 从Reddit加载图片。</li>
+<li><strong>RecyclerView</strong>: 我们使用RecyclerView来展示信息同时提供无限滚动的行为。</li>
+<li><strong>Kotlin Android Extensions</strong>: 绑定UI（视图）和代码</li>
+</ul>
+<h3 id="代码仓库"><a href="#代码仓库" class="headerlink" title="代码仓库"></a>代码仓库</h3><p>在这里你可以拿到我们接下来的一系列文章中要创建和回顾的代码。</p>
+<p><a href="https://github.com/juanchosaravia/Keddit" target="_blank" rel="external">https://github.com/juanchosaravia/Keddit</a></p>
+<p>下一篇文章中我们将配置Android Studio，让它为开发Kotlin应用做好准备。但是如果现在你就很好奇，你完全可以直接开始查看仓库中的代码。</p>
+<p>如果你有任何问题，请通过这些社交网络联系我。我将尽我所能回答，如果不行，我们就一起学习吧：）</p>
+<p>Twitter: <a href="https://twitter.com/juanchosaravia" target="_blank" rel="external">https://twitter.com/juanchosaravia</a></p>
+<p>LinkedIn: <a href="https://www.linkedin.com/in/juansaravia" target="_blank" rel="external">https://www.linkedin.com/in/juansaravia</a></p>
+<h2 id="下一篇"><a href="#下一篇" class="headerlink" title="下一篇:"></a>下一篇:</h2><ul>
+<li><a href="https://medium.com/@juanchosaravia/learn-kotlin-while-developing-an-android-app-part-1-e0f51fc1a8b3" target="_blank" rel="external">1：给Android Studio配置Kotlin</a></li>
+</ul>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
 
     
       
@@ -1159,10 +1277,412 @@
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/01/04/rails-4-routes-essentials/" itemprop="url">
+                  Rails 4 routes essentials, part I
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-01-04T20:01:59+00:00" content="2016-01-04">
+              2016-01-04
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/01/04/rails-4-routes-essentials/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/01/04/rails-4-routes-essentials/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>The purposes of rails router are:</p>
+<ul>
+<li>recognize the URLs</li>
+<li>dispatch URLs to the controller actions</li>
+<li>generate helper functions to avoid hard coding URLs in the view</li>
+<li>helpers to generate restful routes</li>
+<li>many other useful functions to help you dealing with routing</li>
+</ul>
+<p>In this article, I’m going to take you a tour around the first part of the rails 4 router.</p>
+<h1 id="Content"><a href="#Content" class="headerlink" title="Content"></a>Content</h1><h2 id="rake-command-to-check-routes"><a href="#rake-command-to-check-routes" class="headerlink" title="rake command to check routes"></a>rake command to check routes</h2><p><code>rake routes</code> will show you the list of your routes.</p>
+<h2 id="URL-and-controller-action-mapping"><a href="#URL-and-controller-action-mapping" class="headerlink" title="URL and controller action mapping"></a>URL and controller action mapping</h2><p>when you received request for URL:<br>    GET /patients/17</p>
+<p>it will ask the router to match it to a controller action. If the matching route is:<br>    get ‘/patients/:id’, to: ‘patients#show’</p>
+<p>then the request is dispatched to the patients controller’s <code>show</code> action with { id: ‘17’} in <code>params</code></p>
+<h2 id="Resourceful-restful-routing"><a href="#Resourceful-restful-routing" class="headerlink" title="Resourceful(restful) routing"></a>Resourceful(restful) routing</h2><p>Resource routing is a shortcut to declare all the common routes for a given resourceful controller, including <code>index</code>, <code>show</code>, <code>new</code>, <code>edit</code>, <code>create</code>, <code>update</code> and <code>destroy</code> actions.</p>
+<h3 id="CRUD-and-restful"><a href="#CRUD-and-restful" class="headerlink" title="CRUD and restful"></a>CRUD and restful</h3><p>A single entry in the routes.rb, such as: <code>resources :users</code></p>
+<p>creates seven different routes in your application, all mapping to the Photos controller:</p>
+<table>
+<thead>
+<tr>
+<th>Prefix</th>
+<th>Verb</th>
+<th>URI Pattern</th>
+<th>Controller#Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>users</td>
+<td>GET</td>
+<td>/users(.:format)</td>
+<td>users#index</td>
+</tr>
+<tr>
+<td></td>
+<td>POST</td>
+<td>/users(.:format)</td>
+<td>users#create</td>
+</tr>
+<tr>
+<td>new_user</td>
+<td>GET</td>
+<td>/users/new(.:format)</td>
+<td>users#new</td>
+</tr>
+<tr>
+<td>edit_user</td>
+<td>GET</td>
+<td>/users/:id/edit(.:format)</td>
+<td>users#edit</td>
+</tr>
+<tr>
+<td>user</td>
+<td>GET</td>
+<td>/users/:id(.:format)</td>
+<td>users#show</td>
+</tr>
+<tr>
+<td></td>
+<td>PATCH</td>
+<td>/users/:id(.:format)</td>
+<td>users#update</td>
+</tr>
+<tr>
+<td></td>
+<td>PUT</td>
+<td>/users/:id(.:format)</td>
+<td>users#update</td>
+</tr>
+<tr>
+<td></td>
+<td>DELETE</td>
+<td>/users/:id(.:format)</td>
+<td>users#destroy</td>
+</tr>
+</tbody>
+</table>
+<p><em>NOTE</em>: There is a singular resource: <code>resources :user</code> and in this case you refer to only one resource and don’t need to identify different resources of it.</p>
+<h3 id="path-and-URL-helpers"><a href="#path-and-URL-helpers" class="headerlink" title="path and URL helpers"></a>path and URL helpers</h3><p>The resourceful routes also expose a number of helpers to the controllers, in case of <code>resources :users</code>:</p>
+<ul>
+<li><code>users_path</code> returns <code>/users</code></li>
+<li><code>new_user_path</code> returns <code>/users/new</code></li>
+<li><code>edit_user_path(:id)</code> returns <code>/users/:id/edit</code></li>
+<li><code>user_path(:id)</code> returns <code>/users/:id</code></li>
+</ul>
+<p>There are helpers with postfix <code>_url</code> will return the same path prefixed with current host, port and path.</p>
+<h3 id="namespace-and-scope"><a href="#namespace-and-scope" class="headerlink" title="namespace and scope"></a>namespace and scope</h3><h4 id="namespace"><a href="#namespace" class="headerlink" title="namespace"></a>namespace</h4><p>You can use namespace in resources to group a set of controllers under a namespace. Such as:</p>
+<ul>
+<li>Group controllers under an <code>Admin::</code> namespace</li>
+<li>Place controllers under <code>app/controllers/admin</code></li>
+</ul>
+<p>Then you can declare route as:</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">namespace <span class="symbol">:admin</span> <span class="keyword">do</span></span><br><span class="line">	resources <span class="symbol">:articles</span>, <span class="symbol">:comments</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>And all the urls of the controllers will be prefixed with <code>/admin</code></p>
+<h4 id="scope"><a href="#scope" class="headerlink" title="scope"></a>scope</h4><p>You can use scope when you want to route <code>/admin/articles</code> to ArticlesController instead of <code>Admin::ArticlesController</code>.</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scope <span class="string">'/admin'</span> <span class="keyword">do</span></span><br><span class="line">  resources <span class="symbol">:articles</span>, <span class="symbol">:comments</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>or</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">resources :</span>articles, <span class="string">path:</span> <span class="string">'/admin/articles'</span></span><br></pre></td></tr></table></figure>
+<h3 id="nested-routes"><a href="#nested-routes" class="headerlink" title="nested routes"></a>nested routes</h3><p>Nested routes allow you to represent resources that are logically children of other resources, for models:</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Magazine</span> &lt; ActiveRecord::Base</span></span><br><span class="line">  has_many <span class="symbol">:ads</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Ad</span> &lt; ActiveRecord::Base</span></span><br><span class="line">  belongs_to <span class="symbol">:magazine</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>you can declare the routes:</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">resources <span class="symbol">:magazines</span> <span class="keyword">do</span></span><br><span class="line">  resources <span class="symbol">:ads</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p><em>NOTE</em>: Resources should never be nested more than 1 level deep.</p>
+<h4 id="Shallow-nesting"><a href="#Shallow-nesting" class="headerlink" title="Shallow nesting"></a>Shallow nesting</h4><p>Shallow nesting will help you to generate collection actions scoped under the parent, but leave the member actions as they were. You can avoid deep nesting using this technique.</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">resources <span class="symbol">:articles</span> <span class="keyword">do</span></span><br><span class="line">  resources <span class="symbol">:comments</span>, <span class="symbol">only:</span> [<span class="symbol">:index</span>, <span class="symbol">:new</span>, <span class="symbol">:create</span>]</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">resources <span class="symbol">:comments</span>, <span class="symbol">only:</span> [<span class="symbol">:show</span>, <span class="symbol">:edit</span>, <span class="symbol">:update</span>, <span class="symbol">:destroy</span>]</span><br></pre></td></tr></table></figure>
+<p>and shorthand for the above:</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">resources <span class="symbol">:articles</span> <span class="keyword">do</span></span><br><span class="line">  resources <span class="symbol">:comments</span>, <span class="symbol">shallow:</span> <span class="keyword">true</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><ul>
+<li>Rails router can help you connect URLs to controller actions</li>
+<li>Resource routing can help you describe restful controllers</li>
+<li>Rails router will generate helper functions to help you deal with urls and paths.</li>
+</ul>
+<h1 id="Referrences"><a href="#Referrences" class="headerlink" title="Referrences"></a>Referrences</h1><ul>
+<li><a href="http://guides.rubyonrails.org/routing.html" target="_blank" rel="external">rails routes</a></li>
+<li><a href="https://en.wikibooks.org/wiki/Ruby_on_Rails/Routing" target="_blank" rel="external">rails routes wiki books</a></li>
+<li><a href="http://railscasts.com/episodes/231-routing-walkthrough" target="_blank" rel="external">rails routes walk through</a></li>
+<li><a href="http://www.theodinproject.com/ruby-on-rails/routing" target="_blank" rel="external">rails routing</a></li>
+<li><a href="http://ricostacruz.com/cheatsheets/rails-routes.html" target="_blank" rel="external">rails routes cheat sheet</a></li>
+</ul>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/01/02/hexo-blog-with-custom-domain-and-cloudflare/" itemprop="url">
+                  Hexo blog with custom domain and cloudflare
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-01-02T21:25:39+00:00" content="2016-01-02">
+              2016-01-02
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/01/02/hexo-blog-with-custom-domain-and-cloudflare/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/01/02/hexo-blog-with-custom-domain-and-cloudflare/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>The <a href="https://zaicheng.me/2015/12/31/setup-a-blog-with-hexojs-and-travis/">previous blog</a> shows you how to setup a blog with hexo and github pages. Here we are going to make it further.</p>
+<ul>
+<li>Setup custom domain name for your blog</li>
+<li>Setup cloudflare for content caching and https support</li>
+<li>Setup apex domain name and a <code>www</code> sub domain</li>
+<li>Setup cloudflare dns records with flattening CNAME record</li>
+<li>Configure cloudflare<ul>
+<li>ipv6</li>
+<li>hsts</li>
+<li>flexible/full ssl</li>
+</ul>
+</li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/01/02/hexo-blog-with-custom-domain-and-cloudflare/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/12/31/setup-a-blog-with-hexojs-and-travis/" itemprop="url">
+                  Setup a blog with hexojs and travis
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-12-31T23:46:12+00:00" content="2015-12-31">
+              2015-12-31
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/12/31/setup-a-blog-with-hexojs-and-travis/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/12/31/setup-a-blog-with-hexojs-and-travis/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><ul>
+<li>Hexo is a fast and powerful site generator designed specifically for personal blogging. There is a lot of plugins to make it even powerful.</li>
+<li>With the power of travis, you can automate the site generating progress and separate the process of editing from publishing.</li>
+<li>You can deploy your generated site to github pages, a free and easy-to-use page hosting service.</li>
+</ul>
+<p>This article is going to instruct you to setup a blog with these handy tools.</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/12/31/setup-a-blog-with-hexojs-and-travis/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
 
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
         </div>
@@ -1201,7 +1721,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1215,7 +1735,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
