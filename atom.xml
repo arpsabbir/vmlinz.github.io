@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-05-12T14:36:42.147Z</updated>
+  <updated>2016-05-12T15:02:14.398Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,12 +20,11 @@
     <link href="http://yoursite.com/2016/05/12/learn-kotlin-with-keddit-part-0/"/>
     <id>http://yoursite.com/2016/05/12/learn-kotlin-with-keddit-part-0/</id>
     <published>2016-05-12T22:09:03.000Z</published>
-    <updated>2016-05-12T14:36:42.147Z</updated>
+    <updated>2016-05-12T15:02:14.398Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;原文链接：&lt;br&gt;&lt;a href=&quot;https://medium.com/@juanchosaravia/learn-kotlin-while-developing-an-android-app-introduction-567e21ff9664#.m0rvylv5z&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://medium.com/@juanchosaravia/learn-kotlin-while-developing-an-android-app-introduction-567e21ff9664#.m0rvylv5z&lt;/a&gt;&lt;br&gt;原文作者：&lt;a href=&quot;https://twitter.com/juanchosaravia&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Juancho Saravia&lt;/a&gt;&lt;br&gt;授权译者：&lt;a href=&quot;https://zaicheng.me&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Nick Qi&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&quot;https://cdn-images-1.medium.com/max/2000/1*J80hdZ1WrspqQmsogfQFrw.png&quot; alt=&quot;learn-kotlin-with-keddit&quot;&gt;&lt;/p&gt;
 &lt;h1 id=&quot;内容&quot;&gt;&lt;a href=&quot;#内容&quot; class=&quot;headerlink&quot; title=&quot;内容&quot;&gt;&lt;/a&gt;内容&lt;/h1&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://medium.com/@juanchosaravia/learn-kotlin-while-developing-an-android-app-introduction-567e21ff9664&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;导言：关于这个系列文章的一点点&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://medium.com/@juanchosaravia/learn-kotlin-while-developing-an-android-app-part-1-e0f51fc1a8b3&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;1：给Android Studio配置Kotlin&lt;/a&gt;&lt;/li&gt;
@@ -45,7 +44,6 @@
 &lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h2 id=&quot;我们将要开发的应用：Keddit&quot;&gt;&lt;a href=&quot;#我们将要开发的应用：Keddit&quot; class=&quot;headerlink&quot; title=&quot;我们将要开发的应用：Keddit&quot;&gt;&lt;/a&gt;我们将要开发的应用：Keddit&lt;/h2&gt;&lt;p&gt;我们将要开发的应用是一个简单的Reddit客户端。它会展示来自Reddit的最近新闻，支持通过下拉无限滚动显示更多新闻，支持显示标题、图片、评论数量、发布事件以及新闻的作者。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://cdn-images-1.medium.com/max/800/1*LjA2bmJis-81xzwmcbcrZg.gif&quot; alt=&quot;app-keddit&quot;&gt;&lt;/p&gt;
 &lt;h3 id=&quot;我们将会使用的第三方库&quot;&gt;&lt;a href=&quot;#我们将会使用的第三方库&quot; class=&quot;headerlink&quot; title=&quot;我们将会使用的第三方库:&quot;&gt;&lt;/a&gt;我们将会使用的第三方库:&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Retrofit 2.0&lt;/strong&gt;: 处理RedditAPI。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;RxJava&lt;/strong&gt;: 我们将使用Observables来解耦UI线程和后台线程。我们调用API然后返回数据给UI。&lt;/li&gt;
@@ -85,13 +83,14 @@
     <link href="http://yoursite.com/2016/05/12/Android-Audit-Rules-Android%E5%BA%94%E7%94%A8%E8%B4%A8%E9%87%8F%E5%AE%A1%E8%AE%A1%E8%A7%84%E5%88%99/"/>
     <id>http://yoursite.com/2016/05/12/Android-Audit-Rules-Android应用质量审计规则/</id>
     <published>2016-05-12T00:12:50.000Z</published>
-    <updated>2016-05-12T14:36:42.147Z</updated>
+    <updated>2016-05-12T15:02:14.398Z</updated>
     
     <content type="html">&lt;p&gt;&lt;strong&gt;Your Android app as a crime scene! 假设你的Android app是一个犯罪现场！&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/vmlinz/AndroidAudit/blob/master/README_CN.md&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github链接&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Technical audits of iOS and Android applications have become an integral part of our daily job here at Karumi. Even though it can look easy, there are quite a few implementation details to review when performing such audit. In this document we are going to review what we believe are the most important things to check, separated by technical area. &lt;/p&gt;
 &lt;p&gt;在Karumi，iOS和Android应用的技术审核已经成为日常工作必不可少的一部分。这项工作看起来容易，然而在实际进行审核的时候，我们会发现有不少实现细节要注意。我们来回顾一下这个文档里面我们认为最重要的审核条目。这些审核条目按照技术方向被分成几种不同类别。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Version Control System: 版本控制系统：&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/progit/progit2-zh/blob/master/TRANSLATION_NOTES.asc&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;术语参考&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Whether the engineers are using version control, which system and using what process tells us a lot of things about the software development process. &lt;/p&gt;
 &lt;p&gt;工程师是否使用版本控制，使用哪种系统，通过哪种过程来向我们呈现软件开发过程。&lt;/p&gt;
@@ -986,7 +985,7 @@
     <link href="http://yoursite.com/2016/01/04/rails-4-routes-essentials/"/>
     <id>http://yoursite.com/2016/01/04/rails-4-routes-essentials/</id>
     <published>2016-01-04T20:01:59.000Z</published>
-    <updated>2016-05-12T14:36:42.151Z</updated>
+    <updated>2016-05-12T15:02:14.398Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Introduction&quot;&gt;&lt;a href=&quot;#Introduction&quot; class=&quot;headerlink&quot; title=&quot;Introduction&quot;&gt;&lt;/a&gt;Introduction&lt;/h1&gt;&lt;p&gt;The purposes of rails router are:&lt;/p&gt;
 &lt;ul&gt;
@@ -1128,7 +1127,7 @@
     <link href="http://yoursite.com/2016/01/02/hexo-blog-with-custom-domain-and-cloudflare/"/>
     <id>http://yoursite.com/2016/01/02/hexo-blog-with-custom-domain-and-cloudflare/</id>
     <published>2016-01-02T21:25:39.000Z</published>
-    <updated>2016-05-12T14:36:42.147Z</updated>
+    <updated>2016-05-12T15:02:14.398Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Introduction&quot;&gt;&lt;a href=&quot;#Introduction&quot; class=&quot;headerlink&quot; title=&quot;Introduction&quot;&gt;&lt;/a&gt;Introduction&lt;/h1&gt;&lt;p&gt;The &lt;a href=&quot;https://zaicheng.me/2015/12/31/setup-a-blog-with-hexojs-and-travis/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;previous blog&lt;/a&gt; shows you how to setup a blog with hexo and github pages. Here we are going to make it further.&lt;/p&gt;
 &lt;ul&gt;
@@ -1218,7 +1217,7 @@
     <link href="http://yoursite.com/2015/12/31/setup-a-blog-with-hexojs-and-travis/"/>
     <id>http://yoursite.com/2015/12/31/setup-a-blog-with-hexojs-and-travis/</id>
     <published>2015-12-31T23:46:12.000Z</published>
-    <updated>2016-05-12T14:36:42.151Z</updated>
+    <updated>2016-05-12T15:02:14.398Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Introduction&quot;&gt;&lt;a href=&quot;#Introduction&quot; class=&quot;headerlink&quot; title=&quot;Introduction&quot;&gt;&lt;/a&gt;Introduction&lt;/h1&gt;&lt;ul&gt;
 &lt;li&gt;Hexo is a fast and powerful site generator designed specifically for personal blogging. There is a lot of plugins to make it even powerful.&lt;/li&gt;
@@ -1291,7 +1290,7 @@
     <link href="http://yoursite.com/2015/12/24/Rails-active-record-associations/"/>
     <id>http://yoursite.com/2015/12/24/Rails-active-record-associations/</id>
     <published>2015-12-24T23:48:24.000Z</published>
-    <updated>2016-05-12T14:36:42.147Z</updated>
+    <updated>2016-05-12T15:02:14.398Z</updated>
     
     <content type="html">&lt;p&gt;最近在学习”APIs on Rails”这本书，这是学习第八章”Placing Orders”的学习笔记。&lt;/p&gt;
 &lt;h2 id=&quot;内容&quot;&gt;&lt;a href=&quot;#内容&quot; class=&quot;headerlink&quot; title=&quot;内容&quot;&gt;&lt;/a&gt;内容&lt;/h2&gt;&lt;ul&gt;
