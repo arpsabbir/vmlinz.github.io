@@ -202,6 +202,168 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/17/learn-kotlin-with-keddit-part-1/" itemprop="url">
+                  learn-kotlin-with-keddit-part-1
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-05-17T00:10:36+00:00" content="2016-05-17">
+              2016-05-17
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/05/17/learn-kotlin-with-keddit-part-1/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/05/17/learn-kotlin-with-keddit-part-1/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <blockquote>
+<p>原文链接：</p>
+<blockquote>
+<p><a href="https://medium.com/@juanchosaravia/learn-kotlin-while-developing-an-android-app-part-1-e0f51fc1a8b3" target="_blank" rel="external">https://medium.com/@juanchosaravia/learn-kotlin-while-developing-an-android-app-part-1-e0f51fc1a8b3</a></p>
+</blockquote>
+<p>原文作者：<a href="https://twitter.com/juanchosaravia" target="_blank" rel="external">Juancho Saravia</a><br>授权译者：<a href="https://twitter.com/vmlinz" target="_blank" rel="external">Nick Qi</a></p>
+</blockquote>
+<h1 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h1><ul>
+<li><a href="https://medium.com/@juanchosaravia/learn-kotlin-while-developing-an-android-app-introduction-567e21ff9664" target="_blank" rel="external">导言：关于这个系列文章的一点点</a></li>
+<li><a href="https://medium.com/@juanchosaravia/learn-kotlin-while-developing-an-android-app-part-1-e0f51fc1a8b3" target="_blank" rel="external">1：给Android Studio配置Kotlin</a></li>
+<li><a href="https://medium.com/@juanchosaravia/learn-kotlin-while-developing-an-android-app-part-2-e53317ffcbe9" target="_blank" rel="external">2：MainActivity.kt：语法，Null安全及其他</a></li>
+<li><a href="https://medium.com/@juanchosaravia/keddit-part-3-extension-functions-android-extensions-and-more-faa7d232f232" target="_blank" rel="external">3：NewsFragment.kt：扩展方法，Android扩展等等</a></li>
+<li><a href="https://medium.com/@juanchosaravia/keddit-part-4-recyclerview-delegate-adapters-data-classes-with-kotlin-9248f44327f7" target="_blank" rel="external">4：RecyclerView–委托适配器和数据类配合Kotlin</a></li>
+<li><a href="https://medium.com/@juanchosaravia/keddit-part-5-kotlin-rxjava-rxandroid-105f95bfcd22" target="_blank" rel="external">5：Kotlin, RxJava &amp; RxAndroid</a></li>
+<li><a href="https://medium.com/@juanchosaravia/keddit-part-6-api-retrofit-kotlin-d309074af0" target="_blank" rel="external">6：API — Retrofit &amp; Kotlin</a></li>
+<li><a href="https://medium.com/@juanchosaravia/keddit-part-7-infinite-scroll-higher-order-functions-lambdas-3a11fbd5090e" target="_blank" rel="external">7：无限滚动：高阶函数以及Lambdas</a></li>
+<li><a href="https://medium.com/@juanchosaravia/keddit-part-8-orientation-change-with-kotlin-parcelable-data-classes-f28136e8a6a8" target="_blank" rel="external">8：方向改变（Parcelable和数据类）</a></li>
+<li>9：单元测试和集成测试</li>
+</ul>
+<h1 id="第1篇-配置Android-Studio，使它支持Kotlin"><a href="#第1篇-配置Android-Studio，使它支持Kotlin" class="headerlink" title="第1篇: 配置Android Studio，使它支持Kotlin"></a>第1篇: 配置Android Studio，使它支持Kotlin</h1><p>这个部分，我们要配置Android Studio，让它支持Kotlin同时为下一篇开始从头开发Keddit应用和学习Kotlin概念做好准备。</p>
+<p>如果你已经忘记第一篇文章的内容，你可以回到内容部分大概看看，了解我们将要开发个什么样的应用、我们将要涉及哪些Kotlin的主题以及使用哪些库。</p>
+<h2 id="创建工程"><a href="#创建工程" class="headerlink" title="创建工程"></a>创建工程</h2><p>我们将重头开发，现在打开Android Studio然后创建一个工程。我把工程命名为“KedditBySteps”，把这个工程和最终完成的工程分开，也方便你随时签出我们正在开发的代码分支。</p>
+<p>选择API级别16，选择“Blank Activity“并使用默认名字。</p>
+<p><img src="/images/kotlin-part1-01-new-project.png" alt="kotlin-part1-01-new-project"><br><img src="/images/kotlin-part1-02-target-devices.png" alt="kotlin-part1-02-target-devices"><br><img src="/images/kotlin-part1-03-add-activity.png" alt="kotlin-part1-03-add-activity"><br><img src="/images/kotlin-part1-04-customize-activity.png" alt="kotlin-part1-04-customize-activity"></p>
+<h2 id="Kotlin插件"><a href="#Kotlin插件" class="headerlink" title="Kotlin插件"></a>Kotlin插件</h2><p>不错，我们已经创建了一个新工程，接下来让我们安装Kotlin需要的插件吧。</p>
+<blockquote>
+<p>从Android Studio Preference到Plugins到Browse Repositories再搜索”Kotlin“。</p>
+</blockquote>
+<p>只安装名叫”Kotlin“的插件然后重启Android Studio。</p>
+<p><img src="/images/kotlin-part1-05-install-plugin.png" alt="kotlin-part1-05-install-plugin"></p>
+<p>插件库里面有其他Kotlin插件，但是我们只需要这一个，”Kotlin Extensions“插件已经和”Kotlin“插件合并了，所以只需要”Kotlin“插件就够了。</p>
+<p>注意：现在你可以使用随Android Studio 2.0一起发布的Kotlin插件了，但是记住关闭”Instant Run“，不然不能正常工作。</p>
+<h2 id="配置工程到Kotlin之初试"><a href="#配置工程到Kotlin之初试" class="headerlink" title="配置工程到Kotlin之初试"></a>配置工程到Kotlin之初试</h2><p>如果你之前已经了解了一些如何配置Kotlin的资料，想必你早就忍不住要执行“Configure Kotlin in Project”了吧，这个选项位于Tools-&gt;Kotlin，你也可以通过Find Actions这个全能搜索找到它，搜索的过程如图：</p>
+<p><img src="/images/kotlin-part1-06-configure-kotlin-project.png" alt="kotlin-part1-06-configure-kotlin-project"><br><img src="/images/kotlin-part1-07-configure-kotlin-ok.png" alt="kotlin-part1-07-configure-kotlin-ok"></p>
+<p>上图：显示搜索对话框的快捷键 | 下图：配置好之后的信息</p>
+<p>如果你这样做，你会发现啥都没有发生。你能看见的所有信息就是“All modules with Kotlin files were configured”。</p>
+<p>发生这种事情的原因是我们工程里面并没有任何Kotlin文件，所以这个插件没有配置我们的项目。那就让我们创建一个Kotlin文件再配置一次吧。</p>
+<h2 id="转换Java文件到Kotlin文件"><a href="#转换Java文件到Kotlin文件" class="headerlink" title="转换Java文件到Kotlin文件"></a>转换Java文件到Kotlin文件</h2><p>要让工程里面有一个Kotlin文件，我们就干脆把之前创建的MainActivity.java这个文件转换成Kotlin文件。打开MainActivity.java，然后打开Find Action搜索“Convert java to…”</p>
+<p><img src="/images/kotlin-part1-08-convert-java-kotlin.png" alt="kotlin-part1-08-convert-java-kotlin"></p>
+<p>一个消息会弹出，它警告我们转换可能不准确，可能会需要手工改动，不过现在没关系。</p>
+<p>你会看见像这样的东西：</p>
+<p><img src="/images/kotlin-part1-09-mainactivity-in-kotlin.png" alt="kotlin-part1-09-mainactivity-in-kotlin"></p>
+<p>现在我们不去细看这个文件的内容（下一篇会做这个），所以我们就继续配置吧。你应该注意到新的Kotlin文件扩展名是“kt”。</p>
+<h2 id="配置工程到Kotlin之最后一步"><a href="#配置工程到Kotlin之最后一步" class="headerlink" title="配置工程到Kotlin之最后一步"></a>配置工程到Kotlin之最后一步</h2><p>现在我们已经准备好，可以配置了。重新运行“Configure Project with Kotlin“这个命令：</p>
+<p><img src="/images/kotlin-part1-09-mainactivity-in-kotlin.png" alt="kotlin-part1-09-mainactivity-in-kotlin"><br><img src="/images/kotlin-part1-10-reconfigure-kotlin-project.png" alt="kotlin-part1-10-reconfigure-kotlin-project"></p>
+<p>选择最新的Kotlin版本，同时确保Android Studio安装了最新的插件。</p>
+<p>接下来会弹出一个消息，让我们可以选择想要转换的模块以及Kotlin插件的版本（这里选择最新的）。</p>
+<p>你会发现模块中的build.gradle被更新了。文件会包含一些类似下面的新配置：</p>
+<pre><code>apply plugin: &apos;kotlin-android&apos;
+sourceSets {
+    main.java.srcDirs += &apos;src/main/kotlin&apos;
+}
+dependencies {
+    compile &quot;org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version&quot;
+}
+buildscript {
+    ext.kotlin_version = &apos;1.0.0-XYZ&apos;
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath &quot;org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version&quot;
+    }
+}
+</code></pre><p>At the beginning you had to do this manually but now with the Plugin this is really easy.</p>
+<h2 id="运行吧，兄弟！！！"><a href="#运行吧，兄弟！！！" class="headerlink" title="运行吧，兄弟！！！"></a>运行吧，兄弟！！！</h2><p>现在一切就绪，我们可以用MainActivity.kt这个文件来运行应用了。</p>
+<p><img src="/images/kotlin-part1-11-reconfigure-kotlin-version.png" alt="kotlin-part1-11-reconfigure-kotlin-version"></p>
+<h2 id="代码仓库"><a href="#代码仓库" class="headerlink" title="代码仓库"></a>代码仓库</h2><p>下面是这篇文章里面开发的代码，它被打了”v0.1”标签用来对应这个系列入门文章的第1篇（记住我们是从第0篇开始的，哈哈）。</p>
+<p><a href="https://github.com/juanchosaravia/KedditBySteps/tree/v0.1" target="_blank" rel="external">https://github.com/juanchosaravia/KedditBySteps/tree/v0.1</a></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>就像你刚刚看到的，要配置Android Studio到Kotlin非常简单，我们仅仅需要模块里有一个Kotlin文件就可以配置插件。</p>
+<p>有了这个工程，我们就可以开始开发Keddit应用了，不过最重要的还是学习一点Kotlin的概念。</p>
+<p>如果你发现有可以改进的地方或者有任何建议，请不要犹豫，直接联系我吧。我会尽力回答问题，改善这个系列的入门文章。</p>
+<p>下一篇再见。</p>
+<h1 id="接下来"><a href="#接下来" class="headerlink" title="接下来:"></a>接下来:</h1><p><a href="https://medium.com/@juanchosaravia/learn-kotlin-while-developing-an-android-app-part-2-e53317ffcbe9" target="_blank" rel="external">2：MainActivity.kt：语法，Null安全及其他</a></p>
+<p>Twitter: <a href="https://twitter.com/juanchosaravia" target="_blank" rel="external">Juancho Saravia</a></p>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/12/learn-kotlin-with-keddit-part-0/" itemprop="url">
                   learn-kotlin-with-keddit-part-0
                 </a>
@@ -1581,99 +1743,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/12/31/setup-a-blog-with-hexojs-and-travis/" itemprop="url">
-                  Setup a blog with hexojs and travis
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-12-31T23:46:12+00:00" content="2015-12-31">
-              2015-12-31
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/12/31/setup-a-blog-with-hexojs-and-travis/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/12/31/setup-a-blog-with-hexojs-and-travis/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><ul>
-<li>Hexo is a fast and powerful site generator designed specifically for personal blogging. There is a lot of plugins to make it even powerful.</li>
-<li>With the power of travis, you can automate the site generating progress and separate the process of editing from publishing.</li>
-<li>You can deploy your generated site to github pages, a free and easy-to-use page hosting service.</li>
-</ul>
-<p>This article is going to instruct you to setup a blog with these handy tools.</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/12/31/setup-a-blog-with-hexojs-and-travis/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1720,7 +1789,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1734,7 +1803,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
