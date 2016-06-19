@@ -202,6 +202,180 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/19/react-native-initial-setup/" itemprop="url">
+                  未命名
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-06-19T19:07:55+00:00" content="2016-06-19">
+              2016-06-19
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/06/19/react-native-initial-setup/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/06/19/react-native-initial-setup/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <p>title: react-native-initial-setup<br>date: 2016-06-20 02:57:49<br>tags:</p>
+<pre><code>- react-native
+- setup
+- tern
+- editorconfig
+- eslint
+- flow
+</code></pre><h1 id="React-Native-app-initial-setup"><a href="#React-Native-app-initial-setup" class="headerlink" title="React Native app initial setup"></a>React Native app initial setup</h1><p>We need some initial setup for the React Native app after you run <code>react-native init AppName</code>. We’ll setup <code>editorconfig</code>, <code>eslint</code> and <code>ternjs</code>.</p>
+<h2 id="1-Setting-up-editorconfig"><a href="#1-Setting-up-editorconfig" class="headerlink" title="1. Setting up editorconfig"></a>1. Setting up <code>editorconfig</code></h2><h3 id="What-is-editorconfig-why-we-need-it"><a href="#What-is-editorconfig-why-we-need-it" class="headerlink" title="What is editorconfig, why we need it?"></a>What is editorconfig, why we need it?</h3><p><code>editorconfig</code> is a tool of configuring editor behaviors such as file encoding, space/tab style, and others. </p>
+<p>It is editor and IDE agnostic, so that we can maintain a consistent coding style for developers with different preference of editor/IDE. </p>
+<p>It now supports almost all of the common editors/IDEs around, such as emacs, vim, sublime, atom, vscode and others. With this tool and its supporting plugin for your favorite eidtor/IDE, you can configure a consistent coding style by using a text formatted file named <code>.editorconfig</code>.</p>
+<p>Here we are going to look through the configuration items in our project.</p>
+<pre><code># http://editorconfig.org
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_size = 4
+indent_style = space
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.{js,jsx,rb,css,html}]
+indent_size = 2
+</code></pre><ul>
+<li><code>root = true</code>, we’ll set this file as the root configuration so that all sub folders will be affected.</li>
+<li><code>[*]</code>, after this line we’ll configure for all kinds of files.</li>
+<li><code>charset = utf-8</code>, we’ll prefer file charset of <code>utf-8</code>.</li>
+<li><code>end_of_file = lf</code>, we’ll prefer <code>lf</code> as end of line notation.</li>
+<li><code>indent_size = 4</code>, we’ll prefer indent size of 4 characters by default for all files.</li>
+<li><code>indent_style = space</code>, we’ll prefer <code>space</code> when we indent.</li>
+<li><code>insert_final_newline = true</code>, we’ll make sure a newline is at the end of file.</li>
+<li><code>trim_trailing_whitespace = true</code>, we’ll trim trailing whitespaces.</li>
+<li><code>[*.{js,jsx,rb,css,html}]</code>, after this line, we’ll configure for files with extensions of <code>js</code>, <code>jsx</code>, <code>rb</code>, <code>css</code> and <code>html</code>.</li>
+<li><code>indent_size = 2</code>, we’ll prefer indent size of 2 for these files.</li>
+</ul>
+<h2 id="2-Setting-up-eslint"><a href="#2-Setting-up-eslint" class="headerlink" title="2. Setting up eslint"></a>2. Setting up eslint</h2><h3 id="What-is-it"><a href="#What-is-it" class="headerlink" title="What is it?"></a>What is it?</h3><p><code>eslint</code> is tool for linting es6 and beyond files.</p>
+<h3 id="Why-we-need-it"><a href="#Why-we-need-it" class="headerlink" title="Why we need it?"></a>Why we need it?</h3><p>linters will help us stick to good practice of programming so that our project is easier to maintain and is more robust.</p>
+<h3 id="How-to-set-it-up"><a href="#How-to-set-it-up" class="headerlink" title="How to set it up?"></a>How to set it up?</h3><p><code>eslint</code> is a flexible linting tool, since I am lazy, I choose to use default linting rules from a famous repo from AirBnb.</p>
+<ul>
+<li>run <code>npm install --save-dev eslint babel-eslint</code>, install <code>eslint</code> and <code>babel-eslint</code>.</li>
+<li>run <code>npm install --save-dev eslint-config-airbnb eslint-plugin-import eslint-plugin-react eslint-plugin-jsx-a11y</code>, install airbnb lint rules dependencies.</li>
+<li><p>edit <code>.eslintrc</code> and insert following contents to set up eslint.</p>
+<pre><code>{
+    &quot;parser&quot;: &quot;babel-eslint&quot;,
+    &quot;env&quot;: {
+        &quot;browser&quot;: true,
+        &quot;node&quot;: true
+    },
+    &quot;extends&quot;: &quot;airbnb&quot;
+} 
+</code></pre></li>
+</ul>
+<h2 id="3-Setting-up-ternjs"><a href="#3-Setting-up-ternjs" class="headerlink" title="3. Setting up ternjs"></a>3. Setting up <code>ternjs</code></h2><h3 id="What-is-it-1"><a href="#What-is-it-1" class="headerlink" title="What is it?"></a>What is it?</h3><p>This is Tern. Tern is a stand-alone, editor-independent JavaScript analyzer that can be used to improve the JavaScript integration of existing editors.</p>
+<h3 id="Why-we-need-it-1"><a href="#Why-we-need-it-1" class="headerlink" title="Why we need it?"></a>Why we need it?</h3><ul>
+<li>ternjs helps us to analyze our javascript code.</li>
+<li>ternjs helps us to integrate our favorite editors with goto function/class declaration and auto completion.</li>
+</ul>
+<h3 id="How-to-set-it-up-1"><a href="#How-to-set-it-up-1" class="headerlink" title="How to set it up?"></a>How to set it up?</h3><ul>
+<li><a href="http://ternjs.net/" target="_blank" rel="external">ternjs official site</a></li>
+<li><a href="http://ternjs.net/doc/manual.html" target="_blank" rel="external">ternjs manual</a></li>
+<li><a href="http://ternjs.net/#plugins" target="_blank" rel="external">editors</a></li>
+<li><a href="https://gist.github.com/vmlinz/6fc6949cbd0e378e55c951cb2d87b1dd" target="_blank" rel="external">reference configuration</a></li>
+</ul>
+<h2 id="4-Setting-up-flow-if-you-like"><a href="#4-Setting-up-flow-if-you-like" class="headerlink" title="4. Setting up flow if you like"></a>4. Setting up <code>flow</code> if you like</h2><h3 id="What-is-it-2"><a href="#What-is-it-2" class="headerlink" title="What is it?"></a>What is it?</h3><ul>
+<li>Flow is a static type checker, designed to quickly find errors in JavaScript applications.</li>
+<li>Flow also lets you gradually opt-in to statically type checking your code.</li>
+</ul>
+<h3 id="Why-we-need-it-2"><a href="#Why-we-need-it-2" class="headerlink" title="Why we need it?"></a>Why we need it?</h3><ul>
+<li>Flow helps static analyze javascript files.</li>
+<li>Flow helps programmers to annotate javascript types with little effort and the annotation is easy to be opt out so that we can gradually introduce Flow without too much change.</li>
+</ul>
+<h3 id="How-to-set-it-up-2"><a href="#How-to-set-it-up-2" class="headerlink" title="How to set it up?"></a>How to set it up?</h3><ul>
+<li><a href="https://flowtype.org/docs/getting-started.html#_" target="_blank" rel="external">getting started</a></li>
+</ul>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a href="https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb" target="_blank" rel="external">eslint config from airbnb</a></li>
+<li><a href="https://github.com/airbnb/javascript" target="_blank" rel="external">airbnb javascript lint rules</a></li>
+<li><a href="http://eslint.org/docs/user-guide/configuring" target="_blank" rel="external">eslint user guide</a></li>
+<li><a href="https://github.com/babel/babel-eslint" target="_blank" rel="external">babel-eslint plugin</a></li>
+<li><a href="https://flowtype.org/" target="_blank" rel="external">flow</a></li>
+<li><a href="https://github.com/ternjs/tern\_for\_sublime" target="_blank" rel="external">tern for sublime</a></li>
+<li><a href="https://github.com/SublimeLinter/SublimeLinter-flow" target="_blank" rel="external">sublime linter flow</a></li>
+<li><a href="https://github.com/roadhump/SublimeLinter-eslint" target="_blank" rel="external">sublime linter eslint</a></li>
+<li><a href="https://github.com/sindresorhus/editorconfig-sublime" target="_blank" rel="external">sublime editorconfig</a></li>
+</ul>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/17/learn-kotlin-with-keddit-part-1/" itemprop="url">
                   learn-kotlin-with-keddit-part-1
                 </a>
@@ -1644,106 +1818,6 @@ buildscript {
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/01/02/hexo-blog-with-custom-domain-and-cloudflare/" itemprop="url">
-                  Hexo blog with custom domain and cloudflare
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2016-01-02T21:25:39+00:00" content="2016-01-02">
-              2016-01-02
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2016/01/02/hexo-blog-with-custom-domain-and-cloudflare/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/01/02/hexo-blog-with-custom-domain-and-cloudflare/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>The <a href="https://zaicheng.me/2015/12/31/setup-a-blog-with-hexojs-and-travis/">previous blog</a> shows you how to setup a blog with hexo and github pages. Here we are going to make it further.</p>
-<ul>
-<li>Setup custom domain name for your blog</li>
-<li>Setup cloudflare for content caching and https support</li>
-<li>Setup apex domain name and a <code>www</code> sub domain</li>
-<li>Setup cloudflare dns records with flattening CNAME record</li>
-<li>Configure cloudflare<ul>
-<li>ipv6</li>
-<li>hsts</li>
-<li>flexible/full ssl</li>
-</ul>
-</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/01/02/hexo-blog-with-custom-domain-and-cloudflare/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1790,7 +1864,7 @@ buildscript {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

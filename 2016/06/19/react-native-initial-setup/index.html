@@ -35,10 +35,12 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="rails,ruby,routes," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
+
+  
 
 
   <link rel="alternate" href="/atom.xml" title="Logs from Zaicheng" type="application/atom+xml" />
@@ -53,31 +55,37 @@
 
 
 
-<meta name="description" content="IntroductionThe purposes of rails router are:
-
-recognize the URLs
-dispatch URLs to the controller actions
-generate helper functions to avoid hard coding URLs in the view
-helpers to generate restful ro">
+<meta name="description" content="title: react-native-initial-setupdate: 2016-06-20 02:57:49tags:
+- react-native
+- setup
+- tern
+- editorconfig
+- eslint
+- flow
+React Native app initial setupWe need some initial setup for the React Nati">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Rails 4 routes essentials, part I">
-<meta property="og:url" content="http://yoursite.com/2016/01/04/rails-4-routes-essentials/index.html">
+<meta property="og:title" content="Logs from Zaicheng">
+<meta property="og:url" content="http://yoursite.com/2016/06/19/react-native-initial-setup/index.html">
 <meta property="og:site_name" content="Logs from Zaicheng">
-<meta property="og:description" content="IntroductionThe purposes of rails router are:
-
-recognize the URLs
-dispatch URLs to the controller actions
-generate helper functions to avoid hard coding URLs in the view
-helpers to generate restful ro">
+<meta property="og:description" content="title: react-native-initial-setupdate: 2016-06-20 02:57:49tags:
+- react-native
+- setup
+- tern
+- editorconfig
+- eslint
+- flow
+React Native app initial setupWe need some initial setup for the React Nati">
 <meta property="og:updated_time" content="2016-06-19T19:07:55.137Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Rails 4 routes essentials, part I">
-<meta name="twitter:description" content="IntroductionThe purposes of rails router are:
-
-recognize the URLs
-dispatch URLs to the controller actions
-generate helper functions to avoid hard coding URLs in the view
-helpers to generate restful ro">
+<meta name="twitter:title" content="Logs from Zaicheng">
+<meta name="twitter:description" content="title: react-native-initial-setupdate: 2016-06-20 02:57:49tags:
+- react-native
+- setup
+- tern
+- editorconfig
+- eslint
+- flow
+React Native app initial setupWe need some initial setup for the React Nati">
 
 
 
@@ -89,7 +97,7 @@ helpers to generate restful ro">
   };
 </script>
 
-  <title> Rails 4 routes essentials, part I | Logs from Zaicheng </title>
+  <title>  | Logs from Zaicheng </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -209,7 +217,7 @@ helpers to generate restful ro">
             
             
               
-                Rails 4 routes essentials, part I
+                
               
             
           </h1>
@@ -218,8 +226,8 @@ helpers to generate restful ro">
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2016-01-04T20:01:59+00:00" content="2016-01-04">
-              2016-01-04
+            <time itemprop="dateCreated" datetime="2016-06-19T19:07:55+00:00" content="2016-06-19">
+              2016-06-19
             </time>
           </span>
 
@@ -229,8 +237,8 @@ helpers to generate restful ro">
             
               <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2016/01/04/rails-4-routes-essentials/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/01/04/rails-4-routes-essentials/" itemprop="commentsCount"></span>
+              <a href="/2016/06/19/react-native-initial-setup/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/06/19/react-native-initial-setup/" itemprop="commentsCount"></span>
               </a>
             </span>
             
@@ -249,123 +257,92 @@ helpers to generate restful ro">
       
 
       
-        <span itemprop="articleBody"><h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>The purposes of rails router are:</p>
+        <span itemprop="articleBody"><p>title: react-native-initial-setup<br>date: 2016-06-20 02:57:49<br>tags:</p>
+<pre><code>- react-native
+- setup
+- tern
+- editorconfig
+- eslint
+- flow
+</code></pre><h1 id="React-Native-app-initial-setup"><a href="#React-Native-app-initial-setup" class="headerlink" title="React Native app initial setup"></a>React Native app initial setup</h1><p>We need some initial setup for the React Native app after you run <code>react-native init AppName</code>. We’ll setup <code>editorconfig</code>, <code>eslint</code> and <code>ternjs</code>.</p>
+<h2 id="1-Setting-up-editorconfig"><a href="#1-Setting-up-editorconfig" class="headerlink" title="1. Setting up editorconfig"></a>1. Setting up <code>editorconfig</code></h2><h3 id="What-is-editorconfig-why-we-need-it"><a href="#What-is-editorconfig-why-we-need-it" class="headerlink" title="What is editorconfig, why we need it?"></a>What is editorconfig, why we need it?</h3><p><code>editorconfig</code> is a tool of configuring editor behaviors such as file encoding, space/tab style, and others. </p>
+<p>It is editor and IDE agnostic, so that we can maintain a consistent coding style for developers with different preference of editor/IDE. </p>
+<p>It now supports almost all of the common editors/IDEs around, such as emacs, vim, sublime, atom, vscode and others. With this tool and its supporting plugin for your favorite eidtor/IDE, you can configure a consistent coding style by using a text formatted file named <code>.editorconfig</code>.</p>
+<p>Here we are going to look through the configuration items in our project.</p>
+<pre><code># http://editorconfig.org
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_size = 4
+indent_style = space
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.{js,jsx,rb,css,html}]
+indent_size = 2
+</code></pre><ul>
+<li><code>root = true</code>, we’ll set this file as the root configuration so that all sub folders will be affected.</li>
+<li><code>[*]</code>, after this line we’ll configure for all kinds of files.</li>
+<li><code>charset = utf-8</code>, we’ll prefer file charset of <code>utf-8</code>.</li>
+<li><code>end_of_file = lf</code>, we’ll prefer <code>lf</code> as end of line notation.</li>
+<li><code>indent_size = 4</code>, we’ll prefer indent size of 4 characters by default for all files.</li>
+<li><code>indent_style = space</code>, we’ll prefer <code>space</code> when we indent.</li>
+<li><code>insert_final_newline = true</code>, we’ll make sure a newline is at the end of file.</li>
+<li><code>trim_trailing_whitespace = true</code>, we’ll trim trailing whitespaces.</li>
+<li><code>[*.{js,jsx,rb,css,html}]</code>, after this line, we’ll configure for files with extensions of <code>js</code>, <code>jsx</code>, <code>rb</code>, <code>css</code> and <code>html</code>.</li>
+<li><code>indent_size = 2</code>, we’ll prefer indent size of 2 for these files.</li>
+</ul>
+<h2 id="2-Setting-up-eslint"><a href="#2-Setting-up-eslint" class="headerlink" title="2. Setting up eslint"></a>2. Setting up eslint</h2><h3 id="What-is-it"><a href="#What-is-it" class="headerlink" title="What is it?"></a>What is it?</h3><p><code>eslint</code> is tool for linting es6 and beyond files.</p>
+<h3 id="Why-we-need-it"><a href="#Why-we-need-it" class="headerlink" title="Why we need it?"></a>Why we need it?</h3><p>linters will help us stick to good practice of programming so that our project is easier to maintain and is more robust.</p>
+<h3 id="How-to-set-it-up"><a href="#How-to-set-it-up" class="headerlink" title="How to set it up?"></a>How to set it up?</h3><p><code>eslint</code> is a flexible linting tool, since I am lazy, I choose to use default linting rules from a famous repo from AirBnb.</p>
 <ul>
-<li>recognize the URLs</li>
-<li>dispatch URLs to the controller actions</li>
-<li>generate helper functions to avoid hard coding URLs in the view</li>
-<li>helpers to generate restful routes</li>
-<li>many other useful functions to help you dealing with routing</li>
+<li>run <code>npm install --save-dev eslint babel-eslint</code>, install <code>eslint</code> and <code>babel-eslint</code>.</li>
+<li>run <code>npm install --save-dev eslint-config-airbnb eslint-plugin-import eslint-plugin-react eslint-plugin-jsx-a11y</code>, install airbnb lint rules dependencies.</li>
+<li><p>edit <code>.eslintrc</code> and insert following contents to set up eslint.</p>
+<pre><code>{
+    &quot;parser&quot;: &quot;babel-eslint&quot;,
+    &quot;env&quot;: {
+        &quot;browser&quot;: true,
+        &quot;node&quot;: true
+    },
+    &quot;extends&quot;: &quot;airbnb&quot;
+} 
+</code></pre></li>
 </ul>
-<p>In this article, I’m going to take you a tour around the first part of the rails 4 router.</p>
-<h1 id="Content"><a href="#Content" class="headerlink" title="Content"></a>Content</h1><h2 id="rake-command-to-check-routes"><a href="#rake-command-to-check-routes" class="headerlink" title="rake command to check routes"></a>rake command to check routes</h2><p><code>rake routes</code> will show you the list of your routes.</p>
-<h2 id="URL-and-controller-action-mapping"><a href="#URL-and-controller-action-mapping" class="headerlink" title="URL and controller action mapping"></a>URL and controller action mapping</h2><p>when you received request for URL:<br>    GET /patients/17</p>
-<p>it will ask the router to match it to a controller action. If the matching route is:<br>    get ‘/patients/:id’, to: ‘patients#show’</p>
-<p>then the request is dispatched to the patients controller’s <code>show</code> action with { id: ‘17’} in <code>params</code></p>
-<h2 id="Resourceful-restful-routing"><a href="#Resourceful-restful-routing" class="headerlink" title="Resourceful(restful) routing"></a>Resourceful(restful) routing</h2><p>Resource routing is a shortcut to declare all the common routes for a given resourceful controller, including <code>index</code>, <code>show</code>, <code>new</code>, <code>edit</code>, <code>create</code>, <code>update</code> and <code>destroy</code> actions.</p>
-<h3 id="CRUD-and-restful"><a href="#CRUD-and-restful" class="headerlink" title="CRUD and restful"></a>CRUD and restful</h3><p>A single entry in the routes.rb, such as: <code>resources :users</code></p>
-<p>creates seven different routes in your application, all mapping to the Photos controller:</p>
-<table>
-<thead>
-<tr>
-<th>Prefix</th>
-<th>Verb</th>
-<th>URI Pattern</th>
-<th>Controller#Action</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>users</td>
-<td>GET</td>
-<td>/users(.:format)</td>
-<td>users#index</td>
-</tr>
-<tr>
-<td></td>
-<td>POST</td>
-<td>/users(.:format)</td>
-<td>users#create</td>
-</tr>
-<tr>
-<td>new_user</td>
-<td>GET</td>
-<td>/users/new(.:format)</td>
-<td>users#new</td>
-</tr>
-<tr>
-<td>edit_user</td>
-<td>GET</td>
-<td>/users/:id/edit(.:format)</td>
-<td>users#edit</td>
-</tr>
-<tr>
-<td>user</td>
-<td>GET</td>
-<td>/users/:id(.:format)</td>
-<td>users#show</td>
-</tr>
-<tr>
-<td></td>
-<td>PATCH</td>
-<td>/users/:id(.:format)</td>
-<td>users#update</td>
-</tr>
-<tr>
-<td></td>
-<td>PUT</td>
-<td>/users/:id(.:format)</td>
-<td>users#update</td>
-</tr>
-<tr>
-<td></td>
-<td>DELETE</td>
-<td>/users/:id(.:format)</td>
-<td>users#destroy</td>
-</tr>
-</tbody>
-</table>
-<p><em>NOTE</em>: There is a singular resource: <code>resources :user</code> and in this case you refer to only one resource and don’t need to identify different resources of it.</p>
-<h3 id="path-and-URL-helpers"><a href="#path-and-URL-helpers" class="headerlink" title="path and URL helpers"></a>path and URL helpers</h3><p>The resourceful routes also expose a number of helpers to the controllers, in case of <code>resources :users</code>:</p>
-<ul>
-<li><code>users_path</code> returns <code>/users</code></li>
-<li><code>new_user_path</code> returns <code>/users/new</code></li>
-<li><code>edit_user_path(:id)</code> returns <code>/users/:id/edit</code></li>
-<li><code>user_path(:id)</code> returns <code>/users/:id</code></li>
+<h2 id="3-Setting-up-ternjs"><a href="#3-Setting-up-ternjs" class="headerlink" title="3. Setting up ternjs"></a>3. Setting up <code>ternjs</code></h2><h3 id="What-is-it-1"><a href="#What-is-it-1" class="headerlink" title="What is it?"></a>What is it?</h3><p>This is Tern. Tern is a stand-alone, editor-independent JavaScript analyzer that can be used to improve the JavaScript integration of existing editors.</p>
+<h3 id="Why-we-need-it-1"><a href="#Why-we-need-it-1" class="headerlink" title="Why we need it?"></a>Why we need it?</h3><ul>
+<li>ternjs helps us to analyze our javascript code.</li>
+<li>ternjs helps us to integrate our favorite editors with goto function/class declaration and auto completion.</li>
 </ul>
-<p>There are helpers with postfix <code>_url</code> will return the same path prefixed with current host, port and path.</p>
-<h3 id="namespace-and-scope"><a href="#namespace-and-scope" class="headerlink" title="namespace and scope"></a>namespace and scope</h3><h4 id="namespace"><a href="#namespace" class="headerlink" title="namespace"></a>namespace</h4><p>You can use namespace in resources to group a set of controllers under a namespace. Such as:</p>
-<ul>
-<li>Group controllers under an <code>Admin::</code> namespace</li>
-<li>Place controllers under <code>app/controllers/admin</code></li>
+<h3 id="How-to-set-it-up-1"><a href="#How-to-set-it-up-1" class="headerlink" title="How to set it up?"></a>How to set it up?</h3><ul>
+<li><a href="http://ternjs.net/" target="_blank" rel="external">ternjs official site</a></li>
+<li><a href="http://ternjs.net/doc/manual.html" target="_blank" rel="external">ternjs manual</a></li>
+<li><a href="http://ternjs.net/#plugins" target="_blank" rel="external">editors</a></li>
+<li><a href="https://gist.github.com/vmlinz/6fc6949cbd0e378e55c951cb2d87b1dd" target="_blank" rel="external">reference configuration</a></li>
 </ul>
-<p>Then you can declare route as:</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">namespace <span class="symbol">:admin</span> <span class="keyword">do</span></span><br><span class="line">	resources <span class="symbol">:articles</span>, <span class="symbol">:comments</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<p>And all the urls of the controllers will be prefixed with <code>/admin</code></p>
-<h4 id="scope"><a href="#scope" class="headerlink" title="scope"></a>scope</h4><p>You can use scope when you want to route <code>/admin/articles</code> to ArticlesController instead of <code>Admin::ArticlesController</code>.</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scope <span class="string">'/admin'</span> <span class="keyword">do</span></span><br><span class="line">  resources <span class="symbol">:articles</span>, <span class="symbol">:comments</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<p>or</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">resources :</span>articles, <span class="string">path:</span> <span class="string">'/admin/articles'</span></span><br></pre></td></tr></table></figure>
-<h3 id="nested-routes"><a href="#nested-routes" class="headerlink" title="nested routes"></a>nested routes</h3><p>Nested routes allow you to represent resources that are logically children of other resources, for models:</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Magazine</span> &lt; ActiveRecord::Base</span></span><br><span class="line">  has_many <span class="symbol">:ads</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Ad</span> &lt; ActiveRecord::Base</span></span><br><span class="line">  belongs_to <span class="symbol">:magazine</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<p>you can declare the routes:</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">resources <span class="symbol">:magazines</span> <span class="keyword">do</span></span><br><span class="line">  resources <span class="symbol">:ads</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<p><em>NOTE</em>: Resources should never be nested more than 1 level deep.</p>
-<h4 id="Shallow-nesting"><a href="#Shallow-nesting" class="headerlink" title="Shallow nesting"></a>Shallow nesting</h4><p>Shallow nesting will help you to generate collection actions scoped under the parent, but leave the member actions as they were. You can avoid deep nesting using this technique.</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">resources <span class="symbol">:articles</span> <span class="keyword">do</span></span><br><span class="line">  resources <span class="symbol">:comments</span>, <span class="symbol">only:</span> [<span class="symbol">:index</span>, <span class="symbol">:new</span>, <span class="symbol">:create</span>]</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">resources <span class="symbol">:comments</span>, <span class="symbol">only:</span> [<span class="symbol">:show</span>, <span class="symbol">:edit</span>, <span class="symbol">:update</span>, <span class="symbol">:destroy</span>]</span><br></pre></td></tr></table></figure>
-<p>and shorthand for the above:</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">resources <span class="symbol">:articles</span> <span class="keyword">do</span></span><br><span class="line">  resources <span class="symbol">:comments</span>, <span class="symbol">shallow:</span> <span class="keyword">true</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><ul>
-<li>Rails router can help you connect URLs to controller actions</li>
-<li>Resource routing can help you describe restful controllers</li>
-<li>Rails router will generate helper functions to help you deal with urls and paths.</li>
+<h2 id="4-Setting-up-flow-if-you-like"><a href="#4-Setting-up-flow-if-you-like" class="headerlink" title="4. Setting up flow if you like"></a>4. Setting up <code>flow</code> if you like</h2><h3 id="What-is-it-2"><a href="#What-is-it-2" class="headerlink" title="What is it?"></a>What is it?</h3><ul>
+<li>Flow is a static type checker, designed to quickly find errors in JavaScript applications.</li>
+<li>Flow also lets you gradually opt-in to statically type checking your code.</li>
 </ul>
-<h1 id="Referrences"><a href="#Referrences" class="headerlink" title="Referrences"></a>Referrences</h1><ul>
-<li><a href="http://guides.rubyonrails.org/routing.html" target="_blank" rel="external">rails routes</a></li>
-<li><a href="https://en.wikibooks.org/wiki/Ruby_on_Rails/Routing" target="_blank" rel="external">rails routes wiki books</a></li>
-<li><a href="http://railscasts.com/episodes/231-routing-walkthrough" target="_blank" rel="external">rails routes walk through</a></li>
-<li><a href="http://www.theodinproject.com/ruby-on-rails/routing" target="_blank" rel="external">rails routing</a></li>
-<li><a href="http://ricostacruz.com/cheatsheets/rails-routes.html" target="_blank" rel="external">rails routes cheat sheet</a></li>
+<h3 id="Why-we-need-it-2"><a href="#Why-we-need-it-2" class="headerlink" title="Why we need it?"></a>Why we need it?</h3><ul>
+<li>Flow helps static analyze javascript files.</li>
+<li>Flow helps programmers to annotate javascript types with little effort and the annotation is easy to be opt out so that we can gradually introduce Flow without too much change.</li>
+</ul>
+<h3 id="How-to-set-it-up-2"><a href="#How-to-set-it-up-2" class="headerlink" title="How to set it up?"></a>How to set it up?</h3><ul>
+<li><a href="https://flowtype.org/docs/getting-started.html#_" target="_blank" rel="external">getting started</a></li>
+</ul>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a href="https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb" target="_blank" rel="external">eslint config from airbnb</a></li>
+<li><a href="https://github.com/airbnb/javascript" target="_blank" rel="external">airbnb javascript lint rules</a></li>
+<li><a href="http://eslint.org/docs/user-guide/configuring" target="_blank" rel="external">eslint user guide</a></li>
+<li><a href="https://github.com/babel/babel-eslint" target="_blank" rel="external">babel-eslint plugin</a></li>
+<li><a href="https://flowtype.org/" target="_blank" rel="external">flow</a></li>
+<li><a href="https://github.com/ternjs/tern\_for\_sublime" target="_blank" rel="external">tern for sublime</a></li>
+<li><a href="https://github.com/SublimeLinter/SublimeLinter-flow" target="_blank" rel="external">sublime linter flow</a></li>
+<li><a href="https://github.com/roadhump/SublimeLinter-eslint" target="_blank" rel="external">sublime linter eslint</a></li>
+<li><a href="https://github.com/sindresorhus/editorconfig-sublime" target="_blank" rel="external">sublime editorconfig</a></li>
 </ul>
 </span>
       
@@ -373,32 +350,18 @@ helpers to generate restful ro">
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/rails/" rel="tag">#rails</a>
-          
-            <a href="/tags/ruby/" rel="tag">#ruby</a>
-          
-            <a href="/tags/routes/" rel="tag">#routes</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/01/02/hexo-blog-with-custom-domain-and-cloudflare/" rel="next" title="Hexo blog with custom domain and cloudflare">
-                <i class="fa fa-chevron-left"></i> Hexo blog with custom domain and cloudflare
+              <a href="/2016/05/17/learn-kotlin-with-keddit-part-1/" rel="next" title="learn-kotlin-with-keddit-part-1">
+                <i class="fa fa-chevron-left"></i> learn-kotlin-with-keddit-part-1
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/05/12/Android-Audit-Rules-Android应用质量审计规则/" rel="prev" title="Android Audit Rules - Android应用质量审计规则">
-                Android Audit Rules - Android应用质量审计规则 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -549,7 +512,7 @@ helpers to generate restful ro">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Content"><span class="nav-number">2.</span> <span class="nav-text">Content</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#rake-command-to-check-routes"><span class="nav-number">2.1.</span> <span class="nav-text">rake command to check routes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#URL-and-controller-action-mapping"><span class="nav-number">2.2.</span> <span class="nav-text">URL and controller action mapping</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Resourceful-restful-routing"><span class="nav-number">2.3.</span> <span class="nav-text">Resourceful(restful) routing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CRUD-and-restful"><span class="nav-number">2.3.1.</span> <span class="nav-text">CRUD and restful</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#path-and-URL-helpers"><span class="nav-number">2.3.2.</span> <span class="nav-text">path and URL helpers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#namespace-and-scope"><span class="nav-number">2.3.3.</span> <span class="nav-text">namespace and scope</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#namespace"><span class="nav-number">2.3.3.1.</span> <span class="nav-text">namespace</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#scope"><span class="nav-number">2.3.3.2.</span> <span class="nav-text">scope</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nested-routes"><span class="nav-number">2.3.4.</span> <span class="nav-text">nested routes</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Shallow-nesting"><span class="nav-number">2.3.4.1.</span> <span class="nav-text">Shallow nesting</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Conclusion"><span class="nav-number">3.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Referrences"><span class="nav-number">4.</span> <span class="nav-text">Referrences</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#React-Native-app-initial-setup"><span class="nav-number">1.</span> <span class="nav-text">React Native app initial setup</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Setting-up-editorconfig"><span class="nav-number">1.1.</span> <span class="nav-text">1. Setting up editorconfig</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-editorconfig-why-we-need-it"><span class="nav-number">1.1.1.</span> <span class="nav-text">What is editorconfig, why we need it?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Setting-up-eslint"><span class="nav-number">1.2.</span> <span class="nav-text">2. Setting up eslint</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-it"><span class="nav-number">1.2.1.</span> <span class="nav-text">What is it?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Why-we-need-it"><span class="nav-number">1.2.2.</span> <span class="nav-text">Why we need it?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How-to-set-it-up"><span class="nav-number">1.2.3.</span> <span class="nav-text">How to set it up?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Setting-up-ternjs"><span class="nav-number">1.3.</span> <span class="nav-text">3. Setting up ternjs</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-it-1"><span class="nav-number">1.3.1.</span> <span class="nav-text">What is it?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Why-we-need-it-1"><span class="nav-number">1.3.2.</span> <span class="nav-text">Why we need it?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How-to-set-it-up-1"><span class="nav-number">1.3.3.</span> <span class="nav-text">How to set it up?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Setting-up-flow-if-you-like"><span class="nav-number">1.4.</span> <span class="nav-text">4. Setting up flow if you like</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-it-2"><span class="nav-number">1.4.1.</span> <span class="nav-text">What is it?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Why-we-need-it-2"><span class="nav-number">1.4.2.</span> <span class="nav-text">Why we need it?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How-to-set-it-up-2"><span class="nav-number">1.4.3.</span> <span class="nav-text">How to set it up?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">1.5.</span> <span class="nav-text">References</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -609,9 +572,9 @@ helpers to generate restful ro">
 
     <script type="text/javascript">
       var disqus_shortname = 'logs-from-zaicheng';
-      var disqus_identifier = '2016/01/04/rails-4-routes-essentials/';
-      var disqus_title = 'Rails 4 routes essentials, part I';
-      var disqus_url = 'http://yoursite.com/2016/01/04/rails-4-routes-essentials/';
+      var disqus_identifier = '2016/06/19/react-native-initial-setup/';
+      var disqus_title = '';
+      var disqus_url = 'http://yoursite.com/2016/06/19/react-native-initial-setup/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
