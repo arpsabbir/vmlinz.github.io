@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-06-19T19:07:55.137Z</updated>
+  <updated>2016-06-19T19:14:22.825Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,20 +16,13 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
-    <link href="http://yoursite.com/2016/06/19/react-native-initial-setup/"/>
-    <id>http://yoursite.com/2016/06/19/react-native-initial-setup/</id>
-    <published>2016-06-19T19:07:55.137Z</published>
-    <updated>2016-06-19T19:07:55.137Z</updated>
+    <title>React Native App initial setup</title>
+    <link href="http://yoursite.com/2016/06/20/react-native-initial-setup/"/>
+    <id>http://yoursite.com/2016/06/20/react-native-initial-setup/</id>
+    <published>2016-06-20T02:57:49.000Z</published>
+    <updated>2016-06-19T19:14:22.825Z</updated>
     
-    <content type="html">&lt;p&gt;title: react-native-initial-setup&lt;br&gt;date: 2016-06-20 02:57:49&lt;br&gt;tags:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;- react-native
-- setup
-- tern
-- editorconfig
-- eslint
-- flow
-&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;React-Native-app-initial-setup&quot;&gt;&lt;a href=&quot;#React-Native-app-initial-setup&quot; class=&quot;headerlink&quot; title=&quot;React Native app initial setup&quot;&gt;&lt;/a&gt;React Native app initial setup&lt;/h1&gt;&lt;p&gt;We need some initial setup for the React Native app after you run &lt;code&gt;react-native init AppName&lt;/code&gt;. We’ll setup &lt;code&gt;editorconfig&lt;/code&gt;, &lt;code&gt;eslint&lt;/code&gt; and &lt;code&gt;ternjs&lt;/code&gt;.&lt;/p&gt;
+    <content type="html">&lt;h1 id=&quot;React-Native-app-initial-setup&quot;&gt;&lt;a href=&quot;#React-Native-app-initial-setup&quot; class=&quot;headerlink&quot; title=&quot;React Native app initial setup&quot;&gt;&lt;/a&gt;React Native app initial setup&lt;/h1&gt;&lt;p&gt;We need some initial setup for the React Native app after you run &lt;code&gt;react-native init AppName&lt;/code&gt;. We’ll setup &lt;code&gt;editorconfig&lt;/code&gt;, &lt;code&gt;eslint&lt;/code&gt; and &lt;code&gt;ternjs&lt;/code&gt;.&lt;/p&gt;
 &lt;h2 id=&quot;1-Setting-up-editorconfig&quot;&gt;&lt;a href=&quot;#1-Setting-up-editorconfig&quot; class=&quot;headerlink&quot; title=&quot;1. Setting up editorconfig&quot;&gt;&lt;/a&gt;1. Setting up &lt;code&gt;editorconfig&lt;/code&gt;&lt;/h2&gt;&lt;h3 id=&quot;What-is-editorconfig-why-we-need-it&quot;&gt;&lt;a href=&quot;#What-is-editorconfig-why-we-need-it&quot; class=&quot;headerlink&quot; title=&quot;What is editorconfig, why we need it?&quot;&gt;&lt;/a&gt;What is editorconfig, why we need it?&lt;/h3&gt;&lt;p&gt;&lt;code&gt;editorconfig&lt;/code&gt; is a tool of configuring editor behaviors such as file encoding, space/tab style, and others. &lt;/p&gt;
 &lt;p&gt;It is editor and IDE agnostic, so that we can maintain a consistent coding style for developers with different preference of editor/IDE. &lt;/p&gt;
 &lt;p&gt;It now supports almost all of the common editors/IDEs around, such as emacs, vim, sublime, atom, vscode and others. With this tool and its supporting plugin for your favorite eidtor/IDE, you can configure a consistent coding style by using a text formatted file named &lt;code&gt;.editorconfig&lt;/code&gt;.&lt;/p&gt;
@@ -113,15 +106,22 @@ indent_size = 2
     
     <summary type="html">
     
-      &lt;p&gt;title: react-native-initial-setup&lt;br&gt;date: 2016-06-20 02:57:49&lt;br&gt;tags:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;- react-native
-- setup
-- tern
-- editorconfig
-- esl
+      &lt;h1 id=&quot;React-Native-app-initial-setup&quot;&gt;&lt;a href=&quot;#React-Native-app-initial-setup&quot; class=&quot;headerlink&quot; title=&quot;React Native app initial setup&quot;&gt;
     
     </summary>
     
+    
+      <category term="react-native" scheme="http://yoursite.com/tags/react-native/"/>
+    
+      <category term="setup" scheme="http://yoursite.com/tags/setup/"/>
+    
+      <category term="tern" scheme="http://yoursite.com/tags/tern/"/>
+    
+      <category term="editorconfig" scheme="http://yoursite.com/tags/editorconfig/"/>
+    
+      <category term="eslint" scheme="http://yoursite.com/tags/eslint/"/>
+    
+      <category term="flow" scheme="http://yoursite.com/tags/flow/"/>
     
   </entry>
   
@@ -130,7 +130,7 @@ indent_size = 2
     <link href="http://yoursite.com/2016/05/17/learn-kotlin-with-keddit-part-1/"/>
     <id>http://yoursite.com/2016/05/17/learn-kotlin-with-keddit-part-1/</id>
     <published>2016-05-17T00:10:36.000Z</published>
-    <updated>2016-06-19T19:07:55.137Z</updated>
+    <updated>2016-06-19T19:14:22.825Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;原文链接：&lt;/p&gt;
@@ -235,7 +235,7 @@ buildscript {
     <link href="http://yoursite.com/2016/05/12/learn-kotlin-with-keddit-part-0/"/>
     <id>http://yoursite.com/2016/05/12/learn-kotlin-with-keddit-part-0/</id>
     <published>2016-05-12T22:09:03.000Z</published>
-    <updated>2016-06-19T19:07:55.137Z</updated>
+    <updated>2016-06-19T19:14:22.825Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;原文链接：&lt;br&gt;&lt;a href=&quot;https://medium.com/@juanchosaravia/learn-kotlin-while-developing-an-android-app-introduction-567e21ff9664#.m0rvylv5z&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://medium.com/@juanchosaravia/learn-kotlin-while-developing-an-android-app-introduction-567e21ff9664#.m0rvylv5z&lt;/a&gt;&lt;br&gt;原文作者：&lt;a href=&quot;https://twitter.com/juanchosaravia&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Juancho Saravia&lt;/a&gt;&lt;br&gt;授权译者：&lt;a href=&quot;https://zaicheng.me&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Nick Qi&lt;/a&gt;&lt;/p&gt;
@@ -298,7 +298,7 @@ buildscript {
     <link href="http://yoursite.com/2016/05/12/Android-Audit-Rules-Android%E5%BA%94%E7%94%A8%E8%B4%A8%E9%87%8F%E5%AE%A1%E8%AE%A1%E8%A7%84%E5%88%99/"/>
     <id>http://yoursite.com/2016/05/12/Android-Audit-Rules-Android应用质量审计规则/</id>
     <published>2016-05-12T00:12:50.000Z</published>
-    <updated>2016-06-19T19:07:55.137Z</updated>
+    <updated>2016-06-19T19:14:22.825Z</updated>
     
     <content type="html">&lt;p&gt;&lt;strong&gt;Your Android app as a crime scene! 假设你的Android app是一个犯罪现场！&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/vmlinz/AndroidAudit/blob/master/README_CN.md&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github链接&lt;/a&gt;&lt;/p&gt;
@@ -1200,7 +1200,7 @@ buildscript {
     <link href="http://yoursite.com/2016/01/04/rails-4-routes-essentials/"/>
     <id>http://yoursite.com/2016/01/04/rails-4-routes-essentials/</id>
     <published>2016-01-04T20:01:59.000Z</published>
-    <updated>2016-06-19T19:07:55.137Z</updated>
+    <updated>2016-06-19T19:14:22.825Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Introduction&quot;&gt;&lt;a href=&quot;#Introduction&quot; class=&quot;headerlink&quot; title=&quot;Introduction&quot;&gt;&lt;/a&gt;Introduction&lt;/h1&gt;&lt;p&gt;The purposes of rails router are:&lt;/p&gt;
 &lt;ul&gt;
@@ -1342,7 +1342,7 @@ buildscript {
     <link href="http://yoursite.com/2016/01/02/hexo-blog-with-custom-domain-and-cloudflare/"/>
     <id>http://yoursite.com/2016/01/02/hexo-blog-with-custom-domain-and-cloudflare/</id>
     <published>2016-01-02T21:25:39.000Z</published>
-    <updated>2016-06-19T19:07:55.137Z</updated>
+    <updated>2016-06-19T19:14:22.825Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Introduction&quot;&gt;&lt;a href=&quot;#Introduction&quot; class=&quot;headerlink&quot; title=&quot;Introduction&quot;&gt;&lt;/a&gt;Introduction&lt;/h1&gt;&lt;p&gt;The &lt;a href=&quot;https://zaicheng.me/2015/12/31/setup-a-blog-with-hexojs-and-travis/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;previous blog&lt;/a&gt; shows you how to setup a blog with hexo and github pages. Here we are going to make it further.&lt;/p&gt;
 &lt;ul&gt;
@@ -1432,7 +1432,7 @@ buildscript {
     <link href="http://yoursite.com/2015/12/31/setup-a-blog-with-hexojs-and-travis/"/>
     <id>http://yoursite.com/2015/12/31/setup-a-blog-with-hexojs-and-travis/</id>
     <published>2015-12-31T23:46:12.000Z</published>
-    <updated>2016-06-19T19:07:55.137Z</updated>
+    <updated>2016-06-19T19:14:22.825Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Introduction&quot;&gt;&lt;a href=&quot;#Introduction&quot; class=&quot;headerlink&quot; title=&quot;Introduction&quot;&gt;&lt;/a&gt;Introduction&lt;/h1&gt;&lt;ul&gt;
 &lt;li&gt;Hexo is a fast and powerful site generator designed specifically for personal blogging. There is a lot of plugins to make it even powerful.&lt;/li&gt;
@@ -1505,7 +1505,7 @@ buildscript {
     <link href="http://yoursite.com/2015/12/24/Rails-active-record-associations/"/>
     <id>http://yoursite.com/2015/12/24/Rails-active-record-associations/</id>
     <published>2015-12-24T23:48:24.000Z</published>
-    <updated>2016-06-19T19:07:55.137Z</updated>
+    <updated>2016-06-19T19:14:22.825Z</updated>
     
     <content type="html">&lt;p&gt;最近在学习”APIs on Rails”这本书，这是学习第八章”Placing Orders”的学习笔记。&lt;/p&gt;
 &lt;h2 id=&quot;内容&quot;&gt;&lt;a href=&quot;#内容&quot; class=&quot;headerlink&quot; title=&quot;内容&quot;&gt;&lt;/a&gt;内容&lt;/h2&gt;&lt;ul&gt;
